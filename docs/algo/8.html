@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 	<html>
 		<head>
-			<title> SAS-ROSET  |  ROS Encryption Tool Documentation </title>
+			<title> SAS-ROSET  |  Attacking the SAS-RGM - SAS-RCS/RBS Encryption Algorithm Documentation </title>
 			<link data-default-icon="../../imgs/favicon.png" rel="icon" sizes="192x192" href="../../imgs/SAS_ROSET_ICON_3.png" />
 			<meta name="viewport" content="width=device-width, initial-scale=0.8, shrink-to-fit=yes">
 			<meta charset="utf-8">
@@ -16,7 +16,7 @@
 		</style>
 		
 		<body>
-			<!-- Navigation Bar Start-->
+		<!-- Navigation Bar Start-->
 			<div id="nav_bar">			
 				<a href="../../index.html"><div  id="nav_logo"><img style="height:100%;" src="../../imgs/SAS_ROSET_LOGO_NAME.png"/></div></a>				
 				<div id="nav_buttons_box_desktop">
@@ -68,7 +68,8 @@
 					
 						<doc_path_text>
 							<a href="../../docs.html" class="pl">Documentation</a> / 
-							<a href="graphical.html" class="pl">ROS Encryption Tool</a>
+							<a href="algorithms.html" class="pl">Algorithms</a> /
+							<a href="" class="pl">Attacking the SAS-RGM</a>
 						</doc_path_text>  
 						
 						<div class="doc_check_box">
@@ -78,37 +79,101 @@
 					</div>
 
 					<div id="doc_page">
-						<doc_h1> ROS Encryption Tool </doc_h1>
+						<doc_h1> 8. Attacking the SAS-RGM </doc_h1>
 						<doc_author>by: saaiqSAS</doc_author>
-						<doc_date>Last Updated: 19/2/2025</doc_date>
+						<doc_date>Last Updated: 17/10/2024</doc_date>
 						
-						<doc_para> 
-							Welcome to the official documentation for the ROS Encryption Tool. This guide will help you get started with the 
-							tool, providing comprehensive information on its features and functionality. Whether you're new to the tool or 
-							looking to explore advanced capabilities, this resource has you covered.							
-						</doc_para>	
-						
-						<doc_para><strong>Warning:</strong> This documentation is currently incomplete. Some sections may be missing or subject to change.</doc_para>
+						<!-- <i>Dynamic Key</i>  <i>Static Key</i>  <i>D-Space</i>!-->
+						<doc_h3>1. Frequency Analysis</doc_h3>
+						<doc_para>
+							SAS-RGM is secure against frequency analysis as long as each base unit's subset length is long. 
+							If the subset lengths are very short (e.g., 2-5 characters), the algorithm may be vulnerable. For 
+							SAS-RCS, the shortest subset length is produced when using RGM base64 (s64) combined with a
+							128-character key, resulting in 2 characters per subset. However RGM base2 (s2) combined with the same key length
+							results in 32 charcters per subset, which can be considered secure. Therefore, when using larger bases, 
+							it is recommended to use longer keys to ensure security.
+							<br/><br/>
 
-						<doc_h2>Contents</doc_h2>
-						<a href="0.html" class="doc_content"> 0. Setting Up </a>	
-						<a href="1.html" class="doc_content"> 1. User Interface </a>	
-						<a href="2.html" class="doc_content"> 2. Generating Keys</a>	
-						<a href="3.html" class="doc_content"> 3. Encrypting Text</a>	
-						<a href="4.html" class="doc_content"> 4. Decrypting Text</a>	
-						<a href="5.html" class="doc_content"> 5. Encrypting Files</a>	
-						<a href="6.html" class="doc_content"> 6. Decrypting Files</a>	
-						<a href="7.html" class="doc_content"> 7. Process Settings</a>	
+						</doc_para>
 						
-						</br></br>
-						<div class="grid_2button_cent">
-							<a href="https://docs.google.com/forms/d/e/1FAIpQLSddVLlTjuOGv3gzU_Zq0rbIyLI7omuEgGAPRE80yPPzeFMCHA/viewform?usp=dialog"><p class="doc_button"> Rate Us</p></a>
-							<a href="https://docs.google.com/forms/d/e/1FAIpQLSccSJ1yBujxJmKswvDvrF4JmRJfH5H1e3fagOzuJk-xEnzRRQ/viewform?usp=dialog"><p class="doc_button" > Report Bug</p></a>
-							<a href="https://docs.google.com/forms/d/e/1FAIpQLSdKJDMUSIaJte96xYlM23lKruF7TBkuoWkqHVCHoIt1EmTh8w/viewform?usp=dialog"><p class="doc_button" > Request Feature</p></a>
-						</div>
-					
+						
+						<doc_h3>2. Brute Forcing</doc_h3>
+						<doc_para>
+							While the method used for distribution of the character set (<i>Dynamic Key</i>) into subsets (a subset for each base unit),
+							the original character set (<i>Dynamic Key</i>) used is randomly generated beforehand via non-deterministic methods. 
+							Brute forcing the SAS-RGM implementation on SAS-RCS can be attempted by iterating through the <i>D-Space</i>, 
+							which is equivalent to <i>L!</i>. As key length gets longer brute forcing will become inconvenient, given that the
+							maximum key length by default is 1,050,000 units.
+						</doc_para>
+						<doc_para>
+							Depending on the character set distribution method used (by default "1234"/"Round Robin" method is used), multiple 
+							<i>Dynamic Keys</i> from the <i>D-Space</i> will produce identical set of subsets.
+						</doc_para>
+						<doc_code>
+								Example 8.1: Identical set of subsets produced
+								
+								Base: base2
+								Dynamic keys: 
+								{ a, b, c, d }
+								{ a, d, c, b }
+								{ c, b, a, d }
+								{ c, d, a, b }
+								
+								[ 0, 1, 0, 1 ]
+								
+								0 → {a, c} 
+								1 → {b, d} 
+								
+								Notice how the provided Dynamic keys produce identical set of subsets.
+						</doc_code>
+						
+						<doc_h3>3. Chosen Plaintext Attack (CPA)</doc_h3>
+						<doc_para>
+							SAS-RGM is (partially) vulnerable to CPA. Some characters belonging to the subset assigned to the base units included in the chosen pain text
+							can be determined from the encoded ciphertext. Hence depending on the level of access to the encoding oracle, more characters can be mapped to
+							base units.
+						</doc_para>
+						<doc_code>
+								Example 8.2: CPA Attack on SAS-RGM
+								
+								Base: base16
+								Plaintext : 6A00BF ( Sent to encoding oracle )
+								Ciphertext: qrwtxo ( Returned from the encoding oracle )
+								
+								Determined partial subset
+								6 → {q, ...} 
+								A → {r, ...} 
+								0 → {w, t, ...} 
+								B → {x, ...} 
+								F → {o, ...} 
+						</doc_code>
+						
+						
+						<doc_h3>4. Chosen Ciphertext Attack (CCA)</doc_h3>
+						<doc_para>
+							SAS-RGM is also (partially) vulnerable to CCA as characters from a chosen ciphertext can be mapped to its
+							base unit when the plain text is at hand.
+						</doc_para>
+						<doc_code>
+								Example 8.3: CCA Attack on SAS-RGM
+								
+								Base: base2
+								Ciphertext: broqvwra ( Sent to decoding oracle )
+								Plaintext : 10101001 ( Returned from the decoding oracle )
+
+								Determined partial subset
+								0 → {q, w, r, ...} 
+								1 → {b, o, v, a, ...} 	
+						</doc_code>
+						
+						<br/><br/>
 					</div>
-				</div>			
+					
+					<div class="doc_navigate_box">
+							<a href="7.html" ><p class="white_button"> Previous: SAS-RGM </p></a>
+							<a href="9.html" ><p class="blue_button"> Next: RGM in RCS </p></a>
+					</div>	
+				</div>		
 			</main>
 			
 			<footer>
@@ -145,5 +210,6 @@
 			</footer>
 		
 		</body>
+		
 		<script src="../doc_dark_mode.js"></script>
 	</html>

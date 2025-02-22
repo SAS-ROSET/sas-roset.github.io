@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 	<html>
 		<head>
-			<title> SAS-ROSET  |  ROS Encryption Tool Documentation </title>
+			<title> SAS-ROSET  |  SAS-ROS Cipher - SAS-RCS/RBS Encryption Algorithm Documentation </title>
 			<link data-default-icon="../../imgs/favicon.png" rel="icon" sizes="192x192" href="../../imgs/SAS_ROSET_ICON_3.png" />
 			<meta name="viewport" content="width=device-width, initial-scale=0.8, shrink-to-fit=yes">
 			<meta charset="utf-8">
@@ -16,7 +16,7 @@
 		</style>
 		
 		<body>
-			<!-- Navigation Bar Start-->
+		<!-- Navigation Bar Start-->
 			<div id="nav_bar">			
 				<a href="../../index.html"><div  id="nav_logo"><img style="height:100%;" src="../../imgs/SAS_ROSET_LOGO_NAME.png"/></div></a>				
 				<div id="nav_buttons_box_desktop">
@@ -68,7 +68,8 @@
 					
 						<doc_path_text>
 							<a href="../../docs.html" class="pl">Documentation</a> / 
-							<a href="graphical.html" class="pl">ROS Encryption Tool</a>
+							<a href="algorithms.html" class="pl">Algorithms</a> /
+							<a href="" class="pl">SAS-ROS Cipher</a>
 						</doc_path_text>  
 						
 						<div class="doc_check_box">
@@ -78,37 +79,107 @@
 					</div>
 
 					<div id="doc_page">
-						<doc_h1> ROS Encryption Tool </doc_h1>
+						<doc_h1> 1. SAS-ROS Cipher </doc_h1>
 						<doc_author>by: saaiqSAS</doc_author>
-						<doc_date>Last Updated: 19/2/2025</doc_date>
+						<doc_date>Last Updated: 12/6/2024</doc_date>
 						
 						<doc_para> 
-							Welcome to the official documentation for the ROS Encryption Tool. This guide will help you get started with the 
-							tool, providing comprehensive information on its features and functionality. Whether you're new to the tool or 
-							looking to explore advanced capabilities, this resource has you covered.							
+							SAS-ROS Cipher (Saaiq Abdulla Saeed's Random Object Substitution Cipher) can be defined as a method of randomly substituting 
+							a data object to another object within a fixed set of objects by refering to two types of randomly generated 
+							keys: the <i>Dynamic Key</i> (Object Key) and the <i>Static Key</i> (Index Key), which when combined, represent a substitution table.
+							This cipher is the core of the SAS-RCS/RBS Encryption.
+							<br/><br/>
+						 
+							The ROS Cipher was originally developed by Saaiq Abdulla Saeed (saaiqSAS) as the core of the depreciated SAS-STE (SAS - Secure Text Encryption)
+							algorithm [<a href="https://github.com/saaiqSAS/SAS-STE" class="doc_link">project Github</a>] - a weak ASCII substitution encryption, 
+							also the first encryption by saaiqSAS. The key names <i>'Dynamic Key'</i> for Object Key and <i>'Static Key'</i>  for Index Key were derived 
+							from the SAS-STE project.
+							<br/><br/>
+							
+							<i>Dynamic Keys</i> are a set/array of randomly shuffled objects, where objects can be of any type (ie. characters, bytes, frequency, voltage, etc).
+							<i>Static Keys</i> are a set/array of randomly shuffled indexes equal to length of <i>Dynamic Key</i>, which are used to link objects of the
+							<i>Dynamic Key</i> while performing substitution.
+							<br/><br/>
+						 
+							There are two methods to perform the ROS Cipher, which are inverses of each other. Thus, if one method is used for encryption, 
+							the other can be used for decryption, and vice versa.
 						</doc_para>	
 						
-						<doc_para><strong>Warning:</strong> This documentation is currently incomplete. Some sections may be missing or subject to change.</doc_para>
-
-						<doc_h2>Contents</doc_h2>
-						<a href="0.html" class="doc_content"> 0. Setting Up </a>	
-						<a href="1.html" class="doc_content"> 1. User Interface </a>	
-						<a href="2.html" class="doc_content"> 2. Generating Keys</a>	
-						<a href="3.html" class="doc_content"> 3. Encrypting Text</a>	
-						<a href="4.html" class="doc_content"> 4. Decrypting Text</a>	
-						<a href="5.html" class="doc_content"> 5. Encrypting Files</a>	
-						<a href="6.html" class="doc_content"> 6. Decrypting Files</a>	
-						<a href="7.html" class="doc_content"> 7. Process Settings</a>	
+						<doc_h2>ROS method 1 (m1)</doc_h2>
+						<doc_code>
+							Dynamic Key:	{ j, i, d, a, h, c, g, f, e, b }
+							Static Key :	{ 4, 8, 2, 7, 1, 6, 0, 5, 9, 3 }
+							
+							Data: b
+							
+							1. Locate the index of 'b' in Dynamic Key - [9]
+							2. Retrieve the integer in the [9] index of the Static Key - 3
+							3. Identify the character in the [3] index of Dynamic Key - 'a'
+							4. Substitute 'b' to 'a'
+							
+							out: a
+						</doc_code>
 						
-						</br></br>
-						<div class="grid_2button_cent">
-							<a href="https://docs.google.com/forms/d/e/1FAIpQLSddVLlTjuOGv3gzU_Zq0rbIyLI7omuEgGAPRE80yPPzeFMCHA/viewform?usp=dialog"><p class="doc_button"> Rate Us</p></a>
-							<a href="https://docs.google.com/forms/d/e/1FAIpQLSccSJ1yBujxJmKswvDvrF4JmRJfH5H1e3fagOzuJk-xEnzRRQ/viewform?usp=dialog"><p class="doc_button" > Report Bug</p></a>
-							<a href="https://docs.google.com/forms/d/e/1FAIpQLSdKJDMUSIaJte96xYlM23lKruF7TBkuoWkqHVCHoIt1EmTh8w/viewform?usp=dialog"><p class="doc_button" > Request Feature</p></a>
-						</div>
-					
+						<img class="doc_image" src="imgs/1_1.png"/> <doc_fig>Fig.1.1</doc_fig>
+						
+						<doc_h2>ROS method 2 (m2)</doc_h2>
+						<doc_code>
+							Dynamic Key:	{ j, i, d, a, h, c, g, f, e, b }
+							Static Key :	{ 4, 8, 2, 7, 1, 6, 0, 5, 9, 3 }
+							
+							Data: b
+							
+							1. Locate the index of 'b' in Dynamic Key - [9]
+							2. Locate the index of '9' in Static Key - [8]
+							3. Identify the character in the [8] index of Dynamic Key - 'e'
+							4. Substitute 'b' to 'e'
+							
+							out: e
+						</doc_code>
+						
+						<img class="doc_image" src="imgs/1_2.png"/> <doc_fig>Fig.1.2</doc_fig>
+						
+						<doc_h2>Decrypting m1 output via m2</doc_h2>
+						<doc_code>
+							Dynamic Key:	{ j, i, d, a, h, c, g, f, e, b }
+							Static Key :	{ 4, 8, 2, 7, 1, 6, 0, 5, 9, 3 }
+							
+							m1 Encrypted Data: a
+							
+							1. Locate the index of 'a' in Dynamic Key - [3]
+							2. Locate the index of '3' in Static Key - [9]
+							3. Identify the character in the [9] index of Dynamic Key - 'b'
+							4. Substitute 'b' to 'e'
+							
+							out: b
+						</doc_code>
+						
+						<img class="doc_image" src="imgs/1_3.png"/> <doc_fig>Fig.1.3</doc_fig>
+						
+						<doc_h2>Decrypting m2 output via m1</doc_h2>
+						<doc_code>
+							Dynamic Key:	{ j, i, d, a, h, c, g, f, e, b }
+							Static Key :	{ 4, 8, 2, 7, 1, 6, 0, 5, 9, 3 }
+							
+							m2 Encrypted Data: e
+							
+							1. Locate the index of 'e' in Dynamic Key - [8]
+							2. Retrieve the integer in the [8] index of the Static Key - 9
+							3. Identify the character in the [9] index of Dynamic Key - 'b'
+							4. Substitute 'b' to 'a'
+							
+							out: b
+						</doc_code>
+						
+						<img class="doc_image" src="imgs/1_4.png"/> <doc_fig>Fig.1.4</doc_fig>
 					</div>
-				</div>			
+					
+					<div class="doc_navigate_box">
+							<a href="0.html" ><p class="white_button"> Previous: Definitions </p></a>
+							<a href="2.html" ><p class="blue_button"> Next: Keys - ROS </p></a>
+					</div>	
+				</div>	
+					
 			</main>
 			
 			<footer>
@@ -145,5 +216,6 @@
 			</footer>
 		
 		</body>
+		
 		<script src="../doc_dark_mode.js"></script>
 	</html>

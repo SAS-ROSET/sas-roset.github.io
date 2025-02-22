@@ -1,0 +1,66 @@
+--------------------------------------------------------------------------
+ SAS-ROS-Cipher : Substitution Table Distribution Across KC-Space - Proof
+--------------------------------------------------------------------------
+( Generated via the SAS-ROS-Cipher_STDAKCS_Tool v2 )
+- GENERAL INFO -
+Key_Length: 4
+Key_Space:  24 (per key type)
+KC_Space:   576
+ROS_Method: 1
+Data_Used:  abcd
+------------------------------------------------------
+- KC-SPACE ROS PROCESS -
+#. [Static Key] -> [Dynamic Key] (data output)  |  ...
+1. [0, 1, 2, 3] ->  (abcd)  |   (abcd)  |   (abcd)  |   (abcd)  |   (abcd)  |   (abcd)  |   (abcd)  |   (abcd)  |   (abcd)  |   (abcd)  |   (abcd)  |   (abcd)  |   (abcd)  |   (abcd)  |   (abcd)  |   (abcd)  |   (abcd)  |   (abcd)  |   (abcd)  |   (abcd)  |   (abcd)  |   (abcd)  |   (abcd)  |   (abcd)  |
+2. [3, 0, 1, 2] ->  (dabc)  |   (dabc)  |   (dabc)  |   (dabc)  |   (cadb)  |   (cadb)  |   (cadb)  |   (cadb)  |   (cdba)  |   (cdba)  |   (cdba)  |   (cdba)  |   (bdac)  |   (bdac)  |   (bdac)  |   (bdac)  |   (bcda)  |   (bcda)  |   (bcda)  |   (bcda)  |   (dcab)  |   (dcab)  |   (dcab)  |   (dcab)  |
+3. [2, 3, 0, 1] ->  (cdab)  |   (cdab)  |   (cdab)  |   (cdab)  |   (dcba)  |   (dcba)  |   (dcba)  |   (dcba)  |   (badc)  |   (badc)  |   (badc)  |   (badc)  |   (dcba)  |   (dcba)  |   (dcba)  |   (dcba)  |   (cdab)  |   (cdab)  |   (cdab)  |   (cdab)  |   (badc)  |   (badc)  |   (badc)  |   (badc)  |
+4. [1, 2, 3, 0] ->  (bcda)  |   (bcda)  |   (bcda)  |   (bcda)  |   (bdac)  |   (bdac)  |   (bdac)  |   (bdac)  |   (dcab)  |   (dcab)  |   (dcab)  |   (dcab)  |   (cadb)  |   (cadb)  |   (cadb)  |   (cadb)  |   (dabc)  |   (dabc)  |   (dabc)  |   (dabc)  |   (cdba)  |   (cdba)  |   (cdba)  |   (cdba)  |
+5. [2, 0, 1, 3] ->  (cabd)  |   (dacb)  |   (dbac)  |   (adbc)  |   (cabd)  |   (cbda)  |   (acdb)  |   (dacb)  |   (cabd)  |   (adbc)  |   (bdca)  |   (cbda)  |   (bcad)  |   (bdca)  |   (adbc)  |   (dbac)  |   (bcad)  |   (acdb)  |   (cbda)  |   (bdca)  |   (bcad)  |   (dbac)  |   (dacb)  |   (acdb)  |
+6. [3, 2, 0, 1] ->  (dcab)  |   (bdac)  |   (cdba)  |   (cadb)  |   (bcda)  |   (dcab)  |   (dabc)  |   (cdba)  |   (bdac)  |   (bcda)  |   (cadb)  |   (dabc)  |   (cdba)  |   (dabc)  |   (dcab)  |   (bcda)  |   (cadb)  |   (cdba)  |   (bdac)  |   (dcab)  |   (dabc)  |   (cadb)  |   (bcda)  |   (bdac)  |
+7. [1, 3, 2, 0] ->  (bdca)  |   (cbda)  |   (acdb)  |   (bcad)  |   (dbac)  |   (adbc)  |   (bdca)  |   (bcad)  |   (acdb)  |   (dacb)  |   (dbac)  |   (bcad)  |   (dacb)  |   (acdb)  |   (cbda)  |   (cabd)  |   (adbc)  |   (dbac)  |   (dacb)  |   (cabd)  |   (cbda)  |   (bdca)  |   (adbc)  |   (cabd)  |
+8. [0, 1, 3, 2] ->  (abdc)  |   (acbd)  |   (bacd)  |   (dbca)  |   (adcb)  |   (bacd)  |   (cbad)  |   (abdc)  |   (dbca)  |   (cbad)  |   (acbd)  |   (adcb)  |   (abdc)  |   (cbad)  |   (bacd)  |   (adcb)  |   (dbca)  |   (bacd)  |   (acbd)  |   (abdc)  |   (adcb)  |   (acbd)  |   (cbad)  |   (dbca)  |
+9. [1, 2, 0, 3] ->  (bcad)  |   (bdca)  |   (cbda)  |   (acdb)  |   (bcad)  |   (dbac)  |   (adbc)  |   (bdca)  |   (bcad)  |   (acdb)  |   (dacb)  |   (dbac)  |   (cabd)  |   (dacb)  |   (acdb)  |   (cbda)  |   (cabd)  |   (adbc)  |   (dbac)  |   (dacb)  |   (cabd)  |   (cbda)  |   (bdca)  |   (adbc)  |
+10. [3, 1, 2, 0] ->  (dbca)  |   (abdc)  |   (acbd)  |   (bacd)  |   (abdc)  |   (adcb)  |   (bacd)  |   (cbad)  |   (adcb)  |   (dbca)  |   (cbad)  |   (acbd)  |   (adcb)  |   (abdc)  |   (cbad)  |   (bacd)  |   (abdc)  |   (dbca)  |   (bacd)  |   (acbd)  |   (dbca)  |   (adcb)  |   (acbd)  |   (cbad)  |
+11. [0, 3, 1, 2] ->  (adbc)  |   (cabd)  |   (dacb)  |   (dbac)  |   (dacb)  |   (cabd)  |   (cbda)  |   (acdb)  |   (cbda)  |   (cabd)  |   (adbc)  |   (bdca)  |   (dbac)  |   (bcad)  |   (bdca)  |   (adbc)  |   (bdca)  |   (bcad)  |   (acdb)  |   (cbda)  |   (acdb)  |   (bcad)  |   (dbac)  |   (dacb)  |
+12. [2, 0, 3, 1] ->  (cadb)  |   (dcab)  |   (bdac)  |   (cdba)  |   (cdba)  |   (bcda)  |   (dcab)  |   (dabc)  |   (dabc)  |   (bdac)  |   (bcda)  |   (cadb)  |   (bcda)  |   (cdba)  |   (dabc)  |   (dcab)  |   (dcab)  |   (cadb)  |   (cdba)  |   (bdac)  |   (bdac)  |   (dabc)  |   (cadb)  |   (bcda)  |
+13. [1, 0, 2, 3] ->  (bacd)  |   (dbca)  |   (abdc)  |   (acbd)  |   (cbad)  |   (abdc)  |   (adcb)  |   (bacd)  |   (acbd)  |   (adcb)  |   (dbca)  |   (cbad)  |   (bacd)  |   (adcb)  |   (abdc)  |   (cbad)  |   (acbd)  |   (abdc)  |   (dbca)  |   (bacd)  |   (cbad)  |   (dbca)  |   (adcb)  |   (acbd)  |
+14. [3, 1, 0, 2] ->  (dbac)  |   (adbc)  |   (cabd)  |   (dacb)  |   (acdb)  |   (dacb)  |   (cabd)  |   (cbda)  |   (bdca)  |   (cbda)  |   (cabd)  |   (adbc)  |   (adbc)  |   (dbac)  |   (bcad)  |   (bdca)  |   (cbda)  |   (bdca)  |   (bcad)  |   (acdb)  |   (dacb)  |   (acdb)  |   (bcad)  |   (dbac)  |
+15. [2, 3, 1, 0] ->  (cdba)  |   (cadb)  |   (dcab)  |   (bdac)  |   (dabc)  |   (cdba)  |   (bcda)  |   (dcab)  |   (cadb)  |   (dabc)  |   (bdac)  |   (bcda)  |   (dcab)  |   (bcda)  |   (cdba)  |   (dabc)  |   (bdac)  |   (dcab)  |   (cadb)  |   (cdba)  |   (bcda)  |   (bdac)  |   (dabc)  |   (cadb)  |
+16. [0, 2, 3, 1] ->  (acdb)  |   (bcad)  |   (bdca)  |   (cbda)  |   (bdca)  |   (bcad)  |   (dbac)  |   (adbc)  |   (dbac)  |   (bcad)  |   (acdb)  |   (dacb)  |   (cbda)  |   (cabd)  |   (dacb)  |   (acdb)  |   (dacb)  |   (cabd)  |   (adbc)  |   (dbac)  |   (adbc)  |   (cabd)  |   (cbda)  |   (bdca)  |
+17. [2, 1, 0, 3] ->  (cbad)  |   (adcb)  |   (cbad)  |   (adcb)  |   (acbd)  |   (dbca)  |   (acbd)  |   (dbca)  |   (bacd)  |   (abdc)  |   (bacd)  |   (abdc)  |   (acbd)  |   (dbca)  |   (acbd)  |   (dbca)  |   (cbad)  |   (adcb)  |   (cbad)  |   (adcb)  |   (bacd)  |   (abdc)  |   (bacd)  |   (abdc)  |
+18. [3, 2, 1, 0] ->  (dcba)  |   (badc)  |   (dcba)  |   (badc)  |   (badc)  |   (cdab)  |   (badc)  |   (cdab)  |   (cdab)  |   (dcba)  |   (cdab)  |   (dcba)  |   (cdab)  |   (badc)  |   (cdab)  |   (badc)  |   (badc)  |   (dcba)  |   (badc)  |   (dcba)  |   (dcba)  |   (cdab)  |   (dcba)  |   (cdab)  |
+19. [0, 3, 2, 1] ->  (adcb)  |   (cbad)  |   (adcb)  |   (cbad)  |   (dbca)  |   (acbd)  |   (dbca)  |   (acbd)  |   (abdc)  |   (bacd)  |   (abdc)  |   (bacd)  |   (dbca)  |   (acbd)  |   (dbca)  |   (acbd)  |   (adcb)  |   (cbad)  |   (adcb)  |   (cbad)  |   (abdc)  |   (bacd)  |   (abdc)  |   (bacd)  |
+20. [1, 0, 3, 2] ->  (badc)  |   (dcba)  |   (badc)  |   (dcba)  |   (cdab)  |   (badc)  |   (cdab)  |   (badc)  |   (dcba)  |   (cdab)  |   (dcba)  |   (cdab)  |   (badc)  |   (cdab)  |   (badc)  |   (cdab)  |   (dcba)  |   (badc)  |   (dcba)  |   (badc)  |   (cdab)  |   (dcba)  |   (cdab)  |   (dcba)  |
+21. [0, 2, 1, 3] ->  (acbd)  |   (bacd)  |   (dbca)  |   (abdc)  |   (bacd)  |   (cbad)  |   (abdc)  |   (adcb)  |   (cbad)  |   (acbd)  |   (adcb)  |   (dbca)  |   (cbad)  |   (bacd)  |   (adcb)  |   (abdc)  |   (bacd)  |   (acbd)  |   (abdc)  |   (dbca)  |   (acbd)  |   (cbad)  |   (dbca)  |   (adcb)  |
+22. [3, 0, 2, 1] ->  (dacb)  |   (dbac)  |   (adbc)  |   (cabd)  |   (cbda)  |   (acdb)  |   (dacb)  |   (cabd)  |   (adbc)  |   (bdca)  |   (cbda)  |   (cabd)  |   (bdca)  |   (adbc)  |   (dbac)  |   (bcad)  |   (acdb)  |   (cbda)  |   (bdca)  |   (bcad)  |   (dbac)  |   (dacb)  |   (acdb)  |   (bcad)  |
+23. [1, 3, 0, 2] ->  (bdac)  |   (cdba)  |   (cadb)  |   (dcab)  |   (dcab)  |   (dabc)  |   (cdba)  |   (bcda)  |   (bcda)  |   (cadb)  |   (dabc)  |   (bdac)  |   (dabc)  |   (dcab)  |   (bcda)  |   (cdba)  |   (cdba)  |   (bdac)  |   (dcab)  |   (cadb)  |   (cadb)  |   (bcda)  |   (bdac)  |   (dabc)  |
+24. [2, 1, 3, 0] ->  (cbda)  |   (acdb)  |   (bcad)  |   (bdca)  |   (adbc)  |   (bdca)  |   (bcad)  |   (dbac)  |   (dacb)  |   (dbac)  |   (bcad)  |   (acdb)  |   (acdb)  |   (cbda)  |   (cabd)  |   (dacb)  |   (dbac)  |   (dacb)  |   (cabd)  |   (adbc)  |   (bdca)  |   (adbc)  |   (cabd)  |   (cbda)  |
+------------------------------------------------------
+- RESULT STATISTICS -
+(below each 'output' represents a unique substitution table)
+#. output -> total_occurrences_in_kc_space
+1. adbc -> 24
+2. acbd -> 24
+3. bdac -> 24
+4. bcad -> 24
+5. cdab -> 24
+6. cbad -> 24
+7. acdb -> 24
+8. abdc -> 24
+9. cdba -> 24
+10. dcab -> 24
+11. cabd -> 24
+12. dbac -> 24
+13. bdca -> 24
+14. bacd -> 24
+15. abcd -> 24
+16. adcb -> 24
+17. dabc -> 24
+18. bcda -> 24
+19. dcba -> 24
+20. badc -> 24
+21. cadb -> 24
+22. dacb -> 24
+23. cbda -> 24
+24. dbca -> 24
+------------------------------------------------------

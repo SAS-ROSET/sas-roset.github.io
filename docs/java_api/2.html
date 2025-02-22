@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+	<html>
+		<head>
+			<title> SAS-ROSET  |  ROSET Java API - Generating Dynamic & Static Keys with the ROSET Java API | Encryption | Decryption | Java | Cryptography | Tool</title>
+			<link data-default-icon="../../imgs/favicon.png" rel="icon" sizes="192x192" href="../../imgs/SAS_ROSET_ICON_3.png" />
+			<meta name="viewport" content="width=device-width, initial-scale=0.8, shrink-to-fit=yes">
+			<meta charset="utf-8">
+		</head>
+		
+		<link rel="stylesheet" href="../../styles/fonts.css"/>
+		<link rel="stylesheet" href="../../styles/universal.css"/>
+		<link rel="stylesheet" href="../../styles/docs.css"/>
+		
+		<style type="text/css">
+		
+		</style>
+		
+		<body>
+		<!-- Navigation Bar Start-->
+			<div id="nav_bar">			
+				<a href="../../index.html"><div  id="nav_logo"><img style="height:100%;" src="../../imgs/SAS_ROSET_LOGO_NAME.png"/></div></a>				
+				<div id="nav_buttons_box_desktop">
+					<a href="../../about.html"><p class="nav_buttons"> About </p></a>								
+					<a href="../../docs.html"><p class="nav_buttons"> Documentation </p></a>
+					<a href="https://github.com/SAS-ROSET"><p class="nav_buttons">Github</p></a>	
+					<a href="../../credits.html"><p class="nav_buttons"> Credits </p></a>
+				</div>						
+				<a href="../../download.html" ><div id="nav_download_button_box"><p id="nav_download_button"> Download </p></div></a>	
+				<div id="nav_dropdown_button">
+				<svg id="nav_dropdown_more_icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30" width="40" height="40">
+					<rect x="5" y="5" width="20" height="2" fill="#E6E6E6"/><rect x="5" y="11" width="20" height="2" fill="#E6E6E6"/><rect x="5" y="17" width="20" height="2" fill="#E6E6E6"/>
+				</svg>	
+				<svg id="nav_dropdown_close_icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+					<rect x="1" y="10" width="16" height="2" fill="#ffffff" transform="rotate(45 12 12)"/><rect x="8" y="3" width="2" height="16" fill="#ffffff" transform="rotate(45 12 12)"/>
+				</svg>		
+				</div>			
+			</div>
+			<div id="nav_dropdown_content">
+				<a href="../../about.html">About</a>
+				<a href="../../docs.html">Documentation</a>
+				<a href="https://github.com/SAS-ROSET">Github</a>
+				<a href="../../credits.html">Credits</a>
+				<a href="../../download.html">Download</a>
+			</div>	
+			<script type="text/javascript">
+				// nav dropdown toggle script
+					const dropdownButton = document.getElementById('nav_dropdown_button');
+					const dropdownContent = document.getElementById('nav_dropdown_content');
+					const dropdownClose = document.getElementById('nav_dropdown_close_icon');
+					const dropdownMore = document.getElementById('nav_dropdown_more_icon');
+					dropdownButton.addEventListener('click', function() {
+					  if (dropdownContent.style.display === 'block') {
+						dropdownContent.style.display = 'none'; 
+						dropdownClose.style.display = 'none'; 
+						dropdownMore.style.display = 'block'; 
+					  } else {
+						dropdownContent.style.display = 'block';
+						dropdownClose.style.display = 'block'; 
+						dropdownMore.style.display = 'none'; 
+					  }
+					});
+			</script>
+			<!-- Navigation Bar End-->
+				
+			<main>
+				<div class="restricted_width_box">
+					<div class="doc_path_box">
+					
+						<doc_path_text>
+							<a href="../../docs.html" class="pl">Documentation</a> / 
+							<a href="java_api.html" class="pl">ROSET Java API</a> /
+							<a href="" class="pl">Generating Keys</a>
+						</doc_path_text>  
+						
+						<div class="doc_check_box">
+							<label for="darkModeToggle">Dark Mode:</label>
+							<input type="checkbox" id="darkModeToggle">
+						</div>
+					</div>
+
+					<div id="doc_page">
+						<doc_h1> 2. Generating Dynamic & Static Keys</doc_h1>
+						<doc_author>by: saaiqSAS</doc_author>
+						<doc_date>Last Updated: 21/2/2025</doc_date>
+						
+						<doc_para>
+							This section explains how to generate both <dh>Dynamic Keys</dh> and <dh>Static Keys</dh> using the ROSET Java API. We will also explore the different formats in which the keys can be represented, such as <dh>String</dh> and <dh>int[]</dh>. Additionally, we will cover the available parameters for each method, providing a comprehensive understanding of the key generation process. 
+							Sample usage of the ROSET Java API can be found in the <a href="https://github.com/SAS-ROSET/ROSET_Java_API" class="doc_link">ROSET Java API Github Repository</a>.
+						</doc_para>
+						
+						<doc_para>
+							The SAS-RCS/RBS Encryption Algorithms require two types of keys for their operations: the <dh>Dynamic Key</dh> and the <dh>Static Key</dh>.
+							The <dh>Dynamic Key</dh> is composed of two main components: <dh>Settings</dh> and <dh>Charset</dh>. The <dh>Settings</dh> define various options used throughout the encryption process, while the <dh>Charset</dh> is a randomly shuffled set of <dh>Objects</dh> that represents the actual key material utilized by the SAS-ROS Cipher. On the other hand, the <dh>Static Key</dh> is an array of randomly shuffled indexes, which are essential for both the SAS-ROS Cipher's operations and the shuffling mechanism. 
+							For a deeper understanding of how these algorithms function, please refer to the 
+							<a href="../../docs/algo/algorithms.html" class="doc_link">Algorithms Documentation</a>.
+						</doc_para>
+						
+						<doc_para>
+							The algorithms utilize a single <dh>Dynamic Key</dh> combined with multiple <dh>Static Keys</dh> for both encryption and decryption processes. Therefore, the ROSET API's encrypt/decrypt methods require a single <dh>Dynamic Key</dh> and an array of <dh>Static Keys</dh>, along with the data, as input parameters. In this section, we will focus on generating these keys.
+						</doc_para>
+
+						<doc_para>
+							The ROSET Java API allows you to create these two types of keys in a way that a single set can be used for both SAS-RCS (Text-level encryption) and SAS-RBS (Binary-level encryption). However, it is important to note that whether a key set is compatible with both SAS-RCS and SAS-RBS depends entirely on the key length. 
+							SAS-RCS supports key lengths ranging from 100 to 1,050,000, whereas SAS-RBS requires key lengths that are powers of 2 (e.g., 128, 256, 65536). To obtain a key length based on powers of 2, you can pass the desired number of bits using the following method:
+						</doc_para>
+
+						<doc_code>
+							SAS_ROSET.keyLengthForBits(int bits);
+
+							Range for 'bits' is between 7 and 20, inclusive.
+
+							Usage Examples:
+
+							int length_256 = SAS_ROSET.keyLengthForBits(8);
+
+							int length_1024 = SAS_ROSET.keyLengthForBits(10);
+
+							int length_65536 = SAS_ROSET.keyLengthForBits(16);
+							
+						</doc_code>
+						
+						<doc_para>
+							It is important to note that the length of the <dh>Dynamic Key</dh> and <dh>Static Keys</dh> must be the same. Therefore, when generating the keys, ensure that you provide the same key length to both key generation methods.
+						</doc_para>
+						
+						
+						<doc_h2>Dynamic Key Generation</doc_h2>
+						<doc_para>
+							There are three ways you can generate a <dh>Dynamic Key</dh>: as an <dh>int[]</dh>, a mixed-character <dh>String</dh>, or a base64-encoded <dh>String</dh>. The most efficient method is to use the <dh>int[]</dh> format, as it offers better performance. To generate keys in these formats, the API provides two static methods: 
+							<dh>generateDynamicKey()</dh>, which returns a newly generated <dh>Dynamic Key</dh> as an <dh>int[]</dh>, and <dh>generateDynamicKeyString()</dh>, which returns a newly generated <dh>Dynamic Key</dh> as either a mixed-character <dh>String</dh> or a base64-encoded <dh>String</dh>, depending on the provided parameters. Below are the methods with their respective parameters and data types:
+						</doc_para>
+
+						<doc_code>
+							(Dynamic Key Generation Methods in the SAS_ROSET.java)
+
+							int[] generateDynamicKey(int key_length, int RGM_Status_For_Text, int RGM_base, int Data_Inc_for_every, int Data_Inc_add, boolean random)
+
+							String generateDynamicKeyString(int key_length, int RGM_Status_For_Text, int RGM_base, int Data_Inc_for_every, int Data_Inc_add, boolean random, boolean output_as_base64)	
+						
+						</doc_code>
+						
+						<doc_para>
+							You can call these static methods to generate a <dh>Dynamic Key</dh> and store the result in a variable. Below is an example of how to use these methods:
+						</doc_para>
+
+						<doc_code>
+							// Parameters
+							int key_length = SAS_ROSET.keyLengthForBits(8); // 256 bits
+							int RGM_status_for_text = 1; 
+							int RGM_base = 3;  
+							int dataInc_for_every = 3;
+							int dataInc_add = 2; 
+							boolean dyn_key_gen_random = false;
+
+							// Generate Dynamic Key as int[]
+							int[] Dynamic_Key_int = SAS_ROSET.generateDynamicKey(key_length, RGM_status_for_text, RGM_base, dataInc_for_every, dataInc_add, dyn_key_gen_random);
+
+							// Generate Dynamic Key as mixed-character String
+							String Dynamic_Key_string = SAS_ROSET.generateDynamicKeyString(key_length, RGM_status_for_text, RGM_base, dataInc_for_every, dataInc_add, dyn_key_gen_random, false);
+
+							// Generate Dynamic Key as base64-encoded String
+							String Dynamic_Key_base64 = SAS_ROSET.generateDynamicKeyString(key_length, RGM_status_for_text, RGM_base, dataInc_for_every, dataInc_add, dyn_key_gen_random, true);
+						
+						</doc_code>
+						
+						
+						<doc_h2>Dynamic Key Generation Method Parameters</doc_h2>
+
+						<doc_h3>key_length</doc_h3>
+						<doc_para>
+							The <dh>key_length</dh> parameter is where you specify the desired key length as an integer value.
+						</doc_para>
+
+						<doc_para>
+							It is important to note that while the SAS-RCS encryption algorithm (Text-level encryption) supports any key length, 
+							the SAS-RBS encryption algorithm (Binary-level encryption) requires key lengths that are powers of 2 (e.g., 128, 256, 512). 
+							By using the <dh>SAS_ROSET.keyLengthForBits(int bits)</dh> method, you ensure that the generated key is compatible with both encryption algorithms.
+						</doc_para>
+
+						<doc_para>
+							While larger key lengths offer enhanced security, keep in mind that they can also negatively impact performance, as they increase the processing time.
+						</doc_para>
+						
+						
+						<doc_h3>RGM_Status_For_Text</doc_h3>
+						<doc_para>
+							This parameter applies exclusively to the SAS-RCS encryption algorithm and does not affect the SAS-RBS algorithm. 
+							The SAS-RGM (Randomized Generalized Mapping) is a component of the SAS-RCS algorithm, designed to securely convert incompatible text or binary data into a compatible text format, ensuring smooth encryption.
+						</doc_para>
+						<doc_para>
+							The SAS-RCS algorithm encrypts text character by character. However, not all characters are considered incompatible during encryption, so only specific characters need to go through the SAS-RGM process. The <dh>RGM_Status_For_Text</dh> parameter allows you to choose whether only incompatible characters, all characters, or no characters at all should undergo the RGM process. Additionally, this parameter can be used to disable RGM for debugging purposes.
+						</doc_para>
+						<doc_para>
+							Passing <dh>0</dh> means that no data will go through the SAS-RGM step during encryption. This option is not recommended, as it may lead to errors and malfunctions, and is intended only for debugging, testing, or cryptanalysis purposes.
+						</doc_para>
+						<doc_para>
+							Passing <dh>1</dh> means only incompatible characters will go through the RGM. This minimizes the increase in encrypted data size while maintaining efficiency. However, keep in mind that this could reduce the randomness in the encrypted text, potentially weakening security.
+						</doc_para>
+						<doc_para>
+							Passing <dh>2</dh> ensures that every character in the input text undergoes the RGM process. This maximizes the increase in encrypted data size but provides the highest level of security in the RGM step of the SAS-RCS algorithm, depending on the chosen base.
+						</doc_para>
+						<doc_para>
+							When encrypting binary data (bytes) with SAS-RCS, all bytes will undergo the RGM process to be securely converted into compatible text.
+						</doc_para>
+
+						<doc_h3>RGM_base</doc_h3>
+						<doc_para>
+							This parameter applies exclusively to the SAS-RCS encryption algorithm and does not affect the SAS-RBS algorithm. One of the first steps in the SAS-RGM (Randomized Generalized Mapping) algorithm is converting incompatible data into a baseX format before further processing. The <dh>RGM_base</dh> parameter allows you to choose the base for this conversion. Available options include: <dh>base2</dh>, <dh>base10</dh>, <dh>base16</dh>, and <dh>base64</dh>.
+						</doc_para>
+						<doc_para>
+							It's important to note that smaller base values will result in larger encrypted data. Additionally, using smaller bases increases security by making frequency analysis more difficult for attackers. However, if your key length is large, the impact of the base selection on security may be less significant. Despite this, using smaller bases still enhances security by producing larger encrypted output data.
+						</doc_para>
+
+						<doc_point>
+							Passing <dh>0</dh> selects <dh>base2</dh>.
+						</doc_point>
+						<doc_point>
+							Passing <dh>1</dh> selects <dh>base10</dh>.
+						</doc_point>
+						<doc_point>
+							Passing <dh>2</dh> selects <dh>base16</dh>.
+						</doc_point>
+						<doc_point>
+							Passing <dh>3</dh> selects <dh>base64</dh>.
+						</doc_point>
+						
+						
+						<doc_h3>Data_Inc_for_every & Data_Inc_add</doc_h3>
+						<doc_para>
+							These parameters allow you to specify a ratio that controls the increase in encrypted data size for both SAS-RCS and SAS-RBS encryption methods. The ratio follows the format <dh>for every : add</dh>, where:
+						</doc_para>
+						<doc_point>
+							In SAS-RCS, <dh>for every</dh> and <dh>add</dh> refer to characters.
+						</doc_point>
+						<doc_point>
+							In SAS-RBS, <dh>for every</dh> and <dh>add</dh> refer to bits.
+						</doc_point>
+						<doc_para>
+							For instance, if the ratio is <dh>3:2</dh>, as shown in <dh>Fig2.1</dh>, in SAS-RCS this means that for every 3 characters, 2 additional characters will be added. 
+							In SAS-RBS, this ratio means that for every 3 bits, 2 extra bits will be appended.
+						</doc_para>
+						<doc_para>
+							The maximum value for <dh>Data_Inc_for_every</dh> is 9, and the maximum value for <dh>Data_Inc_add</dh> is 99.
+						</doc_para>
+						<doc_para>
+							When new data units are added to the original data, they are inserted in a secure and randomized manner, ensuring that only the correct key can reverse the transformation.
+						</doc_para>
+						
+						<doc_h3>random</doc_h3>
+						<doc_para>
+							When generating the key, the required units are selected from the Unicode Character Set. If the <dh>random</dh> parameter is set to <dh>false</dh>, the units are chosen in a sequential order and then securely shuffled. On the other hand, when set to <dh>true</dh>, the units are randomly selected from the entire Unicode set, without any shuffling process involved.
+						</doc_para>
+						<doc_para>
+							Please note that enabling the <dh>random</dh> option may significantly increase the time required to generate the key, especially for larger key sizes.
+						</doc_para>
+						
+						
+						<doc_h2>Static Key Generation</doc_h2>
+						<doc_para>
+							There are two methods available for generating a <dh>Static Key</dh>: as an <dh>int[]</dh> array, or as a base64-encoded <dh>String</dh>. The <dh>int[]</dh> format is recommended for its superior performance. To generate keys in these formats, the API provides two static methods: 
+							<dh>generateStaticKey()</dh>, which returns a newly generated <dh>Static Key</dh> as an <dh>int[]</dh>, and <dh>generateStaticKeyString()</dh>, which returns a newly generated <dh>Static Key</dh> as a base64-encoded <dh>String</dh>. Below are the methods along with their respective parameters and data types:
+						</doc_para>
+
+						<doc_code>
+							(Static Key Generation Methods in the SAS_ROSET.java)
+							
+							int[] generateStaticKey(int key_length)
+							
+							String generateStaticKeyString(int key_length)
+						
+						</doc_code>
+
+						<doc_para>
+							You can call these static methods to generate a <dh>Static Key</dh> and store the result in a variable. Here’s an example demonstrating how to use these methods:
+						</doc_para>
+
+						<doc_code>
+							// Parameter
+							int key_length = SAS_ROSET.keyLengthForBits(8); // 256 bits
+							
+							String Static_Key_int  = SAS_ROSET.generateStaticKey(key_length);
+							
+							String Static_Key_string = SAS_ROSET.generateStaticKeyString(key_length);
+						
+						</doc_code>
+						
+					</div>
+					
+					<div class="doc_navigate_box">
+							<a href="1.html" ><p class="white_button"> Previous: All Methods </p></a>
+							<a href="3.html" ><p class="blue_button"> Next: Extracting Keys  </p></a>
+					</div>	
+				</div>	
+					
+			</main>
+			
+			<footer>
+				<div id="footer_serp"></div>
+				<p style="font-size:20px; margin-top:50px"><bg>Made with passion by </bg><a href="https://saaiqsas.github.io" class="footer_saaiqSAS"> saaiqSAS</a><bg> and Contributors</bg></p>
+				<br/>
+				<ft id="copyrights">Copyrights (©) 2024 Saaiq Abdulla Saeed</ft>
+				<ft>This website and its contents are generally licensed under the <a href="../../LICENSE.md">MIT License</a>, unless stated otherwise.</ft>
+				<div class="grid3_box" id="footer_grid">
+					<div>
+						<fh>Project Info</fh>
+						<ft><a href="../../about.html">About Project</a></ft>
+						<ft><a href="../../credits.html">Credits & Contributers</a></ft>
+						<ft><a href="../../docs.html">Documentation</a></ft>
+					</div>
+					<div>
+						<fh>Get Involved</fh>
+						<ft><a href="../../download.html">Download</a></ft>
+						<ft><a href="../../contribute.html">Contribute</a></ft>
+						<ft><a href="https://github.com/SAS-ROSET">Github</a></ft>
+					</div>
+					<div>
+						<fh>Legal & Support</fh>
+						<ft><a href="../../legal/privacy_policy.html">Privacy Policy</a></ft>
+						<ft><a href="../../legal/terms.html"> Terms and Conditions</a></ft>
+						<ft><a href="../../contact.html"> Contact & Report</a></ft>
+					</div>	
+				</div>
+				<script type="text/javascript">
+					// Copyrights
+					var currentYear = new Date().getFullYear();
+					document.getElementById('copyrights').textContent = "Copyrights (©) "+currentYear + " Saaiq Abdulla Saeed";
+				</script>
+			</footer>
+		
+		</body>
+		
+		<script src="../doc_dark_mode.js"></script>
+	</html>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 	<html>
 		<head>
-			<title> SAS-ROSET  |  ROS Encryption Tool Documentation </title>
+			<title> SAS-ROSET  |  ROSET Graphical - Setting up the ROS Encryption Tool | Windows | Linux</title>
 			<link data-default-icon="../../imgs/favicon.png" rel="icon" sizes="192x192" href="../../imgs/SAS_ROSET_ICON_3.png" />
 			<meta name="viewport" content="width=device-width, initial-scale=0.8, shrink-to-fit=yes">
 			<meta charset="utf-8">
@@ -16,7 +16,7 @@
 		</style>
 		
 		<body>
-			<!-- Navigation Bar Start-->
+		<!-- Navigation Bar Start-->
 			<div id="nav_bar">			
 				<a href="../../index.html"><div  id="nav_logo"><img style="height:100%;" src="../../imgs/SAS_ROSET_LOGO_NAME.png"/></div></a>				
 				<div id="nav_buttons_box_desktop">
@@ -68,7 +68,8 @@
 					
 						<doc_path_text>
 							<a href="../../docs.html" class="pl">Documentation</a> / 
-							<a href="graphical.html" class="pl">ROS Encryption Tool</a>
+							<a href="graphical.html" class="pl">ROS Encryption Tool</a> /
+							<a href="" class="pl">Setting Up</a>
 						</doc_path_text>  
 						
 						<div class="doc_check_box">
@@ -78,37 +79,48 @@
 					</div>
 
 					<div id="doc_page">
-						<doc_h1> ROS Encryption Tool </doc_h1>
+						<doc_h1> 0. Setting Up</doc_h1>
 						<doc_author>by: saaiqSAS</doc_author>
-						<doc_date>Last Updated: 19/2/2025</doc_date>
+						<doc_date>Last Updated: 11/2/2025</doc_date>
 						
-						<doc_para> 
-							Welcome to the official documentation for the ROS Encryption Tool. This guide will help you get started with the 
-							tool, providing comprehensive information on its features and functionality. Whether you're new to the tool or 
-							looking to explore advanced capabilities, this resource has you covered.							
-						</doc_para>	
 						
-						<doc_para><strong>Warning:</strong> This documentation is currently incomplete. Some sections may be missing or subject to change.</doc_para>
-
-						<doc_h2>Contents</doc_h2>
-						<a href="0.html" class="doc_content"> 0. Setting Up </a>	
-						<a href="1.html" class="doc_content"> 1. User Interface </a>	
-						<a href="2.html" class="doc_content"> 2. Generating Keys</a>	
-						<a href="3.html" class="doc_content"> 3. Encrypting Text</a>	
-						<a href="4.html" class="doc_content"> 4. Decrypting Text</a>	
-						<a href="5.html" class="doc_content"> 5. Encrypting Files</a>	
-						<a href="6.html" class="doc_content"> 6. Decrypting Files</a>	
-						<a href="7.html" class="doc_content"> 7. Process Settings</a>	
+						<doc_h2>Windows</doc_h2>
+						<doc_point>1. Download the latest <dh>Windows</dh> version of the ROS Encryption Tool. <a href="../../download.html" class="doc_link">(Download Page)</a> </doc_point>
+						<doc_point>2. Extract the downloaded <dh>ROSET_Graphical_vX.X.X_Win_x86_64.zip</dh> file.</doc_point>
+						<doc_point>3. Navigate to the extracted <dh>ROSET_Graphical_vX.X.X_Win_x86_64</dh> folder.</doc_point>
+						<doc_point>4. Open the <dh>roset.bat</dh> file to launch the tool.</doc_point>
+						<doc_point>5. To create a desktop shortcut, run the <dh>create_desktop_shortcut.bat</dh> file. (RECOMMENDED)</doc_point>
+						<doc_point>6. Now you can launch the tool by double clicking the shortcut <dh>ROSET vX.X.X</dh> in desktop.</doc_point>
 						
-						</br></br>
-						<div class="grid_2button_cent">
-							<a href="https://docs.google.com/forms/d/e/1FAIpQLSddVLlTjuOGv3gzU_Zq0rbIyLI7omuEgGAPRE80yPPzeFMCHA/viewform?usp=dialog"><p class="doc_button"> Rate Us</p></a>
-							<a href="https://docs.google.com/forms/d/e/1FAIpQLSccSJ1yBujxJmKswvDvrF4JmRJfH5H1e3fagOzuJk-xEnzRRQ/viewform?usp=dialog"><p class="doc_button" > Report Bug</p></a>
-							<a href="https://docs.google.com/forms/d/e/1FAIpQLSdKJDMUSIaJte96xYlM23lKruF7TBkuoWkqHVCHoIt1EmTh8w/viewform?usp=dialog"><p class="doc_button" > Request Feature</p></a>
-						</div>
-					
+						<br/>
+						<doc_para> <b>Note:</b> If you see any prompts preventing you from running the files, click "Run Anyway." The SAS-ROSET project is free from any malicious code. We prioritize your security and privacy. </doc_para>
+						
+						<doc_h2>Linux</doc_h2>
+						<doc_point>1. Download the latest <dh>Linux</dh> version of the ROS Encryption Tool. <a href="../../download.html" class="doc_link">(Download Page)</a> </doc_point>
+						<doc_point>2. Extract the downloaded <dh>ROSET_Graphical_vX.X.X_Linux_x86_64.zip</dh> file.</doc_point>
+						<doc_point>3. Navigate to the extracted <dh>ROSET_Graphical_vX.X.X_Linux_x86_64</dh> directory.</doc_point>
+						<doc_point>4. Open a terminal in the directory and type the following command to make the <dh>roset.sh</dh> file executable. </doc_point>
+						<doc_code class="doc_code_point">chmod +x roset.sh </doc_code>
+						
+						<doc_point>5. To launch the tool, double-click the <dh>roset.sh</dh> file, or alternatively if double-clicking doesn’t work, run from the terminal using:</doc_point>
+						<doc_code class="doc_code_point">./roset.sh </doc_code>
+						
+						<doc_point>6. To create a desktop shortcut, open a terminal in the directory and type the following commands to run the <dh>create_desktop_shortcut.sh</dh>. (RECOMMENDED)</doc_point>
+						<doc_code class="doc_code_point">chmod +x create_desktop_shortcut 
+						./create_desktop_shortcut 
+						</doc_code>
+						<doc_point>7. Now you can launch the tool by double clicking the shortcut <dh>ROSET vX.X.X</dh> in desktop.</doc_point>
+						
+						<br/>
+						<doc_para><b>Note:</b> If the shortcut doesn't launch, right-click it and select "Allow Launching" or a similar option.</doc_para>
 					</div>
-				</div>			
+					
+					<div class="doc_navigate_box">
+							<a href="graphical.html" ><p class="white_button"> Previous: Main Page </p></a>
+							<a href="1.html" ><p class="blue_button"> Next: User Interface </p></a>
+					</div>	
+				</div>	
+					
 			</main>
 			
 			<footer>
@@ -145,5 +157,6 @@
 			</footer>
 		
 		</body>
+		
 		<script src="../doc_dark_mode.js"></script>
 	</html>

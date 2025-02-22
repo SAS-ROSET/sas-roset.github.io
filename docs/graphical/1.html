@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+	<html>
+		<head>
+			<title> SAS-ROSET  |  ROSET Graphical - User Interface of the ROS Encryption Tool </title>
+			<link data-default-icon="../../imgs/favicon.png" rel="icon" sizes="192x192" href="../../imgs/SAS_ROSET_ICON_3.png" />
+			<meta name="viewport" content="width=device-width, initial-scale=0.8, shrink-to-fit=yes">
+			<meta charset="utf-8">
+		</head>
+		
+		<link rel="stylesheet" href="../../styles/fonts.css"/>
+		<link rel="stylesheet" href="../../styles/universal.css"/>
+		<link rel="stylesheet" href="../../styles/docs.css"/>
+		
+		<style type="text/css">
+		
+		</style>
+		
+		<body>
+		<!-- Navigation Bar Start-->
+			<div id="nav_bar">			
+				<a href="../../index.html"><div  id="nav_logo"><img style="height:100%;" src="../../imgs/SAS_ROSET_LOGO_NAME.png"/></div></a>				
+				<div id="nav_buttons_box_desktop">
+					<a href="../../about.html"><p class="nav_buttons"> About </p></a>								
+					<a href="../../docs.html"><p class="nav_buttons"> Documentation </p></a>
+					<a href="https://github.com/SAS-ROSET"><p class="nav_buttons">Github</p></a>	
+					<a href="../../credits.html"><p class="nav_buttons"> Credits </p></a>
+				</div>						
+				<a href="../../download.html" ><div id="nav_download_button_box"><p id="nav_download_button"> Download </p></div></a>	
+				<div id="nav_dropdown_button">
+				<svg id="nav_dropdown_more_icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30" width="40" height="40">
+					<rect x="5" y="5" width="20" height="2" fill="#E6E6E6"/><rect x="5" y="11" width="20" height="2" fill="#E6E6E6"/><rect x="5" y="17" width="20" height="2" fill="#E6E6E6"/>
+				</svg>	
+				<svg id="nav_dropdown_close_icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+					<rect x="1" y="10" width="16" height="2" fill="#ffffff" transform="rotate(45 12 12)"/><rect x="8" y="3" width="2" height="16" fill="#ffffff" transform="rotate(45 12 12)"/>
+				</svg>		
+				</div>			
+			</div>
+			<div id="nav_dropdown_content">
+				<a href="../../about.html">About</a>
+				<a href="../../docs.html">Documentation</a>
+				<a href="https://github.com/SAS-ROSET">Github</a>
+				<a href="../../credits.html">Credits</a>
+				<a href="../../download.html">Download</a>
+			</div>	
+			<script type="text/javascript">
+				// nav dropdown toggle script
+					const dropdownButton = document.getElementById('nav_dropdown_button');
+					const dropdownContent = document.getElementById('nav_dropdown_content');
+					const dropdownClose = document.getElementById('nav_dropdown_close_icon');
+					const dropdownMore = document.getElementById('nav_dropdown_more_icon');
+					dropdownButton.addEventListener('click', function() {
+					  if (dropdownContent.style.display === 'block') {
+						dropdownContent.style.display = 'none'; 
+						dropdownClose.style.display = 'none'; 
+						dropdownMore.style.display = 'block'; 
+					  } else {
+						dropdownContent.style.display = 'block';
+						dropdownClose.style.display = 'block'; 
+						dropdownMore.style.display = 'none'; 
+					  }
+					});
+			</script>
+			<!-- Navigation Bar End-->
+				
+			<main>
+				<div class="restricted_width_box">
+					<div class="doc_path_box">
+					
+						<doc_path_text>
+							<a href="../../docs.html" class="pl">Documentation</a> / 
+							<a href="graphical.html" class="pl">ROS Encryption Tool</a> /
+							<a href="" class="pl">User Interface</a>
+						</doc_path_text>  
+						
+						<div class="doc_check_box">
+							<label for="darkModeToggle">Dark Mode:</label>
+							<input type="checkbox" id="darkModeToggle">
+						</div>
+					</div>
+
+					<div id="doc_page">
+						<doc_h1> 1. User Interface </doc_h1>
+						<doc_author>by: saaiqSAS</doc_author>
+						<doc_date>Last Updated: 13/2/2025</doc_date>
+						
+						<doc_para>
+							In this section, we will explore the core layout of the ROS Encryption Tool,
+							highlighting its key features and providing a step-by-step guide to help you
+							navigate through its main sections for a seamless and efficient experience. 
+							Below, in <dh>Fig.1.1</dh>, you can view the overall layout of the tool.
+						</doc_para>
+						
+						<img class="doc_image" src="imgs/1_1.png"/> <doc_fig>Fig.1.1</doc_fig>
+						
+						<doc_h2>Key Setup Section</doc_h2>
+						<doc_para> 
+							<dh>Fig.1.1</dh> shows the layout of the <dh>Setup</dh> tab in the tool. 
+							However, the <dh>Key Setup</dh> section within the <dh>Setup</dh> tab has two different 
+							layouts, which change depending on the option selected under <dh>Key</dh> in the 
+							<dh>General Setup</dh> section—either <dh>Generate</dh> or <dh>Select</dh>.
+						</doc_para>
+						
+						<doc_para> 
+							<dh>Fig.1.2</dh> shows the layout of the <dh>Key Setup</dh> section when <dh>Generate</dh>
+							is selected, while <dh>Fig.1.3</dh> shows the layout when <dh>Select</dh> is chosen.
+						</doc_para>
+						
+						<img class="doc_image" src="imgs/1_2.png"/> <doc_fig>Fig.1.2</doc_fig>
+						
+						<img class="doc_image" src="imgs/1_3.png"/> <doc_fig>Fig.1.3</doc_fig>
+	
+						<doc_para> 
+							Please note that the <dh>Key Store</dh> shown in <dh>Fig.1.3</dh> will be 
+							empty by default and will populate as you save generated keys to it.
+						</doc_para>
+						
+						<doc_h2>Data Tab</doc_h2>
+						<doc_para> 
+							The <dh>Data</dh> tab is where you can manage inputs and outputs, whether they are 
+							files or text. The layout of the <dh>Data</dh> tab will adjust based on the 
+							<dh>Input Type</dh> option (<dh>File</dh> / <dh>Text</dh>) selected in the <dh>Setup</dh> tab.
+						</doc_para>
+						
+						<img class="doc_image" src="imgs/1_4.png"/> <doc_fig>Fig.1.4</doc_fig>
+						
+						<doc_para> 
+							Above, in <dh>Fig.1.4</dh>, you can see the layout of the <dh>Data</dh> tab when 
+							<dh>File</dh> is selected. In this case, on the left side, under the <dh>Input</dh> 
+							section, there is a table that displays the files or directories you choose to process.
+							You can also drag and drop files or directories into the table for added convenience.
+						</doc_para>
+						
+						<doc_para> 
+							On the right side, you’ll find two sections: <dh>Output Directory</dh> and 
+							<dh>Process Settings</dh>. The <dh>Output Directory</dh> is where you can select or
+							drag and drop the directory/folder where you want the processed (Encrypted / Decrypted)
+							copies of the input files to be saved. Under <dh>Process Settings</dh>, you can adjust 
+							settings that may help reduce processing time.
+						</doc_para> 
+						
+	
+						<img class="doc_image" src="imgs/1_5.png"/> <doc_fig>Fig.1.5</doc_fig>
+						
+						<doc_para> 
+							In <dh>Fig.1.5</dh>, you can see the layout of the <dh>Data</dh> tab when 
+							<dh>Text</dh> is selected. This layout is quite simple. On the left side, 
+							under the <dh>Input</dh> section, there is a text input area where you can 
+							type or paste the text you wish to process. On the right side, under <dh>Output</dh>,
+							the processed text will be displayed.
+						</doc_para>
+						
+						<doc_para> 
+							Please note that text processing only supports the SAS-RCS encryption algorithm, 
+							whereas file processing supports both the SAS-RCS and SAS-RBS encryption algorithms.
+						</doc_para>
+						
+						<doc_h2>Status Icons, Utitlities and Controls</doc_h2>
+						<doc_para> 
+							Below, <dh>Fig.1.6</dh> shows all the icons and buttons located in the top bar.
+						</doc_para>
+						
+						<img class="doc_image" src="imgs/1_6.png"/> <doc_fig>Fig.1.6</doc_fig>
+						
+						<doc_point><b>'X' button:</b> This is the close button for the tool. Clicking it will terminate all processes and close the tool without any warning.</doc_point>
+						<doc_point><b>'-' button:</b> This is the minimize button for the tool.</doc_point>
+						<doc_point><b>'?' button:</b> This is the Help button for the tool. If your platform supports it, clicking 
+						this button will open your browser and take you to the official ROS Encryption Tool documentation.</doc_point>
+						<doc_point><b>'Logs' button:</b> This will open a new window displaying logs.</doc_point>
+
+						<doc_point><b>'RCS' icon:</b> This icon indicates the currently selected algorithm under the <dh>Algorithm</dh>
+						section of the <dh>Setup</dh> tab.</doc_point>
+						<doc_point><b>'Key' icon:</b> This icon appears when a key is extracted to memory.</doc_point>
+						<doc_point><b>'Thunder Bolt' icon:</b> This icon appears when <dh>Quick Processing</dh> is enabled. <dh>Quick Processing</dh>
+						is activated when you click the Process button in the <dh>Data</dh> tab after enabling the <dh>Quick Processing</dh> option in
+						the <dh>Process Settings</dh> section. By default, this option is enabled.</doc_point>
+													
+					</div>
+					
+					<div class="doc_navigate_box">
+							<a href="0.html" ><p class="white_button"> Previous: Setting Up </p></a>
+							<a href="2.html" ><p class="blue_button"> Next: Generating Keys </p></a>
+					</div>	
+				</div>	
+					
+			</main>
+			
+			<footer>
+				<div id="footer_serp"></div>
+				<p style="font-size:20px; margin-top:50px"><bg>Made with passion by </bg><a href="https://saaiqsas.github.io" class="footer_saaiqSAS"> saaiqSAS</a><bg> and Contributors</bg></p>
+				<br/>
+				<ft id="copyrights">Copyrights (©) 2024 Saaiq Abdulla Saeed</ft>
+				<ft>This website and its contents are generally licensed under the <a href="../../LICENSE.md">MIT License</a>, unless stated otherwise.</ft>
+				<div class="grid3_box" id="footer_grid">
+					<div>
+						<fh>Project Info</fh>
+						<ft><a href="../../about.html">About Project</a></ft>
+						<ft><a href="../../credits.html">Credits & Contributers</a></ft>
+						<ft><a href="../../docs.html">Documentation</a></ft>
+					</div>
+					<div>
+						<fh>Get Involved</fh>
+						<ft><a href="../../download.html">Download</a></ft>
+						<ft><a href="../../contribute.html">Contribute</a></ft>
+						<ft><a href="https://github.com/SAS-ROSET">Github</a></ft>
+					</div>
+					<div>
+						<fh>Legal & Support</fh>
+						<ft><a href="../../legal/privacy_policy.html">Privacy Policy</a></ft>
+						<ft><a href="../../legal/terms.html"> Terms and Conditions</a></ft>
+						<ft><a href="../../contact.html"> Contact & Report</a></ft>
+					</div>	
+				</div>
+				<script type="text/javascript">
+					// Copyrights
+					var currentYear = new Date().getFullYear();
+					document.getElementById('copyrights').textContent = "Copyrights (©) "+currentYear + " Saaiq Abdulla Saeed";
+				</script>
+			</footer>
+		
+		</body>
+		
+		<script src="../doc_dark_mode.js"></script>
+	</html>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 	<html>
 		<head>
-			<title> SAS-ROSET  |  ROS Encryption Tool Documentation </title>
+			<title> SAS-ROSET  |  ROSET Graphical - Decrypting Files with the ROS Encryption Tool | Windows | Linux</title>
 			<link data-default-icon="../../imgs/favicon.png" rel="icon" sizes="192x192" href="../../imgs/SAS_ROSET_ICON_3.png" />
 			<meta name="viewport" content="width=device-width, initial-scale=0.8, shrink-to-fit=yes">
 			<meta charset="utf-8">
@@ -16,7 +16,7 @@
 		</style>
 		
 		<body>
-			<!-- Navigation Bar Start-->
+		<!-- Navigation Bar Start-->
 			<div id="nav_bar">			
 				<a href="../../index.html"><div  id="nav_logo"><img style="height:100%;" src="../../imgs/SAS_ROSET_LOGO_NAME.png"/></div></a>				
 				<div id="nav_buttons_box_desktop">
@@ -68,7 +68,8 @@
 					
 						<doc_path_text>
 							<a href="../../docs.html" class="pl">Documentation</a> / 
-							<a href="graphical.html" class="pl">ROS Encryption Tool</a>
+							<a href="graphical.html" class="pl">ROS Encryption Tool</a> /
+							<a href="" class="pl">Decrypting Files</a>
 						</doc_path_text>  
 						
 						<div class="doc_check_box">
@@ -78,37 +79,55 @@
 					</div>
 
 					<div id="doc_page">
-						<doc_h1> ROS Encryption Tool </doc_h1>
+						<doc_h1> 6. Decrypting Files </doc_h1>
 						<doc_author>by: saaiqSAS</doc_author>
 						<doc_date>Last Updated: 19/2/2025</doc_date>
 						
-						<doc_para> 
-							Welcome to the official documentation for the ROS Encryption Tool. This guide will help you get started with the 
-							tool, providing comprehensive information on its features and functionality. Whether you're new to the tool or 
-							looking to explore advanced capabilities, this resource has you covered.							
-						</doc_para>	
+						<doc_para>
+							In this section, we will walk you through the steps to decrypt files that has been encrypted with the ROS Encryption Tool, 
+							using the appropriate key.
+						</doc_para>
 						
-						<doc_para><strong>Warning:</strong> This documentation is currently incomplete. Some sections may be missing or subject to change.</doc_para>
-
-						<doc_h2>Contents</doc_h2>
-						<a href="0.html" class="doc_content"> 0. Setting Up </a>	
-						<a href="1.html" class="doc_content"> 1. User Interface </a>	
-						<a href="2.html" class="doc_content"> 2. Generating Keys</a>	
-						<a href="3.html" class="doc_content"> 3. Encrypting Text</a>	
-						<a href="4.html" class="doc_content"> 4. Decrypting Text</a>	
-						<a href="5.html" class="doc_content"> 5. Encrypting Files</a>	
-						<a href="6.html" class="doc_content"> 6. Decrypting Files</a>	
-						<a href="7.html" class="doc_content"> 7. Process Settings</a>	
+						<doc_para>
+							To begin, select <dh>Decrypt</dh> under the <dh>Function</dh> section, and then choose the <dh>File</dh> option under the <dh>Input Type</dh> section. 
+							In the <dh>Select Key</dh> section, you can either pick the correct key from the <dh>Key Store</dh> if it’s available, or if the key is located elsewhere on your system, 
+							you can either use the <dh>Select</dh> button to browse for it or simply drag and drop the key file into the <dh>Path</dh> field. 
+							(<dh>Fig6.1</dh>)
+						</doc_para>
+						<img class="doc_image" src="imgs/6_1.png"/> <doc_fig>Fig.6.1</doc_fig>
 						
-						</br></br>
-						<div class="grid_2button_cent">
-							<a href="https://docs.google.com/forms/d/e/1FAIpQLSddVLlTjuOGv3gzU_Zq0rbIyLI7omuEgGAPRE80yPPzeFMCHA/viewform?usp=dialog"><p class="doc_button"> Rate Us</p></a>
-							<a href="https://docs.google.com/forms/d/e/1FAIpQLSccSJ1yBujxJmKswvDvrF4JmRJfH5H1e3fagOzuJk-xEnzRRQ/viewform?usp=dialog"><p class="doc_button" > Report Bug</p></a>
-							<a href="https://docs.google.com/forms/d/e/1FAIpQLSdKJDMUSIaJte96xYlM23lKruF7TBkuoWkqHVCHoIt1EmTh8w/viewform?usp=dialog"><p class="doc_button" > Request Feature</p></a>
-						</div>
+						<doc_para>
+							After selecting your key, click the <dh>Extract</dh> button located at the bottom right. Once the key is extracted into memory, you will be automatically redirected to the <dh>Data</dh> tab. 
+							In the <dh>Input</dh> section, you can easily drag and drop the files or folders you wish to encrypt. Alternatively, you can use 
+							the <dh>Add File</dh> button to add files, or the <dh>Add Dir</dh> button to add directories/folders. (<dh>Fig6.2</dh>)
+						</doc_para>
+						<doc_para>
+							Once all the files you want to decrypt are listed in the table in the <dh>Input</dh> section, you can choose where the decrypted output should be saved. 
+							In the <dh>Output Directory</dh> section, simply drag and drop or select a folder/directory to store the decrypted files. (<dh>Fig6.2</dh>)
+						</doc_para>
+						<doc_para>
+							Additionally, you can customize settings in the <dh>Process Settings</dh> section to optimize the encryption process according to your needs. 
+							If you're looking for faster processing times, increasing the <dh>Maximum Threads per File</dh> can help. For better performance when processing large batches of files, 
+							consider increasing the <dh>Maximum Parallel Files</dh>. Keep in mind that raising these values will require more system resources, such as memory and processing power, 
+							so adjust them according to your system’s capabilities.
+						</doc_para>
+						<img class="doc_image" src="imgs/6_2.png"/> <doc_fig>Fig.6.2</doc_fig>
+						
+						<doc_para>
+							Once everything is set, click the <dh>Process</dh> button to begin decrypting your files. 
+							A decrypted copy of your files will be created in the output directory or folder you specified. (<dh>Fig6.3</dh>)
+						</doc_para>
+						<img class="doc_image" src="imgs/6_3.png"/> <doc_fig>Fig.6.3</doc_fig>
 					
+						
 					</div>
-				</div>			
+					
+					<div class="doc_navigate_box">
+							<a href="5.html" ><p class="white_button"> Previous: Encrypting Files </p></a>
+							<a href="7.html" ><p class="blue_button"> Next: Process Settings </p></a>
+					</div>	
+				</div>	
+					
 			</main>
 			
 			<footer>
@@ -145,5 +164,6 @@
 			</footer>
 		
 		</body>
+		
 		<script src="../doc_dark_mode.js"></script>
 	</html>

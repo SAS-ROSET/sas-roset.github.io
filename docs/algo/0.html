@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 	<html>
 		<head>
-			<title> SAS-ROSET  |  ROS Encryption Tool Documentation </title>
+			<title> SAS-ROSET  |  Definitions - SAS-RCS/RBS Encryption Algorithm Documentation </title>
 			<link data-default-icon="../../imgs/favicon.png" rel="icon" sizes="192x192" href="../../imgs/SAS_ROSET_ICON_3.png" />
 			<meta name="viewport" content="width=device-width, initial-scale=0.8, shrink-to-fit=yes">
 			<meta charset="utf-8">
@@ -16,7 +16,7 @@
 		</style>
 		
 		<body>
-			<!-- Navigation Bar Start-->
+		<!-- Navigation Bar Start-->
 			<div id="nav_bar">			
 				<a href="../../index.html"><div  id="nav_logo"><img style="height:100%;" src="../../imgs/SAS_ROSET_LOGO_NAME.png"/></div></a>				
 				<div id="nav_buttons_box_desktop">
@@ -68,7 +68,8 @@
 					
 						<doc_path_text>
 							<a href="../../docs.html" class="pl">Documentation</a> / 
-							<a href="graphical.html" class="pl">ROS Encryption Tool</a>
+							<a href="algorithms.html" class="pl">Algorithms</a> /
+							<a href="" class="pl">Definitions</a>
 						</doc_path_text>  
 						
 						<div class="doc_check_box">
@@ -78,37 +79,52 @@
 					</div>
 
 					<div id="doc_page">
-						<doc_h1> ROS Encryption Tool </doc_h1>
+						<doc_h1> Definitions </doc_h1>
 						<doc_author>by: saaiqSAS</doc_author>
-						<doc_date>Last Updated: 19/2/2025</doc_date>
+						<doc_date>Last Updated: 10/6/2024</doc_date>
 						
-						<doc_para> 
-							Welcome to the official documentation for the ROS Encryption Tool. This guide will help you get started with the 
-							tool, providing comprehensive information on its features and functionality. Whether you're new to the tool or 
-							looking to explore advanced capabilities, this resource has you covered.							
-						</doc_para>	
-						
-						<doc_para><strong>Warning:</strong> This documentation is currently incomplete. Some sections may be missing or subject to change.</doc_para>
+						<doc_para>
+							<b>1. <i>Dynamic Key</i> :</b> (Object Key) A set or array of randomly shuffled objects, where the objects can be characters, binary values, 
+							or any other types of data units.							
+							<br/><br/>
+							
+							<b>2. <i>Static Key</i> :</b> (Index Key) A set or array of randomly shuffled indexes, used to reference the positions of objects in a sequence.							
+							<br/><br/>
+							
+							<b>3. <i>D-Space</i> :</b> (Dynamic Keyspace) The set of all possible permutations of a <i>Dynamic Key</i> for a given key length. The key length
+							can be specified using the format '<i>D-XXX-Space</i>', where '<i>XXX</i>' represents the length of the key.							
+							<br/><br/>
+							
+							<b>4. <i>S-Space</i> :</b> (Static Keyspace) The set of all possible permutations of a <i>Static Key</i> for a given key length. The key length can be
+							specified using the format '<i>S-XXX-Space</i>', where '<i>XXX</i>' represents the length of the key.							
+							<br/><br/>
+							
+							<b>5. '<i>e</i>' Prefix:</b> (eXX-Space) Refers to the effective keyspace, a subset of the total keyspace that is used in a particular context.							
+							<br/><br/>
+							
+							<b>6. <i>KC-Space</i> :</b> ([1 Dynamic + 1 Static] Keyspace) The set of all possible combinations of <i>Dynamic Keys</i> and <i>Static Keys</i>, represented 
+							as the product of <i>D-Space</i> and <i>S-Space</i>. The effective <i>KC-Space</i> (<i>eKC-Space</i>) is given as the product of the effective <i>D-Space</i> (<i>eD-Space</i>) 
+							and the effective <i>S-Space</i> (<i>eS-Space</i>).
+							<br/><br/>
+							
+							<b>7. <i>Sub-Space</i> :</b> (Substitution Table Space) The set of all possible substitution tables for a given set of unique objects (<i>Dynamic Key</i>), 
+							which maps each object to another within the set.
+							<br/><br/>
+							
+							<b>8. <i>ext-objects</i> :</b> (External Objects) Objects which are not included in the <i>Dynamic Key</i>.
+							<br/><br/>
+							
+							<b>9. <i>Charset</i> :</b> (Character Set) Part of the SAS-RCS/RBS <i>Dynamic Key</i> which contains the ROS <i>Dynamic Key</i> (object array).
+							<br/><br/>
+						</doc_para>
 
-						<doc_h2>Contents</doc_h2>
-						<a href="0.html" class="doc_content"> 0. Setting Up </a>	
-						<a href="1.html" class="doc_content"> 1. User Interface </a>	
-						<a href="2.html" class="doc_content"> 2. Generating Keys</a>	
-						<a href="3.html" class="doc_content"> 3. Encrypting Text</a>	
-						<a href="4.html" class="doc_content"> 4. Decrypting Text</a>	
-						<a href="5.html" class="doc_content"> 5. Encrypting Files</a>	
-						<a href="6.html" class="doc_content"> 6. Decrypting Files</a>	
-						<a href="7.html" class="doc_content"> 7. Process Settings</a>	
-						
-						</br></br>
-						<div class="grid_2button_cent">
-							<a href="https://docs.google.com/forms/d/e/1FAIpQLSddVLlTjuOGv3gzU_Zq0rbIyLI7omuEgGAPRE80yPPzeFMCHA/viewform?usp=dialog"><p class="doc_button"> Rate Us</p></a>
-							<a href="https://docs.google.com/forms/d/e/1FAIpQLSccSJ1yBujxJmKswvDvrF4JmRJfH5H1e3fagOzuJk-xEnzRRQ/viewform?usp=dialog"><p class="doc_button" > Report Bug</p></a>
-							<a href="https://docs.google.com/forms/d/e/1FAIpQLSdKJDMUSIaJte96xYlM23lKruF7TBkuoWkqHVCHoIt1EmTh8w/viewform?usp=dialog"><p class="doc_button" > Request Feature</p></a>
-						</div>
-					
 					</div>
-				</div>			
+					
+					<div class="doc_navigate_box">
+							<a href="algorithms.html" ><p class="white_button"> Previous: Main Page </p></a>
+							<a href="1.html" ><p class="blue_button"> Next: SAS-ROS Cipher </p></a>
+					</div>	
+				</div>		
 			</main>
 			
 			<footer>
@@ -145,5 +161,6 @@
 			</footer>
 		
 		</body>
+		
 		<script src="../doc_dark_mode.js"></script>
 	</html>

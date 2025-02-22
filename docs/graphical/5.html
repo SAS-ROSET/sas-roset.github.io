@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+	<html>
+		<head>
+			<title> SAS-ROSET  |  ROSET Graphical - Encrypting Files with the ROS Encryption Tool | Windows | Linux</title>
+			<link data-default-icon="../../imgs/favicon.png" rel="icon" sizes="192x192" href="../../imgs/SAS_ROSET_ICON_3.png" />
+			<meta name="viewport" content="width=device-width, initial-scale=0.8, shrink-to-fit=yes">
+			<meta charset="utf-8">
+		</head>
+		
+		<link rel="stylesheet" href="../../styles/fonts.css"/>
+		<link rel="stylesheet" href="../../styles/universal.css"/>
+		<link rel="stylesheet" href="../../styles/docs.css"/>
+		
+		<style type="text/css">
+		
+		</style>
+		
+		<body>
+		<!-- Navigation Bar Start-->
+			<div id="nav_bar">			
+				<a href="../../index.html"><div  id="nav_logo"><img style="height:100%;" src="../../imgs/SAS_ROSET_LOGO_NAME.png"/></div></a>				
+				<div id="nav_buttons_box_desktop">
+					<a href="../../about.html"><p class="nav_buttons"> About </p></a>								
+					<a href="../../docs.html"><p class="nav_buttons"> Documentation </p></a>
+					<a href="https://github.com/SAS-ROSET"><p class="nav_buttons">Github</p></a>	
+					<a href="../../credits.html"><p class="nav_buttons"> Credits </p></a>
+				</div>						
+				<a href="../../download.html" ><div id="nav_download_button_box"><p id="nav_download_button"> Download </p></div></a>	
+				<div id="nav_dropdown_button">
+				<svg id="nav_dropdown_more_icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30" width="40" height="40">
+					<rect x="5" y="5" width="20" height="2" fill="#E6E6E6"/><rect x="5" y="11" width="20" height="2" fill="#E6E6E6"/><rect x="5" y="17" width="20" height="2" fill="#E6E6E6"/>
+				</svg>	
+				<svg id="nav_dropdown_close_icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+					<rect x="1" y="10" width="16" height="2" fill="#ffffff" transform="rotate(45 12 12)"/><rect x="8" y="3" width="2" height="16" fill="#ffffff" transform="rotate(45 12 12)"/>
+				</svg>		
+				</div>			
+			</div>
+			<div id="nav_dropdown_content">
+				<a href="../../about.html">About</a>
+				<a href="../../docs.html">Documentation</a>
+				<a href="https://github.com/SAS-ROSET">Github</a>
+				<a href="../../credits.html">Credits</a>
+				<a href="../../download.html">Download</a>
+			</div>	
+			<script type="text/javascript">
+				// nav dropdown toggle script
+					const dropdownButton = document.getElementById('nav_dropdown_button');
+					const dropdownContent = document.getElementById('nav_dropdown_content');
+					const dropdownClose = document.getElementById('nav_dropdown_close_icon');
+					const dropdownMore = document.getElementById('nav_dropdown_more_icon');
+					dropdownButton.addEventListener('click', function() {
+					  if (dropdownContent.style.display === 'block') {
+						dropdownContent.style.display = 'none'; 
+						dropdownClose.style.display = 'none'; 
+						dropdownMore.style.display = 'block'; 
+					  } else {
+						dropdownContent.style.display = 'block';
+						dropdownClose.style.display = 'block'; 
+						dropdownMore.style.display = 'none'; 
+					  }
+					});
+			</script>
+			<!-- Navigation Bar End-->
+				
+			<main>
+				<div class="restricted_width_box">
+					<div class="doc_path_box">
+					
+						<doc_path_text>
+							<a href="../../docs.html" class="pl">Documentation</a> / 
+							<a href="graphical.html" class="pl">ROS Encryption Tool</a> /
+							<a href="" class="pl">Encrypting Files</a>
+						</doc_path_text>  
+						
+						<div class="doc_check_box">
+							<label for="darkModeToggle">Dark Mode:</label>
+							<input type="checkbox" id="darkModeToggle">
+						</div>
+					</div>
+
+					<div id="doc_page">
+						<doc_h1> 5. Encrypting Files </doc_h1>
+						<doc_author>by: saaiqSAS</doc_author>
+						<doc_date>Last Updated: 18/2/2025</doc_date>
+						
+						<doc_para>
+							In this section, we'll walk you through the steps to encrypt your files using the ROS Encryption Tool.
+							You have the option to either create a new encryption key or select an existing one to keep your data safe and secure.
+						</doc_para>
+						
+						
+						<doc_h2>Setup Key</doc_h2>
+						<doc_h3>Generate Key</doc_h3>
+						<doc_para>
+							To create a new encryption key, simply select the <dh>Generate</dh> option in the <dh>Key</dh> section. From there, you can adjust the settings in the <dh>Generate Key</dh> area based on your preferences. 
+							For a simple and effective key, we recommend setting the key length between 10 and 16, and choosing the <dh>Bitwise</dh> option (with a range of 7 to 20). You can also modify the 
+							<dh>Number of Static Keys</dh> (up to a maximum of 100). The default settings for other options should work well for most cases. 
+						</doc_para>
+						<doc_para>
+							After you've customized your key, give it a name by entering it in the <dh>Key File Name</dh> field, and click the <dh>Generate</dh> button to create your key. 
+							As you'll be encrypting files, make sure to choose the <dh>File</dh> option under the <dh>Input Type</dh> section. (<dh>Fig5.1</dh>) 
+						</doc_para>
+						<doc_para>		
+							If you'd like to learn more about the options and how they impact encryption, visit the 
+							<a class="doc_link" href="../algo/algorithms.html">Generating Keys</a> section for detailed information.
+						</doc_para>
+						<img class="doc_image" src="imgs/5_1.png"/> <doc_fig>Fig.5.1</doc_fig>
+						
+						<doc_h3>Select Key</doc_h3>
+						<doc_para>
+							If you want to use a previously generated key, you can select it from either the <dh>Key Store</dh> or your local file system. To do this, click on the <dh>Select</dh> option in the <dh>Key</dh> section. 
+							In the <dh>Select Key</dh> area, you'll have the option to choose your key from the <dh>Key Store</dh>, or you can browse your file system by clicking the <dh>Select</dh> button. 
+							Another option is to simply drag and drop the key file directly into the <dh>Path</dh> field. 
+							As you’ll be encrypting files, be sure to select the <dh>File</dh> option under the <dh>Input Type</dh> section. (<dh>Fig5.2</dh>)
+						</doc_para>
+						<img class="doc_image" src="imgs/5_2.png"/> <doc_fig>Fig.5.2</doc_fig>
+						
+						
+						<doc_h2>Encrypt Files</doc_h2>
+						<doc_para>
+							Before you begin encrypting your files, make sure you've selected the encryption algorithm you want to use under the <dh>Algorithm</dh> section in the <dh>Setup</dh> tab. 
+							<dh>SAS-RCS</dh> provides text-level encryption, so your output files will be encrypted text files. On the other hand, <dh>SAS-RBS</dh> offers binary-level encryption, resulting in output files that are non-text (plain binary).
+						</doc_para>
+						<doc_para>
+							After clicking the <dh>Generate</dh> or <dh>Select</dh> button, the key will be loaded into memory. You’ll then be automatically redirected to the <dh>Data</dh> tab. 
+							In the <dh>Input</dh> section, you can easily drag and drop the files or folders you wish to encrypt. Alternatively, you can use the <dh>Add File</dh> button to add files, or the <dh>Add Dir</dh> button to add directories/folders. (<dh>Fig5.3</dh>)
+						</doc_para>
+						<doc_para>
+							Once all the files you want to encrypt are listed in the table in the <dh>Input</dh> section, you can choose where the encrypted output should be saved. 
+							In the <dh>Output Directory</dh> section, simply drag and drop or select a folder/directory to store the encrypted files. (<dh>Fig5.3</dh>)
+						</doc_para>
+						<doc_para>
+							Additionally, you can customize settings in the <dh>Process Settings</dh> section to optimize the encryption process according to your needs. 
+							If you're looking for faster processing times, increasing the <dh>Maximum Threads per File</dh> can help. For better performance when processing large batches of files, 
+							consider increasing the <dh>Maximum Parallel Files</dh>. Keep in mind that raising these values will require more system resources, such as memory and processing power, 
+							so adjust them according to your system’s capabilities.
+						</doc_para>
+						<img class="doc_image" src="imgs/5_3.png"/> <doc_fig>Fig.5.3</doc_fig>
+						
+						<doc_para>
+							Once everything is set, click the <dh>Process</dh> button to begin encrypting your files. An encrypted copy of your files will be created in the output directory or folder you specified. (<dh>Fig5.4</dh>)
+						</doc_para>
+						<img class="doc_image" src="imgs/5_4.png"/> <doc_fig>Fig.5.4</doc_fig>
+						
+						<doc_h2>Decrypt Check</doc_h2>
+						<doc_para>
+							It’s crucial to ensure that your encrypted files can be properly decrypted. To verify this, go to the <dh>Setup</dh> tab and select <dh>Decrypt</dh> under the <dh>Function</dh> section. (<dh>Fig5.5</dh>)
+						</doc_para>
+						<img class="doc_image" src="imgs/5_5.png"/> <doc_fig>Fig.5.5</doc_fig>
+						
+						<doc_para>
+							Afterward, go back to the <dh>Data</dh> tab. In the <dh>Input</dh> section, select each of the original files and remove them by clicking the <dh>Remove</dh> button. You can also clear the entire table if needed. (<dh>Fig5.6</dh>)
+						</doc_para>
+						<img class="doc_image" src="imgs/5_6.png"/> <doc_fig>Fig.5.6</doc_fig>
+						
+						<doc_para>
+							Once the table is empty, drag and drop the encrypted files into the <dh>Input</dh> section. Then, select an output directory or folder where the decrypted data will be saved. (<dh>Fig5.7</dh>)
+						</doc_para>
+						<img class="doc_image" src="imgs/5_7.png"/> <doc_fig>Fig.5.7</doc_fig>
+						
+						<doc_para>
+							Once everything is set, click the <dh>Process</dh> button to begin decrypting your files. A decrypted copy of the files will be created in the output directory or folder you specified. Afterward, check if the files can be opened or executed without any issues. If everything works as expected, you can safely use the decrypted data with its corresponding key. (<dh>Fig5.8</dh>)
+						</doc_para>
+						<img class="doc_image" src="imgs/5_8.png"/> <doc_fig>Fig.5.8</doc_fig>
+						
+						<doc_para>
+							If an error occurs, try using a different key. If the issue continues, please report the bug using the links at the bottom of the <a class="doc_link" href="graphical.html">main page</a> in the official ROS Encryption Tool documentation.
+						</doc_para>	
+						
+					</div>
+					
+					<div class="doc_navigate_box">
+							<a href="4.html" ><p class="white_button"> Previous: Decrypting Text </p></a>
+							<a href="6.html" ><p class="blue_button"> Next: Decrypting Files </p></a>
+					</div>	
+				</div>	
+					
+			</main>
+			
+			<footer>
+				<div id="footer_serp"></div>
+				<p style="font-size:20px; margin-top:50px"><bg>Made with passion by </bg><a href="https://saaiqsas.github.io" class="footer_saaiqSAS"> saaiqSAS</a><bg> and Contributors</bg></p>
+				<br/>
+				<ft id="copyrights">Copyrights (©) 2024 Saaiq Abdulla Saeed</ft>
+				<ft>This website and its contents are generally licensed under the <a href="../../LICENSE.md">MIT License</a>, unless stated otherwise.</ft>
+				<div class="grid3_box" id="footer_grid">
+					<div>
+						<fh>Project Info</fh>
+						<ft><a href="../../about.html">About Project</a></ft>
+						<ft><a href="../../credits.html">Credits & Contributers</a></ft>
+						<ft><a href="../../docs.html">Documentation</a></ft>
+					</div>
+					<div>
+						<fh>Get Involved</fh>
+						<ft><a href="../../download.html">Download</a></ft>
+						<ft><a href="../../contribute.html">Contribute</a></ft>
+						<ft><a href="https://github.com/SAS-ROSET">Github</a></ft>
+					</div>
+					<div>
+						<fh>Legal & Support</fh>
+						<ft><a href="../../legal/privacy_policy.html">Privacy Policy</a></ft>
+						<ft><a href="../../legal/terms.html"> Terms and Conditions</a></ft>
+						<ft><a href="../../contact.html"> Contact & Report</a></ft>
+					</div>	
+				</div>
+				<script type="text/javascript">
+					// Copyrights
+					var currentYear = new Date().getFullYear();
+					document.getElementById('copyrights').textContent = "Copyrights (©) "+currentYear + " Saaiq Abdulla Saeed";
+				</script>
+			</footer>
+		
+		</body>
+		
+		<script src="../doc_dark_mode.js"></script>
+	</html>

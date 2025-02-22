@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+	<html>
+		<head>
+			<title> SAS-ROSET  |  ROSET Graphical - Generating Keys in the ROS Encryption Tool | Windows | Linux </title>
+			<link data-default-icon="../../imgs/favicon.png" rel="icon" sizes="192x192" href="../../imgs/SAS_ROSET_ICON_3.png" />
+			<meta name="viewport" content="width=device-width, initial-scale=0.8, shrink-to-fit=yes">
+			<meta charset="utf-8">
+		</head>
+		
+		<link rel="stylesheet" href="../../styles/fonts.css"/>
+		<link rel="stylesheet" href="../../styles/universal.css"/>
+		<link rel="stylesheet" href="../../styles/docs.css"/>
+		
+		<style type="text/css">
+		
+		</style>
+		
+		<body>
+		<!-- Navigation Bar Start-->
+			<div id="nav_bar">			
+				<a href="../../index.html"><div  id="nav_logo"><img style="height:100%;" src="../../imgs/SAS_ROSET_LOGO_NAME.png"/></div></a>				
+				<div id="nav_buttons_box_desktop">
+					<a href="../../about.html"><p class="nav_buttons"> About </p></a>								
+					<a href="../../docs.html"><p class="nav_buttons"> Documentation </p></a>
+					<a href="https://github.com/SAS-ROSET"><p class="nav_buttons">Github</p></a>	
+					<a href="../../credits.html"><p class="nav_buttons"> Credits </p></a>
+				</div>						
+				<a href="../../download.html" ><div id="nav_download_button_box"><p id="nav_download_button"> Download </p></div></a>	
+				<div id="nav_dropdown_button">
+				<svg id="nav_dropdown_more_icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30" width="40" height="40">
+					<rect x="5" y="5" width="20" height="2" fill="#E6E6E6"/><rect x="5" y="11" width="20" height="2" fill="#E6E6E6"/><rect x="5" y="17" width="20" height="2" fill="#E6E6E6"/>
+				</svg>	
+				<svg id="nav_dropdown_close_icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+					<rect x="1" y="10" width="16" height="2" fill="#ffffff" transform="rotate(45 12 12)"/><rect x="8" y="3" width="2" height="16" fill="#ffffff" transform="rotate(45 12 12)"/>
+				</svg>		
+				</div>			
+			</div>
+			<div id="nav_dropdown_content">
+				<a href="../../about.html">About</a>
+				<a href="../../docs.html">Documentation</a>
+				<a href="https://github.com/SAS-ROSET">Github</a>
+				<a href="../../credits.html">Credits</a>
+				<a href="../../download.html">Download</a>
+			</div>	
+			<script type="text/javascript">
+				// nav dropdown toggle script
+					const dropdownButton = document.getElementById('nav_dropdown_button');
+					const dropdownContent = document.getElementById('nav_dropdown_content');
+					const dropdownClose = document.getElementById('nav_dropdown_close_icon');
+					const dropdownMore = document.getElementById('nav_dropdown_more_icon');
+					dropdownButton.addEventListener('click', function() {
+					  if (dropdownContent.style.display === 'block') {
+						dropdownContent.style.display = 'none'; 
+						dropdownClose.style.display = 'none'; 
+						dropdownMore.style.display = 'block'; 
+					  } else {
+						dropdownContent.style.display = 'block';
+						dropdownClose.style.display = 'block'; 
+						dropdownMore.style.display = 'none'; 
+					  }
+					});
+			</script>
+			<!-- Navigation Bar End-->
+				
+			<main>
+				<div class="restricted_width_box">
+					<div class="doc_path_box">
+					
+						<doc_path_text>
+							<a href="../../docs.html" class="pl">Documentation</a> / 
+							<a href="graphical.html" class="pl">ROS Encryption Tool</a> /
+							<a href="" class="pl">Generating Keys</a>
+						</doc_path_text>  
+						
+						<div class="doc_check_box">
+							<label for="darkModeToggle">Dark Mode:</label>
+							<input type="checkbox" id="darkModeToggle">
+						</div>
+					</div>
+
+					<div id="doc_page">
+						<doc_h1> 2. Generating Keys </doc_h1>
+						<doc_author>by: saaiqSAS</doc_author>
+						<doc_date>Last Updated: 11/2/2025</doc_date>
+						
+						<doc_para>
+							In this section, we will explore the specifics of the <dh>Generate Key</dh> option found in the 
+							<dh>Setup</dh> tab (<dh>Fig.2.1</dh>). The ROS Encryption Tool generates keys using randomly generated elements, 
+							based on the user-selected options. Each combination of options can have varying impacts on security, output data size, 
+							and performance, with differences ranging from minor to significant. We will thoroughly review each available choice, 
+							explaining its functionality and impact. For more in-depth cryptographic details about any of the options, 
+							you can refer to the official <a class="doc_link" href="../algo/algorithms.html"> Algorithms Documentation </a>.
+						</doc_para>
+						
+						<img class="doc_image" src="imgs/2_1.png"/> <doc_fig>Fig.2.1</doc_fig>
+						
+						<doc_h2>Key Length</doc_h2>
+						<doc_para>
+							There are two ways to specify your key length: <dh>Bitwise</dh> or <dh>Custom</dh>. 
+							In the <dh>Bitwise</dh> option, you can enter a value between 7 and 20, and the key length will be the power of 2 corresponding to the entered value. 
+							With the <dh>Custom</dh> option, you can directly specify the key length, which can range from 100 to 1,050,000.
+						</doc_para>
+						<doc_para>
+							It's important to note that while the SAS-RCS encryption algorithm (Text level encryption) supports any key length, 
+							the SAS-RBS encryption algorithm (Binary level encryption) strictly requires key lengths that are powers of 2. 
+							Therefore, choosing the <dh>Bitwise</dh> option ensures the generated key is compatible with both algorithms.
+						</doc_para>
+						<doc_para>
+							Note that while larger key lengths significantly enhance security, they can negatively affect performance by increasing processing time.
+						</doc_para>
+						
+						<doc_h2>SAS-RCS</doc_h2>
+						<doc_para>
+							The options in this section apply exclusively to the SAS-RCS encryption algorithm and do not affect the SAS-RBS algorithm. 
+							The SAS-RGM is a component of the SAS-RCS algorithm, designed to securely convert any incompatible text or binary data into a 
+							compatible text format, enabling the smooth continuation of the SAS-RCS encryption process.
+						</doc_para>
+						
+						<doc_h3>RGM Base</doc_h3>
+						<doc_para>
+							One of the initial steps in the SAS-RGM algorithm is converting incompatible data into a baseX format before it undergoes further processing. 
+							The <dh>RGM Base</dh> options (<dh>base2</dh>, <dh>base10</dh>, <dh>base16</dh>, <dh>base64</dh>) allow you to choose the base for this conversion.
+						</doc_para>
+						<doc_para>
+							It's important to note that the smaller the base you choose, the larger the resulting encrypted data will be. 
+							Smaller bases also improve security by making it harder for attackers to perform frequency analysis on the data. 
+							However, if your key length is large, the effect of the chosen base on security might be less significant. 
+							That said, using smaller bases can still enhance security due to the larger output data.
+						</doc_para>
+						
+						<doc_h3>RGM status for text</doc_h3>
+						<doc_para>
+							The SAS-RCS algorithm encrypts text character by character. Not all characters are considered incompatible during encryption, 
+							meaning that not every character needs to go through the SAS-RGM step. Hence, the <dh>RGM status for text</dh> options allow you to choose 
+							whether only incompatible characters or all characters should pass through the RGM process.
+						</doc_para>
+						<doc_para>
+							The <dh>partial</dh> option means only incompatible characters will pass through the RGM. This helps minimize the increase in encrypted 
+							data size when processing text. However, note that in terms of security, this option may reduce the level of randomness in the encrypted text.
+						</doc_para>
+						<doc_para>
+							The <dh>full</dh> option ensures that every character in the input text will go through RGM. Choosing this option will maximize the increase 
+							in encrypted data size. It also provides the highest possible security within the RGM step of SAS-RCS, depending on the chosen base.
+						</doc_para>
+						<doc_para>
+							Note that when encrypting files with SAS-RCS, all bytes will undergo RGM to be securely converted into compatible text.
+						</doc_para>
+						
+						<doc_h2>Data Size Increase</doc_h2>
+						<doc_para>
+							In this section, you can specify a ratio to control the increase in encrypted data size for both SAS-RCS and SAS-RBS. The ratio follows the format 
+							<dh>for every : add</dh>, where in SAS-RCS, <dh>for every</dh> and <dh>add</dh> refer to characters, while in SAS-RBS, they refer to bits.
+						</doc_para>
+						<doc_para>
+							For example, if the ratio is <dh>3:2</dh>, as shown in <dh>Fig2.1</dh>, in SAS-RCS, this means that for every 3 characters, 2 additional characters will be added. 
+							In SAS-RBS, this would mean that for every 3 bits, 2 extra bits will be added.
+						</doc_para>
+						<doc_para>
+							The maximum value for <dh>for every</dh> is 9, and the maximum value for <dh>add</dh> is 99.
+						</doc_para>
+						<doc_para>
+							When new data units are added to the original data, they are inserted in a secure and random manner, ensuring that they can only be correctly reversed using the correct key.
+						</doc_para>
+						
+						<doc_h2>Number of Static Keys</doc_h2>
+						<doc_para>
+							The SAS-ROS Cipher, which forms the basis for the SAS-RCS/RBS Encryption Algorithm, uses a combination of a <dh>Dynamic Key</dh> and a 
+							<dh>Static Key</dh> to perform random substitutions. Similarly, the SAS-ROS step in the SAS-RCS/RBS Encryption Algorithm also employs a 
+							<dh>Dynamic Key</dh>, but it is combined with multiple <dh>Static Keys</dh> for enhanced security. The greater the number of <dh>Static Keys</dh>, 
+							the more random and secure the encrypted data will be, providing stronger protection against attacks like 
+							frequency analysis, CCA (Chosen Ciphertext Attack), and CPA (Chosen Plaintext Attack).
+						</doc_para>
+						<doc_para>
+							The maximum value for <dh>Number of Static Keys</dh> is 100.
+						</doc_para>
+						<doc_para>
+							Even with a large number of <dh>Static Keys</dh>, the impact on performance will be minimal. The only trade-off is the key file size. 
+							The key file stores the number of <dh>Static Keys</dh> you input into the field. You may have noticed a <dh>+1</dh> next to the 
+							input field in <dh>Fig2.1</dh>. This number indicates the additional <dh>Static Keys</dh> that will be used during processing, 
+							in addition to the number you entered. These extra <dh>Static Keys</dh> will not take up space in your key file, as they will 
+							be generated when the key file is loaded into memory.
+						</doc_para>
+						
+						<doc_h2>Random Character Selection</doc_h2>
+						<doc_para>
+							When generating the key, the required units are selected from the Unicode Character Set. By default, with this option disabled, 
+							the units are chosen in an orderly manner and then securely shuffled. However, when the option is enabled, the units are selected 
+							randomly from across the entire set, without any shuffling involved.
+						</doc_para>
+						<doc_para>
+							Note that enabling this option may significantly increase key generation time, especially for larger keys.
+						</doc_para>
+						
+						<doc_h2>Key File Name</doc_h2>
+						<doc_para>
+							This is where you enter the name for the key file you wish to generate. Please note that this name will also be stored inside the 
+							key file and will commonly be used to refer to the key within the tool. Therefore, changing the name after the key file has been generated 
+							is not possible. Be sure to double-check that the entered name is correct and exactly what you want.
+						</doc_para>
+						
+						<doc_h2>Save to Key Store</doc_h2>
+						<doc_para>
+							When enabled, the generated key file will be saved to the <dh>roset_keystore</dh> directory/folder, and the key will appear in the 
+							table under the <dh>Select Key</dh> section of the <dh>Setup</dh> tab. When disabled, clicking the <dh>Generate</dh> button will prompt 
+							a window to pop up, allowing you to choose the location where the new key file will be saved.
+						</doc_para>
+						
+					</div>
+					
+					<div class="doc_navigate_box">
+							<a href="1.html" ><p class="white_button"> Previous: User Interface </p></a>
+							<a href="3.html" ><p class="blue_button"> Next: Encrypting Text </p></a>
+					</div>	
+				</div>	
+					
+			</main>
+			
+			<footer>
+				<div id="footer_serp"></div>
+				<p style="font-size:20px; margin-top:50px"><bg>Made with passion by </bg><a href="https://saaiqsas.github.io" class="footer_saaiqSAS"> saaiqSAS</a><bg> and Contributors</bg></p>
+				<br/>
+				<ft id="copyrights">Copyrights (©) 2024 Saaiq Abdulla Saeed</ft>
+				<ft>This website and its contents are generally licensed under the <a href="../../LICENSE.md">MIT License</a>, unless stated otherwise.</ft>
+				<div class="grid3_box" id="footer_grid">
+					<div>
+						<fh>Project Info</fh>
+						<ft><a href="../../about.html">About Project</a></ft>
+						<ft><a href="../../credits.html">Credits & Contributers</a></ft>
+						<ft><a href="../../docs.html">Documentation</a></ft>
+					</div>
+					<div>
+						<fh>Get Involved</fh>
+						<ft><a href="../../download.html">Download</a></ft>
+						<ft><a href="../../contribute.html">Contribute</a></ft>
+						<ft><a href="https://github.com/SAS-ROSET">Github</a></ft>
+					</div>
+					<div>
+						<fh>Legal & Support</fh>
+						<ft><a href="../../legal/privacy_policy.html">Privacy Policy</a></ft>
+						<ft><a href="../../legal/terms.html"> Terms and Conditions</a></ft>
+						<ft><a href="../../contact.html"> Contact & Report</a></ft>
+					</div>	
+				</div>
+				<script type="text/javascript">
+					// Copyrights
+					var currentYear = new Date().getFullYear();
+					document.getElementById('copyrights').textContent = "Copyrights (©) "+currentYear + " Saaiq Abdulla Saeed";
+				</script>
+			</footer>
+		
+		</body>
+		
+		<script src="../doc_dark_mode.js"></script>
+	</html>

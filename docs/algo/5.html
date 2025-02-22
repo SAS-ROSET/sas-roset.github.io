@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 	<html>
 		<head>
-			<title> SAS-ROSET  |  ROS Encryption Tool Documentation </title>
+			<title> SAS-ROSET  |  SAS-RCS/RBS Encryption Algorithms - SAS-RCS/RBS Encryption Algorithm Documentation </title>
 			<link data-default-icon="../../imgs/favicon.png" rel="icon" sizes="192x192" href="../../imgs/SAS_ROSET_ICON_3.png" />
 			<meta name="viewport" content="width=device-width, initial-scale=0.8, shrink-to-fit=yes">
 			<meta charset="utf-8">
@@ -16,7 +16,7 @@
 		</style>
 		
 		<body>
-			<!-- Navigation Bar Start-->
+		<!-- Navigation Bar Start-->
 			<div id="nav_bar">			
 				<a href="../../index.html"><div  id="nav_logo"><img style="height:100%;" src="../../imgs/SAS_ROSET_LOGO_NAME.png"/></div></a>				
 				<div id="nav_buttons_box_desktop">
@@ -68,7 +68,8 @@
 					
 						<doc_path_text>
 							<a href="../../docs.html" class="pl">Documentation</a> / 
-							<a href="graphical.html" class="pl">ROS Encryption Tool</a>
+							<a href="algorithms.html" class="pl">Algorithms</a> /
+							<a href="" class="pl">SAS-RCS/RBS Encryption Algorithms</a>
 						</doc_path_text>  
 						
 						<div class="doc_check_box">
@@ -78,37 +79,42 @@
 					</div>
 
 					<div id="doc_page">
-						<doc_h1> ROS Encryption Tool </doc_h1>
+						<doc_h1> 5. SAS-RCS/RBS Encryption Algorithms </doc_h1>
 						<doc_author>by: saaiqSAS</doc_author>
-						<doc_date>Last Updated: 19/2/2025</doc_date>
+						<doc_date>Last Updated: 24/6/2024</doc_date>
 						
-						<doc_para> 
-							Welcome to the official documentation for the ROS Encryption Tool. This guide will help you get started with the 
-							tool, providing comprehensive information on its features and functionality. Whether you're new to the tool or 
-							looking to explore advanced capabilities, this resource has you covered.							
-						</doc_para>	
+						<!-- <i>Dynamic Key</i>  <i>Static Key</i>  <i>D-Space</i>!-->
+						<doc_para>
+							The SAS-RCS/RBS Encryption Algorithms are built on top of the SAS-ROS Cipher, incorporating multiple cryptographic steps 
+							to address the vulnerabilities of the pure ROS Cipher, thereby providing robust and comprehensive encryption for two 
+							primary data types: text and binary. The algorithms utilizes a variation of the same two types of keys as the ROS Cipher 
+							- <i>Dynamic Key</i> and <i>Static Key</i>.
+							<br/><br/>
+							
+							SAS-RCS (Saaiq Abdulla Saeed's - Random Character Substitution) is a text-level substitution encryption that processes text input 
+							and generates text output by manipulating characters. The algorithm is designed to support all Unicode characters including 
+							BMP (Basic Multilingual Plane) and SCP (Supplementary Character Plane).
+							<br/><br/>
+							
+							SAS-RBS (SAS - Random Binary Substitution) operates at the binary level, taking byte input and producing byte output. The algorithm
+							manipulates binary differently on various levels, such as bitwise, bytewise or custom group wise.
+							<br/><br/>
+							
+							Below, Fig.5.1 shows the flow diagram for the steps involved in each individual algorithm.
+							<br/><br/>
+						</doc_para>
 						
-						<doc_para><strong>Warning:</strong> This documentation is currently incomplete. Some sections may be missing or subject to change.</doc_para>
-
-						<doc_h2>Contents</doc_h2>
-						<a href="0.html" class="doc_content"> 0. Setting Up </a>	
-						<a href="1.html" class="doc_content"> 1. User Interface </a>	
-						<a href="2.html" class="doc_content"> 2. Generating Keys</a>	
-						<a href="3.html" class="doc_content"> 3. Encrypting Text</a>	
-						<a href="4.html" class="doc_content"> 4. Decrypting Text</a>	
-						<a href="5.html" class="doc_content"> 5. Encrypting Files</a>	
-						<a href="6.html" class="doc_content"> 6. Decrypting Files</a>	
-						<a href="7.html" class="doc_content"> 7. Process Settings</a>	
+						<img class="doc_image" src="imgs/5_1.png"/> <doc_fig>Fig.5.1</doc_fig>
 						
-						</br></br>
-						<div class="grid_2button_cent">
-							<a href="https://docs.google.com/forms/d/e/1FAIpQLSddVLlTjuOGv3gzU_Zq0rbIyLI7omuEgGAPRE80yPPzeFMCHA/viewform?usp=dialog"><p class="doc_button"> Rate Us</p></a>
-							<a href="https://docs.google.com/forms/d/e/1FAIpQLSccSJ1yBujxJmKswvDvrF4JmRJfH5H1e3fagOzuJk-xEnzRRQ/viewform?usp=dialog"><p class="doc_button" > Report Bug</p></a>
-							<a href="https://docs.google.com/forms/d/e/1FAIpQLSdKJDMUSIaJte96xYlM23lKruF7TBkuoWkqHVCHoIt1EmTh8w/viewform?usp=dialog"><p class="doc_button" > Request Feature</p></a>
-						</div>
-					
+						<br/><br/>
 					</div>
-				</div>			
+					
+					<div class="doc_navigate_box">
+							<a href="4.html" ><p class="white_button"> Previous: Attacking SAS-ROS </p></a>
+							<a href="6.html" ><p class="blue_button"> Next: Keys - RCS/RBS  </p></a>
+					</div>	
+				</div>		
+					
 			</main>
 			
 			<footer>
@@ -145,5 +151,6 @@
 			</footer>
 		
 		</body>
+		
 		<script src="../doc_dark_mode.js"></script>
 	</html>

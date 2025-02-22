@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+	<html>
+		<head>
+			<title> SAS-ROSET  |  Documentation </title>
+			<link data-default-icon="imgs/favicon.png" rel="icon" sizes="192x192" href="imgs/SAS_ROSET_ICON_3.png" />
+			<meta name="viewport" content="width=device-width, initial-scale=0.8, shrink-to-fit=yes">
+			<meta charset="utf-8">
+		</head>
+		
+		<link rel="stylesheet" href="styles/fonts.css"/>
+		<link rel="stylesheet" href="styles/universal.css"/>
+		<link rel="stylesheet" href="styles/docs.css"/>
+		
+		<style type="text/css">
+		
+		</style>
+		
+		<body>
+		
+			<!-- Navigation Bar Start-->
+			<div id="nav_bar">			
+				<a href="index.html"><div  id="nav_logo"><img style="height:100%;" src="imgs/SAS_ROSET_LOGO_NAME.png"/></div></a>				
+				<div id="nav_buttons_box_desktop">
+					<a href="about.html"><p class="nav_buttons"> About </p></a>								
+					<a href="docs.html"><p class="nav_buttons"> Documentation </p></a>
+					<a href="https://github.com/SAS-ROSET"><p class="nav_buttons">Github</p></a>	
+					<a href="credits.html"><p class="nav_buttons"> Credits </p></a>
+				</div>						
+				<a href="download.html" ><div id="nav_download_button_box"><p id="nav_download_button"> Download </p></div></a>	
+				<div id="nav_dropdown_button">
+				<svg id="nav_dropdown_more_icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30" width="40" height="40">
+					<rect x="5" y="5" width="20" height="2" fill="#E6E6E6"/><rect x="5" y="11" width="20" height="2" fill="#E6E6E6"/><rect x="5" y="17" width="20" height="2" fill="#E6E6E6"/>
+				</svg>	
+				<svg id="nav_dropdown_close_icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+					<rect x="1" y="10" width="16" height="2" fill="#ffffff" transform="rotate(45 12 12)"/><rect x="8" y="3" width="2" height="16" fill="#ffffff" transform="rotate(45 12 12)"/>
+				</svg>		
+				</div>			
+			</div>
+			<div id="nav_dropdown_content">
+				<a href="about.html">About</a>
+				<a href="docs.html">Documentation</a>
+				<a href="https://github.com/SAS-ROSET">Github</a>
+				<a href="credits.html">Credits</a>
+				<a href="download.html">Download</a>
+			</div>	
+			<script type="text/javascript">
+				// nav dropdown toggle script
+					const dropdownButton = document.getElementById('nav_dropdown_button');
+					const dropdownContent = document.getElementById('nav_dropdown_content');
+					const dropdownClose = document.getElementById('nav_dropdown_close_icon');
+					const dropdownMore = document.getElementById('nav_dropdown_more_icon');
+					dropdownButton.addEventListener('click', function() {
+					  if (dropdownContent.style.display === 'block') {
+						dropdownContent.style.display = 'none'; 
+						dropdownClose.style.display = 'none'; 
+						dropdownMore.style.display = 'block'; 
+					  } else {
+						dropdownContent.style.display = 'block';
+						dropdownClose.style.display = 'block'; 
+						dropdownMore.style.display = 'none'; 
+					  }
+					});
+			</script>
+			<!-- Navigation Bar End-->
+				
+			<main>
+					<h1> Documentation </h1>
+				
+					<div class="restricted_width_box" id="hoverable_cards">
+						<div class="grid2_box" style=" margin-top: 50px;margin-bottom: 150px;grid-row-gap: 44px;">
+						
+							<a href="docs/algo/algorithms.html"  class="light_card" id="cat_1">
+								<h2> Algorithms </h2>
+								<t> Comprehensive analysis of the mechanisms and cryptanalysis of the <b>SAS-ROS Cipher</b>, alongside the <b>SAS-RCS/RBS Encryptions</b>, and the <b>SAS-RGM algorithm</b>. </t>	
+							</a>
+							
+							<a href="docs/graphical/graphical.html"  class="light_card" id="cat_2">
+								<h2> ROSET Graphical </h2>
+								<t> Unlock the Full Potential of the <b>ROS Encryption Tool</b>: A Step-by-Step Guide to Setup, Navigation, and Advanced Features.</t>
+							</a>
+							
+							<a href="docs/java_api/java_api.html" class="light_card" id="cat_3">
+								<h2> ROSET Java API </h2>
+								<t> Discover how to effortlessly implement and utilize all the features of the <b>ROSET Java API</b>, unlocking the power of SAS-RCS/RBS Encryption algorithms in your projects.</t>
+							</a>
+							
+						</div>
+					</div>
+					
+					<br/><br/><br/><br/>
+					<div class="restricted_width_box">
+						<div class="light_card">
+							<h2> Be a Part of the Project! </h2>
+							<t> The SAS-ROSET project is always looking for passionate individuals to contribute! Whether you're a programmer, cryptographer,
+							designer, or simply someone who wants to help, we'd love to have you onboard. Every contribution matters—whether it's as small as
+							fixing a typo, improving the design, optimizing code, or diving into cryptanalysis. Join us in making SAS-ROSET even better!</t>
+							<div class="grid_2button_right">
+								<a href="credits.html#contributers"><p class="white_button"> Contributors</p></a>
+								<a href="contribute.html"><p class="blue_button" > Join Us</p></a>
+							</div>
+						</div>
+						<br/><br/><br/><br/>
+					</div>
+
+			</main>
+			
+			<footer>
+				<div id="footer_serp"></div>
+				<p style="font-size:20px; margin-top:50px"><bg>Made with passion by </bg><a href="https://saaiqsas.github.io" class="footer_saaiqSAS"> saaiqSAS</a><bg> and Contributors</bg></p>
+				<br/>
+				<ft id="copyrights">Copyrights (©) 2024 Saaiq Abdulla Saeed</ft>
+				<ft>This website and its contents are generally licensed under the <a href="LICENSE.md">MIT License</a>, unless stated otherwise.</ft>
+				<div class="grid3_box" id="footer_grid">
+					<div>
+						<fh>Project Info</fh>
+						<ft><a href="about.html">About Project</a></ft>
+						<ft><a href="credits.html">Credits & Contributers</a></ft>
+						<ft><a href="docs.html">Documentation</a></ft>
+					</div>
+					<div>
+						<fh>Get Involved</fh>
+						<ft><a href="download.html">Download</a></ft>
+						<ft><a href="contribute.html">Contribute</a></ft>
+						<ft><a href="https://github.com/SAS-ROSET">Github</a></ft>
+					</div>
+					<div>
+						<fh>Legal & Support</fh>
+						<ft><a href="legal/privacy_policy.html">Privacy Policy</a></ft>
+						<ft><a href="legal/terms.html"> Terms and Conditions</a></ft>
+						<ft><a href="contact.html"> Contact & Report</a></ft>
+					</div>	
+				</div>
+				<script type="text/javascript">
+					// Copyrights
+					var currentYear = new Date().getFullYear();
+					document.getElementById('copyrights').textContent = "Copyrights (©) "+currentYear + " Saaiq Abdulla Saeed";
+				</script>
+			</footer>
+		
+		</body>
+	</html>

@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+	<html>
+		<head>
+			<title> SAS-ROSET  |  ROSET Java API - All Methods in the ROSET Java API | Encryption | Decryption | Java | Cryptography | Tool</title>
+			<link data-default-icon="../../imgs/favicon.png" rel="icon" sizes="192x192" href="../../imgs/SAS_ROSET_ICON_3.png" />
+			<meta name="viewport" content="width=device-width,<br>initial-scale=0.8,<br>shrink-to-fit=yes">
+			<meta charset="utf-8">
+		</head>
+		
+		<link rel="stylesheet" href="../../styles/fonts.css"/>
+		<link rel="stylesheet" href="../../styles/universal.css"/>
+		<link rel="stylesheet" href="../../styles/docs.css"/>
+		
+		<style type="text/css">
+			table {
+			  border-collapse: collapse;
+			  width: 100%;
+			  font-size: 15px;
+			  margin: 0px auto;
+			  margin-bottom: 50px;
+			}
+			
+			@media screen and (max-width: 700px) {
+				table {
+				 max-width: 700px;
+				 font-size: 11x;
+				}
+			}
+			
+			.jb {
+				font-family: 'JetBrainsMono-Regular';
+				 font-size: 14px;
+			}
+		</style>
+		
+		<body>
+		<!-- Navigation Bar Start-->
+			<div id="nav_bar">			
+				<a href="../../index.html"><div  id="nav_logo"><img style="height:100%;" src="../../imgs/SAS_ROSET_LOGO_NAME.png"/></div></a>				
+				<div id="nav_buttons_box_desktop">
+					<a href="../../about.html"><p class="nav_buttons"> About </p></a>								
+					<a href="../../docs.html"><p class="nav_buttons"> Documentation </p></a>
+					<a href="https://github.com/SAS-ROSET"><p class="nav_buttons">Github</p></a>	
+					<a href="../../credits.html"><p class="nav_buttons"> Credits </p></a>
+				</div>						
+				<a href="../../download.html" ><div id="nav_download_button_box"><p id="nav_download_button"> Download </p></div></a>	
+				<div id="nav_dropdown_button">
+				<svg id="nav_dropdown_more_icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30" width="40" height="40">
+					<rect x="5" y="5" width="20" height="2" fill="#E6E6E6"/><rect x="5" y="11" width="20" height="2" fill="#E6E6E6"/><rect x="5" y="17" width="20" height="2" fill="#E6E6E6"/>
+				</svg>	
+				<svg id="nav_dropdown_close_icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+					<rect x="1" y="10" width="16" height="2" fill="#ffffff" transform="rotate(45 12 12)"/><rect x="8" y="3" width="2" height="16" fill="#ffffff" transform="rotate(45 12 12)"/>
+				</svg>		
+				</div>			
+			</div>
+			<div id="nav_dropdown_content">
+				<a href="../../about.html">About</a>
+				<a href="../../docs.html">Documentation</a>
+				<a href="https://github.com/SAS-ROSET">Github</a>
+				<a href="../../credits.html">Credits</a>
+				<a href="../../download.html">Download</a>
+			</div>	
+			<script type="text/javascript">
+				// nav dropdown toggle script
+					const dropdownButton = document.getElementById('nav_dropdown_button');
+					const dropdownContent = document.getElementById('nav_dropdown_content');
+					const dropdownClose = document.getElementById('nav_dropdown_close_icon');
+					const dropdownMore = document.getElementById('nav_dropdown_more_icon');
+					dropdownButton.addEventListener('click',<br>function() {
+					  if (dropdownContent.style.display === 'block') {
+						dropdownContent.style.display = 'none'; 
+						dropdownClose.style.display = 'none'; 
+						dropdownMore.style.display = 'block'; 
+					  } else {
+						dropdownContent.style.display = 'block';
+						dropdownClose.style.display = 'block'; 
+						dropdownMore.style.display = 'none'; 
+					  }
+					});
+			</script>
+			<!-- Navigation Bar End-->
+				
+			<main>
+				<div class="restricted_width_box">
+					<div class="doc_path_box">
+					
+						<doc_path_text>
+							<a href="../../docs.html" class="pl">Documentation</a> / 
+							<a href="java_api.html" class="pl">ROSET Java API</a> /
+							<a href="" class="pl">All Methods</a>
+						</doc_path_text>  
+						
+						<div class="doc_check_box">
+							<label for="darkModeToggle">Dark Mode:</label>
+							<input type="checkbox" id="darkModeToggle">
+						</div>
+					</div>
+
+					<div id="doc_page">
+						<doc_h1> 1. All Methods in the ROSET Java API</doc_h1>
+						<doc_author>by: saaiqSAS</doc_author>
+						<doc_date>Last Updated: 20/2/2025</doc_date>
+						
+						<doc_para>
+							Below are all the methods of the ROSET Java API that are accessible, along with their descriptions. These are categorized based on similar functions and usage for better organization.
+						</doc_para>
+						
+						<doc_h2>Version</doc_h2>
+						<table>
+						  <tr>
+							<th>Method Name</th>	
+							<th>Description</th>
+						  </tr>
+						  
+							<tr><td class="jb">String getApiVersion()</td>
+								<td>Returns the version of the current API in the format 'vX.Y.Z'.</td>
+							</tr>
+
+							<tr><td class="jb">char getApiVersionId()</td>
+								<td>Returns a single character that represents the major version of the current API, specifically the 'X' value in 'vX.Y.Z'.</td>
+							</tr>
+
+							<tr><td class="jb">boolean apiSupportsVersion()</td>
+								<td>Returns 'true' if the current API supports the specified version ID (the 'X' value) provided as input.</td>
+							</tr>
+
+							<tr><td class="jb">String getApiVersionForId()</td>
+								<td>Returns the API version that supports the provided version ID (the 'X' value).</td>
+							</tr>
+						</table>
+						
+						
+						<doc_h2>Initialization</doc_h2>
+						<table>
+							<tr><td class="jb">void stopAllProcesses()</td>
+								<td>Sets the stop flag to true, forcibly halting all ongoing processes. Use this method only when shutting down the application.</td>
+							</tr>
+
+							<tr><td class="jb">void initializeDynamicKeyStorage()</td>
+								<td>Pre-allocates memory for dynamic keys that will be extracted later. This can optimize memory usage, especially when dealing with large numbers of dynamic keys.</td>
+							</tr>
+
+							<tr><td class="jb">void initializeStaticKeyStorage()</td>
+								<td>Pre-allocates memory for static keys that will be extracted later. This can optimize memory usage, especially when dealing with large numbers of static keys.</td>
+							</tr>
+
+							<tr><td class="jb">void resetAllKeyStores()</td>
+								<td>Removes all extracted keys from memory and resets all key-related variables to their default values. Use this method when switching to a new set of keys, making the old ones obsolete.</td>
+							</tr>
+						</table>
+						
+						
+						<doc_h2>Key Information</doc_h2>
+						<table>
+
+							<tr><td class="jb">boolean keySupportsRBS()</td>
+								<td>Returns 'true' if the extracted key for the given ID supports RBS (Remote Boot Services).</td>
+							</tr>
+
+							<tr><td class="jb">int getDynamicSetting()</td>
+								<td>Returns the dynamic setting associated with the provided ID and position.</td>
+							</tr>
+
+							<tr><td class="jb">int[] getStaticKey()</td>
+								<td>Returns the static key corresponding to the given ID.</td>
+							</tr>
+
+							<tr><td class="jb">boolean dynamicKeyExists()</td>
+								<td>Checks if the dynamic key for the given ID is extracted and available in memory.</td>
+							</tr>
+
+						</table>
+						
+						
+						<doc_h2>Key Generation</doc_h2>
+						<table>
+
+							<tr><td class="jb">int keyLengthForBits()</td>
+								<td>Returns the key length corresponding to the provided bit size.</td>
+							</tr>
+
+							<tr><td class="jb">boolean keyLengthSupportsRBS()</td>
+								<td>Checks whether the specified key length supports Remote Boot Services (RBS).</td>
+							</tr>
+
+							<tr><td class="jb">int[] generateDynamicKey()</td>
+								<td>Generates a dynamic key as an integer array based on the provided parameters.</td>
+							</tr>
+							
+							<tr><td class="jb">String generateDynamicKeyString()</td>
+								<td>Generates a dynamic key string based on the provided parameters.</td>
+							</tr>
+							
+							<tr><td class="jb">int[] generateStaticKey()</td>
+								<td>Generates a static key as an integer array based on the specified key length.</td>
+							</tr>
+
+							<tr><td class="jb">String generateStaticKeyString()</td>
+								<td>Generates a static key string based on the specified key length.</td>
+							</tr>
+						</table>
+						 
+						 
+						<doc_h2>Key Extraction</doc_h2>
+						<table>
+
+							<tr><td class="jb">int extractDynamicKeyString()</td>
+								<td>Returns a reference ID after extracting the provided dynamic key string.</td>
+							</tr>
+
+							<tr><td class="jb">int extractDynamicKey()</td>
+								<td>Returns a reference ID after extracting the provided dynamic key as an integer array.</td>
+							</tr>
+
+							<tr><td class="jb">int extractStaticKeyString()</td>
+								<td>Returns a reference ID after extracting the provided static key string.</td>
+							</tr>
+
+							<tr><td class="jb">int extractStaticKey()</td>
+								<td>Returns a reference ID after extracting the provided static key as an integer array.</td>
+							</tr>
+
+							<tr><td class="jb">int extractStaticKeyReversed()</td>
+								<td>Returns a reference ID after re-extracting an already extracted static key in reverse order, providing an additional usable static key.</td>
+							</tr>
+
+						</table>
+						
+						
+						<doc_h2>Quick Processing</doc_h2>
+						<table>
+
+							<tr><td class="jb">boolean setQuickProcessingDynOnly()</td>
+								<td>Enables 'Quick Processing' for the specified dynamic key reference ID.</td>
+							</tr>
+
+							<tr><td class="jb">boolean setQuickProcessing()</td>
+								<td>Enables 'Quick Processing' for the specified key reference IDs. Activating 'Quick Processing' for a set of extracted keys improves performance significantly, but at the cost of increased memory usage.</td>
+							</tr>
+
+						</table>
+						
+						
+						<doc_h2>Secure Metadata Creation</doc_h2>
+						<table>
+
+							<tr><td class="jb">String drosEncrypt()</td>
+								<td>Encrypts the provided string using only the dynamic key with SAS-DROS (Secure Authentication System - Dynamic Range Of Secure). </td>
+							</tr>
+
+							<tr><td class="jb">String drosDecrypt()</td>
+								<td>Decrypts a string that was previously encrypted using SAS-DROS.</td>
+							</tr>
+
+							<tr><td class="jb">String getCharFromDynamicKey()</td>
+								<td>Returns the character at the specified position in the dynamic key character set.</td>
+							</tr>
+
+							<tr><td class="jb">String getExternalChar()</td>
+								<td>Returns a character from the Unicode set that is not present in the provided string.</td>
+							</tr>
+
+						</table>
+						
+						
+						<doc_h2>Encryption & Decryption</doc_h2>
+						<table>
+
+							<tr><td class="jb">int rbsNumberOfBytesToPass()</td>
+								<td>Returns the number of bytes to pass to the SAS-RBS encryption/decryption methods for a given dynamic key ID.</td>
+							</tr>
+
+							<tr><td class="jb">byte[] rbsByteEncrypt()</td>
+								<td>Encrypts the provided byte array using SAS-RBS and returns the encrypted byte array.</td>
+							</tr>
+
+							<tr><td class="jb">byte[] rbsByteDecrypt()</td>
+								<td>Decrypts the given SAS-RBS encrypted byte array and returns the decrypted byte array.</td>
+							</tr>
+
+							<tr><td class="jb">String rcsTextEncrypt()</td>
+								<td>Encrypts the provided string using SAS-RCS and returns the encrypted string.</td>
+							</tr>
+
+							<tr><td class="jb">String rcsTextDecrypt()</td>
+								<td>Decrypts the given SAS-RCS encrypted string and returns the decrypted string.</td>
+							</tr>
+
+							<tr><td class="jb">int rcsNumOfBytesToPass()</td>
+								<td>Returns the number of bytes to pass to the SAS-RCS encryption/decryption methods to achieve a specific output string length.</td>
+							</tr>
+
+							<tr><td class="jb">String rcsByteEncrypt()</td>
+								<td>Encrypts the provided byte array using SAS-RCS and returns the resulting encrypted string.</td>
+							</tr>
+
+							<tr><td class="jb">byte[] rcsByteDecrypt()</td>
+								<td>Decrypts the provided SAS-RCS encrypted string and returns the decrypted byte array.</td>
+							</tr>
+
+						</table>
+						
+						
+						<doc_h2>Miscellaneous</doc_h2>
+						<table>
+
+							<tr><td class="jb">int stringToInt()</td>
+								<td>Converts the provided string representation of a number into an integer.</td>
+							</tr>
+
+							<tr><td class="jb">int charToInt()</td>
+								<td>Converts the provided character (char) number into an integer.</td>
+							</tr>
+
+							<tr><td class="jb">String[] stringBreaker()</td>
+								<td>Splits a string into parts based on the specified delimiter character.</td>
+							</tr>
+
+							<tr><td class="jb">String[] stringDivider()</td>
+								<td>Divides a string into groups, with a set number of characters per group.</td>
+							</tr>
+
+							<tr><td class="jb">String[] stringToCharStringArr()</td>
+								<td>Converts each character of a string into a separate string, returning them as an array of strings.</td>
+							</tr>
+
+							<tr><td class="jb">String intArrayToBase64_Encode()</td>
+								<td>Encodes an integer array into a Base64 string.</td>
+							</tr>
+
+							<tr><td class="jb">int[] intArrayToBase64_Decode()</td>
+								<td>Decodes a Base64 encoded string into an integer array.</td>
+							</tr>
+
+						</table>
+						
+						
+						
+						<!-- 
+						<doc_h2>TABLE HEADING</doc_h2>
+						<table>
+						  
+							<tr><td class="jb">method()</td>
+								<td>-</td>
+							</tr>
+							
+							<tr><td class="jb">()</td>
+								<td>-</td>
+							</tr>
+						  
+						  
+						</table>
+						-->
+						
+						
+					</div>
+					
+					<div class="doc_navigate_box">
+							<a href="0.html" ><p class="white_button"> Previous: Setting Up </p></a>
+							<a href="2.html" ><p class="blue_button"> Next: Generating Keys </p></a>
+					</div>	
+				</div>	
+					
+			</main>
+			
+			<footer>
+				<div id="footer_serp"></div>
+				<p style="font-size:20px; margin-top:50px"><bg>Made with passion by </bg><a href="https://saaiqsas.github.io" class="footer_saaiqSAS"> saaiqSAS</a><bg> and Contributors</bg></p>
+				<br/>
+				<ft id="copyrights">Copyrights (©) 2024 Saaiq Abdulla Saeed</ft>
+				<ft>This website and its contents are generally licensed under the <a href="../../LICENSE.md">MIT License</a>,<br>unless stated otherwise.</ft>
+				<div class="grid3_box" id="footer_grid">
+					<div>
+						<fh>Project Info</fh>
+						<ft><a href="../../about.html">About Project</a></ft>
+						<ft><a href="../../credits.html">Credits & Contributers</a></ft>
+						<ft><a href="../../docs.html">Documentation</a></ft>
+					</div>
+					<div>
+						<fh>Get Involved</fh>
+						<ft><a href="../../download.html">Download</a></ft>
+						<ft><a href="../../contribute.html">Contribute</a></ft>
+						<ft><a href="https://github.com/SAS-ROSET">Github</a></ft>
+					</div>
+					<div>
+						<fh>Legal & Support</fh>
+						<ft><a href="../../legal/privacy_policy.html">Privacy Policy</a></ft>
+						<ft><a href="../../legal/terms.html"> Terms and Conditions</a></ft>
+						<ft><a href="../../contact.html"> Contact & Report</a></ft>
+					</div>	
+				</div>
+				<script type="text/javascript">
+					// Copyrights
+					var currentYear = new Date().getFullYear();
+					document.getElementById('copyrights').textContent = "Copyrights (©) "+currentYear + " Saaiq Abdulla Saeed";
+				</script>
+			</footer>
+		
+		</body>
+		
+		<script src="../doc_dark_mode.js"></script>
+	</html>

@@ -1,0 +1,30 @@
+--------------------------------------------------------------------------
+ SAS-ROS-Cipher : Substitution Table Distribution Across KC-Space - Proof
+--------------------------------------------------------------------------
+( Generated via the SAS-ROS-Cipher_STDAKCS_Tool v2 )
+- GENERAL INFO -
+Key_Length: 3
+Key_Space:  6 (per key type)
+KC_Space:   36
+ROS_Method: 1
+Data_Used:  abc
+------------------------------------------------------
+- KC-SPACE ROS PROCESS -
+#. [Static Key] -> [Dynamic Key] (data output)  |  ...
+1. [0, 1, 2] -> [a, b, c] (abc)  |  [c, a, b] (abc)  |  [b, c, a] (abc)  |  [b, a, c] (abc)  |  [c, b, a] (abc)  |  [a, c, b] (abc)  |
+2. [2, 0, 1] -> [a, b, c] (cab)  |  [c, a, b] (cab)  |  [b, c, a] (cab)  |  [b, a, c] (bca)  |  [c, b, a] (bca)  |  [a, c, b] (bca)  |
+3. [1, 2, 0] -> [a, b, c] (bca)  |  [c, a, b] (bca)  |  [b, c, a] (bca)  |  [b, a, c] (cab)  |  [c, b, a] (cab)  |  [a, c, b] (cab)  |
+4. [1, 0, 2] -> [a, b, c] (bac)  |  [c, a, b] (cba)  |  [b, c, a] (acb)  |  [b, a, c] (bac)  |  [c, b, a] (acb)  |  [a, c, b] (cba)  |
+5. [2, 1, 0] -> [a, b, c] (cba)  |  [c, a, b] (acb)  |  [b, c, a] (bac)  |  [b, a, c] (acb)  |  [c, b, a] (cba)  |  [a, c, b] (bac)  |
+6. [0, 2, 1] -> [a, b, c] (acb)  |  [c, a, b] (bac)  |  [b, c, a] (cba)  |  [b, a, c] (cba)  |  [c, b, a] (bac)  |  [a, c, b] (acb)  |
+------------------------------------------------------
+- RESULT STATISTICS -
+(below each 'output' represents a unique substitution table)
+#. output -> total_occurrences_in_kc_space
+1. bca -> 6
+2. acb -> 6
+3. abc -> 6
+4. cba -> 6
+5. cab -> 6
+6. bac -> 6
+------------------------------------------------------

@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+	<html>
+		<head>
+			<title> SAS-ROSET  |  Contribute to the ROSET Project </title>
+			<link data-default-icon="imgs/favicon.png" rel="icon" sizes="192x192" href="imgs/SAS_ROSET_ICON_3.png" />
+			<meta name="viewport" content="width=device-width, initial-scale=0.8, shrink-to-fit=yes">
+			<meta charset="utf-8">
+		</head>
+		
+		<link rel="stylesheet" href="styles/fonts.css"/>
+		<link rel="stylesheet" href="styles/universal.css"/>
+		
+		<style type="text/css">
+			t {
+				margin-top:20px;
+				margin-bottom:20px;
+			}
+			
+			#small_width {
+				padding: 20px;
+				padding-top: 0px;
+				max-width: 850px;
+			}
+		</style>
+		
+		<body>
+		
+			<!-- Navigation Bar Start-->
+			<div id="nav_bar">			
+				<a href="index.html"><div  id="nav_logo"><img style="height:100%;" src="imgs/SAS_ROSET_LOGO_NAME.png"/></div></a>				
+				<div id="nav_buttons_box_desktop">
+					<a href="about.html"><p class="nav_buttons"> About </p></a>								
+					<a href="docs.html"><p class="nav_buttons"> Documentation </p></a>
+					<a href="https://github.com/SAS-ROSET"><p class="nav_buttons">Github</p></a>	
+					<a href="credits.html"><p class="nav_buttons"> Credits </p></a>
+				</div>						
+				<a href="download.html" ><div id="nav_download_button_box"><p id="nav_download_button"> Download </p></div></a>	
+				<div id="nav_dropdown_button">
+				<svg id="nav_dropdown_more_icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30" width="40" height="40">
+					<rect x="5" y="5" width="20" height="2" fill="#E6E6E6"/><rect x="5" y="11" width="20" height="2" fill="#E6E6E6"/><rect x="5" y="17" width="20" height="2" fill="#E6E6E6"/>
+				</svg>	
+				<svg id="nav_dropdown_close_icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+					<rect x="1" y="10" width="16" height="2" fill="#ffffff" transform="rotate(45 12 12)"/><rect x="8" y="3" width="2" height="16" fill="#ffffff" transform="rotate(45 12 12)"/>
+				</svg>		
+				</div>			
+			</div>
+			<div id="nav_dropdown_content">
+				<a href="about.html">About</a>
+				<a href="docs.html">Documentation</a>
+				<a href="https://github.com/SAS-ROSET">Github</a>
+				<a href="credits.html">Credits</a>
+				<a href="download.html">Download</a>
+			</div>	
+			<script type="text/javascript">
+				// nav dropdown toggle script
+					const dropdownButton = document.getElementById('nav_dropdown_button');
+					const dropdownContent = document.getElementById('nav_dropdown_content');
+					const dropdownClose = document.getElementById('nav_dropdown_close_icon');
+					const dropdownMore = document.getElementById('nav_dropdown_more_icon');
+					dropdownButton.addEventListener('click', function() {
+					  if (dropdownContent.style.display === 'block') {
+						dropdownContent.style.display = 'none'; 
+						dropdownClose.style.display = 'none'; 
+						dropdownMore.style.display = 'block'; 
+					  } else {
+						dropdownContent.style.display = 'block';
+						dropdownClose.style.display = 'block'; 
+						dropdownMore.style.display = 'none'; 
+					  }
+					});
+			</script>
+			<!-- Navigation Bar End-->
+				
+			<main>
+					<h1> Contribute to the 
+					ROSET Project </h1>
+				
+					<div id="small_width" class="restricted_width_box" >
+						<t>
+						We appreciate your interest in contributing to SAS-ROSET! Whether you're interested in enhancing the algorithms,
+						improving the graphical tool, or extending the API, your contributions will help make this project better. 
+						Contributions can range from fixing simple typos and improving documentation to conducting advanced tasks like 
+						cryptanalysis of encryption algorithms, optimizing code efficiency, and adding new features. Every contribution 
+						is valuable, and we welcome contributions of all levels.
+						<t/>
+						<t>
+						Please follow the instructions below based on the section you're interested in contributing to, and we look forward to collaborating with you!
+						<t/>	
+						</br><hr/></br></br>
+						
+						
+						<h5> 1. Contributing to Encryption Algorithms </h5>
+						<t>
+						  The SAS-ROS Cipher, along with the SAS-RCS and SAS-RBS Encryption Algorithms, are relatively 
+						  new and still under active research. We are seeking further analysis to confirm existing findings,
+						  as well as cryptographic improvements in both efficiency and security. If you have expertise in 
+						  cryptography, we highly encourage you to contribute by exploring potential enhancements, 
+						  conducting studies, and sharing your insights.
+						</t>
+						<t>
+						  When you're ready to share your work, you can submit your research and findings through the form below:
+						</t>
+						<a href="https://docs.google.com/forms/d/e/1FAIpQLSfD1o3sfOK0EIqDgfkyPpEW5k2YOSA3FmygRYh_LmPDZlD-qw/viewform?usp=dialog" class="link"><p>Submit Research & Findings - SAS-ROS/RCS/RBS</p></a>
+						<t>
+						  Alternatively, you can also submit your work via email:
+						</t>
+						<a href="mailto:sas.roset@gmail.com" class="link"><p><b>Email:</b> sas.roset@gmail.com</p></a>
+						</br><hr/></br></br>
+						
+						
+						<h5>2. Contributing to Code</h5>
+						<t>
+						We welcome contributions to ROSET Graphical, ROSET Java API, Documentations, and the ROSET Website.
+						We truly value the time and effort of all contributors. Whether it's bug fixes, 
+						UI improvements, code efficiency enhancements, new features, or any other improvements you believe would enhance the project, 
+						we are open to contributions of all kinds. From small tweaks to larger enhancements, we appreciate the creativity and effort 
+						of each contributor. The process for contributing is straightforward, as outlined below:
+						</t>
+						<t>
+						  <b>1. Create an Issue (if none exists):</b>
+						  If the bug or feature you want to work on isn’t already listed as an issue, please create one. Be sure to provide 
+						  a clear description of the bug or feature request, including any relevant context or details.
+						</t>
+						<t>
+						  <b>2. Comment on the Issue:</b>
+						  Before you begin working, comment on the issue to let us know you are planning to tackle it. This helps ensure 
+						  that no one else is working on the same task. For example, you can comment, “I’ll work on fixing this bug” or 
+						  “I’ll implement this feature.”
+						</t>
+						<t>
+						  <b>3. Fork the Repository:</b>
+						  Once the issue is ready, fork the repository to create your own copy. This will allow you to freely make changes 
+						  to the code in your fork, whether it’s fixing bugs, improving features, or adding new functionality.
+						</t>
+						<t>
+						  <b>4. Make Your Changes:</b>
+						  Now, you can freely work on the task. Be sure to follow the project’s coding style, write tests for any new 
+						  functionality, and keep your commits focused and descriptive.
+						</t>
+						<t>
+						  <b>5. Submit a Pull Request (PR):</b>
+						  Once you're ready to submit your work, open a pull request (PR) from your fork to the main repository. In your PR 
+						  description, provide a clear summary of what your changes do, why they’re beneficial, and reference the issue number
+						  you’re working on. This allows us to track the changes and see the connection to the original issue.
+						</t>
+						<t>
+						  <b>6. Review and Merge:</b>
+						  After you submit your PR, the project maintainers will review it. We’ll provide feedback or approve the PR. Once 
+						  everything looks good, we’ll merge your changes into the main codebase.
+						</t>
+				
+						</br><hr/></br></br>
+
+					</div>
+					</br></br>
+			
+			</main>
+			
+			<footer>
+				<div id="footer_serp"></div>
+				<p style="font-size:20px; margin-top:50px"><bg>Made with passion by </bg><a href="https://saaiqsas.github.io" class="footer_saaiqSAS"> saaiqSAS</a><bg> and Contributors</bg></p>
+				<br/>
+				<ft id="copyrights">Copyrights (©) 2024 Saaiq Abdulla Saeed</ft>
+				<ft>This website and its contents are generally licensed under the <a href="LICENSE.md">MIT License</a>, unless stated otherwise.</ft>
+				<div class="grid3_box" id="footer_grid">
+					<div>
+						<fh>Project Info</fh>
+						<ft><a href="about.html">About Project</a></ft>
+						<ft><a href="credits.html">Credits & Contributers</a></ft>
+						<ft><a href="docs.html">Documentation</a></ft>
+					</div>
+					<div>
+						<fh>Get Involved</fh>
+						<ft><a href="download.html">Download</a></ft>
+						<ft><a href="contribute.html">Contribute</a></ft>
+						<ft><a href="https://github.com/SAS-ROSET">Github</a></ft>
+					</div>
+					<div>
+						<fh>Legal & Support</fh>
+						<ft><a href="legal/privacy_policy.html">Privacy Policy</a></ft>
+						<ft><a href="legal/terms.html"> Terms and Conditions</a></ft>
+						<ft><a href="contact.html"> Contact & Report</a></ft>
+					</div>	
+				</div>
+				<script type="text/javascript">
+					// Copyrights
+					var currentYear = new Date().getFullYear();
+					document.getElementById('copyrights').textContent = "Copyrights (©) "+currentYear + " Saaiq Abdulla Saeed";
+				</script>
+			</footer>
+		
+		</body>
+	</html>
