@@ -81,11 +81,60 @@
 					<div id="doc_page">
 						<doc_h1> 3. Extracting Dynamic & Static Keys</doc_h1>
 						<doc_author>by: saaiqSAS</doc_author>
-						<doc_date>Last Updated: 21/2/2025</doc_date>
+						<doc_date>Last Updated: 25/2/2025</doc_date>
+						
+						<doc_para>
+							This section will go through how to extract generated <dh>String</dh> or <dh>int[]</dh> format <dh>Dynamic Keys</dh> and <dh>Static Keys</dh>. 
+							Do no that a sample usage of the ROSET Java API can be found  <a href="https://github.com/SAS-ROSET/ROSET_Java_API/blob/main/src/com/sas/roset/api/Main.java" class="doc_link">Here (ROSET Java API Usage Sample)</a>.
+						</doc_para>
+						
+						<doc_para>
+							The key extraction methods in the API will take the key itself a parameter and once the key is extracted to memory, the methods
+							will return an <dh>int</dh> ID that will be used to refer to the extracted key.
+						</doc_para>
+						
+						<doc_h2>Extract Dynamic Key</doc_h2>
+						<doc_h3>int[] Dynamic Key</doc_h3>
+						<doc_para>
+							To extract a Dynamic Key in <dh>int[]</dh> format, the method  <dh>extractDynamicKey(int[] key)</dh> should be used. Below is a sample snippet.
+						</doc_para>
+						<doc_code>
+						 int[] Dynamic_Key = // generated Dynamic Key
+						 int Dynamic_Key_ID = SAS_ROSET.extractDynamicKey(Dynamic_Key);
+						 
+						 // 'Dynamic_Key_ID' is the reference ID
+						 
+						</doc_code>
+						
+						<doc_h3>Mixed String Dynamic Key</doc_h3>
+						<doc_para>
+							To extract a Dynamic Key in mixed <dh>String</dh> format, the method  <dh>extractDynamicKeyString(String key, boolean base64)</dh> should be used. Below is a sample snippet.
+						</doc_para>
+						<doc_code>
+						 String Dynamic_Key = // generated Mixed String Dynamic Key
+						 int Dynamic_Key_ID = SAS_ROSET.extractDynamicKeyString(Dynamic_Key, false);
+						 
+						 // 'Dynamic_Key_ID' is the reference ID
+						 
+						</doc_code>
+						
+						<doc_h3>Base64 String Dynamic Key</doc_h3>
+						<doc_para>
+							To extract a Dynamic Key in base64 <dh>String</dh> format, the method  <dh>extractDynamicKeyString(String key, boolean base64</dh> should be used. Below is a sample snippet.
+						</doc_para>
+						<doc_code>
+						 String Dynamic_Key = // generated base64 String Dynamic Key
+						 int Dynamic_Key_ID = SAS_ROSET.extractDynamicKeyString(Dynamic_Key, true);
+						 
+						 // 'Dynamic_Key_ID' is the reference ID
+						 
+						</doc_code>
 						
 						
+						<doc_h2>Extract Static Keys</doc_h2>
+						<doc_h3>int[] Static Keys</doc_h3>
 						
-						
+						<doc_h3>Base64 String Static Keys</doc_h3>
 					</div>
 					
 					<div class="doc_navigate_box">

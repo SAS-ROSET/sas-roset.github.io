@@ -81,11 +81,11 @@
 					<div id="doc_page">
 						<doc_h1> 2. Generating Dynamic & Static Keys</doc_h1>
 						<doc_author>by: saaiqSAS</doc_author>
-						<doc_date>Last Updated: 21/2/2025</doc_date>
+						<doc_date>Last Updated: 25/2/2025</doc_date>
 						
 						<doc_para>
 							This section explains how to generate both <dh>Dynamic Keys</dh> and <dh>Static Keys</dh> using the ROSET Java API. We will also explore the different formats in which the keys can be represented, such as <dh>String</dh> and <dh>int[]</dh>. Additionally, we will cover the available parameters for each method, providing a comprehensive understanding of the key generation process. 
-							Sample usage of the ROSET Java API can be found in the <a href="https://github.com/SAS-ROSET/ROSET_Java_API" class="doc_link">ROSET Java API Github Repository</a>.
+							Sample usage of the ROSET Java API can be found  <a href="https://github.com/SAS-ROSET/ROSET_Java_API/blob/main/src/com/sas/roset/api/Main.java" class="doc_link">Here (ROSET Java API Usage Sample)</a>.
 						</doc_para>
 						
 						<doc_para>
@@ -126,7 +126,7 @@
 						
 						<doc_h2>Dynamic Key Generation</doc_h2>
 						<doc_para>
-							There are three ways you can generate a <dh>Dynamic Key</dh>: as an <dh>int[]</dh>, a mixed-character <dh>String</dh>, or a base64-encoded <dh>String</dh>. The most efficient method is to use the <dh>int[]</dh> format, as it offers better performance. To generate keys in these formats, the API provides two static methods: 
+							There are three ways you can generate a <dh>Dynamic Key</dh>: as an <dh>int[]</dh>, a mixed-character <dh>String</dh>, or a base64-encoded <dh>String</dh>. The most efficient method is to use the <dh>int[]</dh> format, as it offers better performance. The mixed character <dh>String</dh> can contain any character from the entire Unicode set, including Supplementary Multilingual Plane (SMP) characters. To generate keys in these formats, the API provides two static methods: 
 							<dh>generateDynamicKey()</dh>, which returns a newly generated <dh>Dynamic Key</dh> as an <dh>int[]</dh>, and <dh>generateDynamicKeyString()</dh>, which returns a newly generated <dh>Dynamic Key</dh> as either a mixed-character <dh>String</dh> or a base64-encoded <dh>String</dh>, depending on the provided parameters. Below are the methods with their respective parameters and data types:
 						</doc_para>
 
@@ -257,7 +257,7 @@
 						
 						<doc_h2>Static Key Generation</doc_h2>
 						<doc_para>
-							There are two methods available for generating a <dh>Static Key</dh>: as an <dh>int[]</dh> array, or as a base64-encoded <dh>String</dh>. The <dh>int[]</dh> format is recommended for its superior performance. To generate keys in these formats, the API provides two static methods: 
+							There are two methods available for generating a <dh>Static Key</dh>: as an <dh>int[]</dh> array, or as a base64-encoded <dh>String</dh> (Mixed character String, not available). The <dh>int[]</dh> format is recommended for its superior performance. To generate keys in these formats, the API provides two static methods: 
 							<dh>generateStaticKey()</dh>, which returns a newly generated <dh>Static Key</dh> as an <dh>int[]</dh>, and <dh>generateStaticKeyString()</dh>, which returns a newly generated <dh>Static Key</dh> as a base64-encoded <dh>String</dh>. Below are the methods along with their respective parameters and data types:
 						</doc_para>
 
