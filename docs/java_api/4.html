@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 	<html>
 		<head>
-			<title> SAS-ROSET  |  ROSET Java API - Extracting Dynamic & Static Keys with the ROSET Java API | Encryption | Decryption | Java | Cryptography | Tool</title>
+			<title> SAS-ROSET  |  ROSET Java API - Setting Up 'Quick Processing' for Dynamic & Static Keys in ROSET Java API | Encryption | Decryption | Java | Cryptography | Tool</title>
 			<link data-default-icon="../../imgs/favicon.png" rel="icon" sizes="192x192" href="../../imgs/SAS_ROSET_ICON_3.png" />
 			<meta name="viewport" content="width=device-width, initial-scale=0.8, shrink-to-fit=yes">
 			<meta charset="utf-8">
@@ -69,7 +69,7 @@
 						<doc_path_text>
 							<a href="../../docs.html" class="pl">Documentation</a> / 
 							<a href="java_api.html" class="pl">ROSET Java API</a> /
-							<a href="" class="pl">Extracting Keys</a>
+							<a href="" class="pl">Quick Processing</a>
 						</doc_path_text>  
 						
 						<div class="doc_check_box">
@@ -79,111 +79,49 @@
 					</div>
 
 					<div id="doc_page">
-						<doc_h1> 3. Extracting Dynamic & Static Keys</doc_h1>
+						<doc_h1>4. Setting Up 'Quick Processing' for Dynamic & Static Keys</doc_h1>
 						<doc_author>by: saaiqSAS</doc_author>
 						<doc_date>Last Updated: 25/2/2025</doc_date>
 						
 						<doc_para>
-							In this section, we will walk you through the process of extracting both <dh>Dynamic Keys</dh> and <dh>Static Keys</dh> in <dh>String</dh> or <dh>int[]</dh> formats. 
-							For a practical example of how the ROSET Java API can be utilized, refer to the sample code available <a href="https://github.com/SAS-ROSET/ROSET_Java_API/blob/main/src/com/sas/roset/api/Main.java" class="doc_link">here (ROSET Java API Usage Sample)</a>.
+							<dh>Quick Processing</dh> is a feature available in this API that significantly enhances performance by reducing processing time. 
+							Programmatically, <dh>Quick Processing</dh> creates <dh>Hashmaps</dh> for <dh>int[]</dh> keys in memory. By utilizing <dh>Hashmaps</dh>, the time-consuming process of iterating through large <dh>int[]</dh> keys to find values is eliminated.
 						</doc_para>
 
 						<doc_para>
-							The API provides methods to extract keys by taking the key itself as a parameter. Once the key is successfully extracted into memory, these methods return an <dh>int</dh> ID. This unique ID is used to reference the extracted key in subsequent operations.
+							In this section, we will guide you through the process of setting up <dh>Quick Processing</dh> for a set of extracted <dh>Dynamic Key</dh> and <dh>Static Keys</dh>. 
+							Please note that <dh>Quick Processing</dh> can only be configured for a single set of keys — one <dh>Dynamic Key</dh> paired with multiple <dh>Static Keys</dh>.
+							For a practical example of how the ROSET Java API can be used, refer to the sample code available <a href="https://github.com/SAS-ROSET/ROSET_Java_API/blob/main/src/com/sas/roset/api/Main.java" class="doc_link">here (ROSET Java API Usage Sample)</a>.
 						</doc_para>
-						
-						<doc_h2>Extract Dynamic Key</doc_h2>
-						<doc_h3>int[] Dynamic Key</doc_h3>
-						<doc_para>
-							To extract a <dh>Dynamic Key</dh> in <dh>int[]</dh> format, use the <dh>extractDynamicKey(int[] key)</dh> method. The following code snippet demonstrates its usage:
-						</doc_para>
-						<doc_code>
-							int[] Dynamic_Key = // generated Dynamic Key
-							int Dynamic_Key_ID = SAS_ROSET.extractDynamicKey(Dynamic_Key);
-							
-							// 'Dynamic_Key_ID' is the reference ID
-							
-						</doc_code>
-						
 
-						<doc_h3>Mixed String Dynamic Key</doc_h3>
 						<doc_para>
-							To extract a <dh>Dynamic Key</dh> in mixed <dh>String</dh> format, use the <dh>extractDynamicKeyString(String key, boolean base64)</dh> method. Below is a sample code snippet for this:
+							To set up <dh>Quick Processing</dh>, use the method <dh>setQuickProcessing(boolean set_for_dynamic_key, int Dynamic_Key_ID, int[] Static_Key_IDs_Array)</dh>. This method takes a single <dh>Dynamic Key</dh> reference ID and an <dh>int[]</dh> array of multiple <dh>Static Key</dh> reference IDs.
 						</doc_para>
-						<doc_code>
-							String Dynamic_Key = // generated Mixed String Dynamic Key
-							int Dynamic_Key_ID = SAS_ROSET.extractDynamicKeyString(Dynamic_Key, false);
-							
-							// 'Dynamic_Key_ID' is the reference ID
-							
-						</doc_code>
-						
 
-						<doc_h3>Base64 String Dynamic Key</doc_h3>
-						<doc_para>
-							To extract a <dh>Dynamic Key</dh> in base64 <dh>String</dh> format, use the <dh>extractDynamicKeyString(String key, boolean base64)</dh> method, setting the <dh>base64</dh> flag to <dh>true</dh>. Below is a sample code snippet for this:
-						</doc_para>
 						<doc_code>
-							String Dynamic_Key = // generated base64 String Dynamic Key
-							int Dynamic_Key_ID = SAS_ROSET.extractDynamicKeyString(Dynamic_Key, true);
+							// Key Extraction
+							int Dynamic_Key_ID = // extract Dynamic Key
 							
-							// 'Dynamic_Key_ID' is the reference ID
-							
-						</doc_code>
-						
-						
-						
-						<doc_h2>Extract Static Keys</doc_h2>
-						<doc_h3>int[] Static Keys</doc_h3>
-						<doc_para>
-							To extract <dh>Static Keys</dh> in <dh>int[]</dh> format, use the <dh>extractStaticKey(int[] key)</dh> method. 
-							Since multiple <dh>Static Keys</dh> will be used, you should store the returned reference IDs in an <dh>int[]</dh>. 
-							These reference IDs will then be passed as parameters to the encryption and decryption methods, alongside the <dh>Dynamic Key</dh> ID and data.
-							Below is a sample code snippet demonstrating the process:
-						</doc_para>
-						<doc_code>
-							int[] Static_Key_1 = // generated Static Key
-							int[] Static_Key_2 = // generated Static Key
-							int[] Static_Key_3 = // generated Static Key
-							
-							// Extraction
-							int Static_Key_ID_1 = SAS_ROSET.extractStaticKey(Static_Key_1);
-							int Static_Key_ID_2 = SAS_ROSET.extractStaticKey(Static_Key_2);
-							int Static_Key_ID_3 = SAS_ROSET.extractStaticKey(Static_Key_3);
+							int Static_Key_ID_1 = // extract Static Key 1
+							int Static_Key_ID_2 = // extract Static Key 2
+							int Static_Key_ID_3 = // extract Static Key 3
 							
 							// Reference ID array preparation
-							int[] ID_Array = {Static_Key_ID_1, Static_Key_ID_2, Static_Key_ID_3};
+							int[] Static_Key_IDs_Array = {Static_Key_ID_1, Static_Key_ID_2, Static_Key_ID_3};
 							
-						</doc_code>
+							// Set up 'Quick Processing'
+							boolean isSet = setQuickProcessing(true, Dynamic_Key_ID, Static_Key_IDs_Array);
 						
+						</doc_code>
 
-						<doc_h3>Base64 String Static Keys</doc_h3>
 						<doc_para>
-							To extract <dh>Static Keys</dh> in base64 <dh>String</dh> format, use the <dh>extractStaticKeyString(String key)</dh> method. 
-							As with <dh>int[]</dh> Static Keys, you should store all the returned reference IDs in an <dh>int[]</dh>. 
-							These reference IDs will then be used in the encryption and decryption methods along with the <dh>Dynamic Key</dh> ID and data.
-							Below is a sample code snippet demonstrating the process:
+							Note that <dh>setQuickProcessing()</dh> will return <dh>true</dh> if the setup is successful, or <dh>false</dh> if it fails.
 						</doc_para>
-						<doc_code>
-							String Static_Key_1 = // generated Static Key
-							String Static_Key_2 = // generated Static Key
-							String Static_Key_3 = // generated Static Key
-							
-							// Extraction
-							int Static_Key_ID_1 = SAS_ROSET.extractStaticKeyString(Static_Key_1);
-							int Static_Key_ID_2 = SAS_ROSET.extractStaticKeyString(Static_Key_2);
-							int Static_Key_ID_3 = SAS_ROSET.extractStaticKeyString(Static_Key_3);
-							
-							// Reference ID array preparation
-							int[] ID_Array = {Static_Key_ID_1, Static_Key_ID_2, Static_Key_ID_3};
-							
-						</doc_code>
-						
 					</div>
 					
 					<div class="doc_navigate_box">
-							<a href="2.html" ><p class="white_button"> Previous: Generating Keys </p></a>
-							<a href="4.html" ><p class="blue_button"> Next: Quick Processing  </p></a>
+							<a href="3.html" ><p class="white_button"> Previous: Extracting Keys </p></a>
+							<a href="5.html" ><p class="blue_button"> Next: Encrypting/Decrypting Strings - RCS  </p></a>
 					</div>	
 				</div>	
 					
