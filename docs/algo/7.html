@@ -83,10 +83,10 @@
 						<doc_author>by: saaiqSAS</doc_author>
 						<doc_date>Last Updated: 4/7/2024</doc_date>
 						
-						<!-- <i>Dynamic Key</i>  <i>Static Key</i>  <i>D-Space</i>!-->
+						<!-- <dh>Dynamic Key</dh>  <dh>Static Key</dh>  <dh>D-Space</dh>!-->
 						<doc_para>
-							SAS-RGM (Saaiq Abdulla Saeed's - Random Group Mapping) Algorithm reprsents an input character's base string (i.e. base2, base16, base64) 
-							interms of characters within a randomly shuffled character set (<i>Dynamic Key</i>) by mapping each base unit to a subset of the original 
+							SAS-RGM (Saaiq Abdulla Saeed's - Random Group Mapping) Algorithm reprsents an input character's base string (i.e. base2, base10, base16, base64) 
+							interms of characters within a randomly shuffled character set (<dh>Dynamic Key</dh>) by mapping each base unit to a subset of the original 
 							character set and selecting a random character from the assigned subset. By default the SAS-RGM supports base2, base 16 and base64.
 
 						</doc_para>
@@ -110,6 +110,12 @@
 								
 								
 						</doc_code>
+						
+						<doc_para>
+							SAS-ROS Cipher cannot process objects that are not part of the <dh>Dynamic Key</dh>, and when providing text to the SAS-RCS, the text can often 
+							contain <dh>ext-chars</dh>. Thus in SAS-RCS, RGM is used to overcome this by representing any <dh>ext-chars</dh> interms of characters 
+							in the <dh>Dynamic Key</dh>.
+						</doc_para>
 						
 						
 						

@@ -83,7 +83,7 @@
 						<doc_author>by: saaiqSAS</doc_author>
 						<doc_date>Last Updated: 17/6/2024</doc_date>
 						
-						<!-- <i>Dynamic Key</i>  <i>Static Key</i>  <i>D-Space</i>!-->
+						<!-- <dh>Dynamic Key</dh>  <dh>Static Key</dh>  <dh>D-Space</dh>!-->
 						<doc_h3>1. Frequency Analysis</doc_h3>
 						<doc_para>
 							As the pure ROS Cipher uses a single substitution table across the input data, it is quite vulnerable
@@ -91,17 +91,17 @@
 							<br/><br/>
 							
 							Therefore, to overcome this vulnerability the SAS-RCS/RBS Encryption makes use of multiple substitution tables by
-							pairing a single <i>Dynamic Key</i> with multiple <i>Static Keys</i> ensuring unique substitution tables are used.	
-							Details about this will be provided in <i>Section 10 - SAS-ROS Cipher in SAS-RCS/RBS</i>.
+							pairing a single <dh>Dynamic Key</dh> with multiple <dh>Static Keys</dh> ensuring unique substitution tables are used.	
+							Details about this will be provided in <dh>Section 10 - SAS-ROS Cipher in SAS-RCS/RBS</dh>.
 						</doc_para>
 						
 						
 						<doc_h3>2. Brute Forcing</doc_h3>
 						<doc_para>
-							Brute forcing the ROS Cipher can be attempted by iterating through the <i>Sub-Space</i>. This involves trying all
-							<i>Static Keys</i> in <i>S-Space</i> with a single <i>Dynamic Key</i>. Attempting the reverse is ineffective due to 
-							<i>ROS-Law-6</i>. While brute forcing may be feasible for very short key lengths, it becomes increasingly difficult 
-							for larger lengths because the keyspace (<i>L!</i>) is extremely large. By default, the SAS-RCS/RBS Encryption is 
+							Brute forcing the ROS Cipher can be attempted by iterating through the <dh>Sub-Space</dh>. This involves trying all
+							<dh>Static Keys</dh> in <dh>S-Space</dh> with a single <dh>Dynamic Key</dh>. Attempting the reverse is ineffective due to 
+							<dh>ROS-Law-6</dh>. While brute forcing may be feasible for very short key lengths, it becomes increasingly difficult 
+							for larger lengths because the keyspace (<dh>L!</dh>) is extremely large. By default, the SAS-RCS/RBS Encryption is 
 							designed to support a maximum key length of 1,050,000 units.
 						</doc_para>
 						
@@ -110,8 +110,8 @@
 						<doc_para>
 							The pure ROS Cipher is vulnerable to CPA, as part of the substitution table used by the chosen plaintext can easily
 							be reproduced once its corresponding ciphertext is at hand. If the plaintext passed to the encryption oracle contains
-							any objects not included in the <i>Dynamic Key</i>, then it will not be processed and may lead to an error within the oracle.
-							If the oracle successfully returns a ciphertext, then all objects within the returned ciphertext are part of the <i>Dynamic Key</i>.
+							any objects not included in the <dh>Dynamic Key</dh>, then it will not be processed and may lead to an error within the oracle.
+							If the oracle successfully returns a ciphertext, then all objects within the returned ciphertext are part of the <dh>Dynamic Key</dh>.
 						</doc_para>
 						<doc_code>
 								Example 4.1: CPA Attack on ROS Cipher
@@ -133,9 +133,9 @@
 							Similarly to CPA, the pure ROS Cipher is also vulnerable to CCA. Part of the substitution table used by the chosen 
 							ciphertext can be easily reproduced once its corresponding plaintext is obtained. If the ciphertext passed to the 
 							decryption oracle is truly generated from its inverse encryption oracle, then all objects within the chosen ciphertext
-							are part of the <i>Dynamic Key</i>. If not, it may not be processed correctly and could lead to an error within the oracle.
+							are part of the <dh>Dynamic Key</dh>. If not, it may not be processed correctly and could lead to an error within the oracle.
 							If the decryption oracle successfully returns a plaintext, then all objects within the returned plaintext are part of
-							the <i>Dynamic Key</i>. However, do note that this may not be the case for the SAS-RCS/RBS Encryption.
+							the <dh>Dynamic Key</dh>. However, do note that this may not be the case for the SAS-RCS/RBS Encryption.
 						</doc_para>
 						<doc_code>
 								Example 4.2: CCA Attack on ROS Cipher
@@ -148,6 +148,7 @@
 								e ← b 
 								l ← i 
 								o ← p 
+								
 						</doc_code>
 						
 						<br/><br/>

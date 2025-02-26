@@ -83,7 +83,7 @@
 						<doc_author>by: saaiqSAS</doc_author>
 						<doc_date>Last Updated: 17/10/2024</doc_date>
 						
-						<!-- <i>Dynamic Key</i>  <i>Static Key</i>  <i>D-Space</i>!-->
+						<!-- <dh>Dynamic Key</dh>  <dh>Static Key</dh>  <dh>D-Space</dh>!-->
 						<doc_h3>1. Frequency Analysis</doc_h3>
 						<doc_para>
 							SAS-RGM is secure against frequency analysis as long as each base unit's subset length is long. 
@@ -99,15 +99,15 @@
 						
 						<doc_h3>2. Brute Forcing</doc_h3>
 						<doc_para>
-							While the method used for distribution of the character set (<i>Dynamic Key</i>) into subsets (a subset for each base unit),
-							the original character set (<i>Dynamic Key</i>) used is randomly generated beforehand via non-deterministic methods. 
-							Brute forcing the SAS-RGM implementation on SAS-RCS can be attempted by iterating through the <i>D-Space</i>, 
-							which is equivalent to <i>L!</i>. As key length gets longer brute forcing will become inconvenient, given that the
+							While the method used for distribution of the character set (<dh>Dynamic Key</dh>) into subsets (a subset for each base unit),
+							the original character set (<dh>Dynamic Key</dh>) used is randomly generated beforehand via non-deterministic methods. 
+							Brute forcing the SAS-RGM implementation on SAS-RCS can be attempted by iterating through the <dh>D-Space</dh>, 
+							which is equivalent to <dh>L!</dh>. As key length gets longer brute forcing will become inconvenient, given that the
 							maximum key length by default is 1,050,000 units.
 						</doc_para>
 						<doc_para>
 							Depending on the character set distribution method used (by default "1234"/"Round Robin" method is used), multiple 
-							<i>Dynamic Keys</i> from the <i>D-Space</i> will produce identical set of subsets.
+							<dh>Dynamic Keys</dh> from the <dh>D-Space</dh> will produce identical set of subsets.
 						</doc_para>
 						<doc_code>
 								Example 8.1: Identical set of subsets produced

@@ -81,37 +81,132 @@
 					<div id="doc_page">
 						<doc_h1> 8. SAS-RGM in SAS-RCS </doc_h1>
 						<doc_author>by: saaiqSAS</doc_author>
-						<doc_date>Last Updated: 17/10/2024</doc_date>
+						<doc_date>Last Updated: 26/2/2025</doc_date>
 						
-						<!-- <i>Dynamic Key</i>  <i>Static Key</i>  <i>D-Space</i>!-->
-						<doc_h3>!! HAVE TO CONTINUE FROM HERE !!</doc_h3>
+						<!-- <dh>Dynamic Key</dh>  <dh>Static Key</dh>  <dh>D-Space</dh>!-->
 						<doc_para>
-							While the method used for distribution of the character set (<i>Dynamic Key</i>) into subsets (a subset for each base unit),
-							the original character set (<i>Dynamic Key</i>) used is randomly generated beforehand via non-deterministic methods. 
-							Brute forcing the SAS-RGM implementation on SAS-RCS can be attempted by iterating through the <i>D-Space</i>, 
-							which is equivalent to <i>L!</i>. As key length gets longer brute forcing will become inconvenient, given that the
-							maximum key length by default is 1,050,000 units.
+							When passing text to the SAS-RCS, the text can often contain <dh>ext-chars</dh> and the SAS-ROS step cannot process such <dh>ext-chars</dh> 
+							that are not part of the <dh>Dynamic Key</dh>. Thus in SAS-RCS, RGM is used to overcome this by representing any <dh>ext-chars</dh> 
+							interms of characters included in the <dh>Dynamic Key</dh>.
 						</doc_para>
-						<doc_para>
-							Depending on the character set distribution method used (by default "1234"/"Round Robin" method is used), multiple 
-							<i>Dynamic Keys</i> from the <i>D-Space</i> will produce identical set of subsets.
-						</doc_para>
+						
 						<doc_code>
-								Example 8.1: Identical set of subsets produced
+								Example 9.1: Passing an ext-char through SAS-RGM
+								
+								ext-char: Q
+								Base: base2
+								Dynamic key: { c, i, e, a, f, h, b, g, d }
+								
+											  [ 0, 1, 0, 1, 0, 1, 0, 1, 0 ]
+								
+								Subsets:
+								0 → { c, e, f, b, d } 
+								1 → { i, a, h, g } 
+								
+								
+								base2 format of  'Q': 01010001
+								
+								RGM encoded format of "01010001": ehdacfda	
+								
+								Notice how the RGM encoded value is now made up of characters from the Dynamic Key.
+								
+						</doc_code>
+						
+						<doc_para>
+							Now while the above example deals with a single character, consider a string with a mixture of <dh>ext-chars</dh> and <dh>local-chars</dh>.
+							We pass the entire string through RGM and produce an RGM encoded string, in which <dh>local-chars</dh> are kept as it is and only
+							<dh>ext-chars</dh> are processed, where processed <dh>ext-chars</dh> would now be strings and not a single character. How can we identify and
+							differentiate one another. To achieve this we introduce special characters called <dh>serps</dh> used to separate processed 
+							<dh>ext-chars</dh> from the rest. The <dh>serps</dh> will sandwich the RGM encoded string, before including the string in the final output.
+							Thus upon encountering a <dh>serp</dh>, we know that the next characters until the next <dh>serp</dh> will be part of the RGM encoded string.
+						</doc_para>
+						
+						<doc_para>
+							As SAS-ROS won't process <dh>ext-chars</dh>, the <dh>serps</dh> should also be taken within the <dh>Dynamic Key</dh>. Then, If
+							we characters used as <dh>serps</dh> also exist in a subset for RGM, we would be facing issues in the final output, as actual
+							characters of an RGM encoded string may contain <dh>serp</dh> characters, thus it would be impossible to identify actual <dh>serps</dh>
+							from ones inside an RGM encoded string. Thus a solution to this would be to not include any character chosen as <dh>serps</dh> in any
+							RGM subsets linked with a base unit (i.e. 1, 0).
+						</doc_para>
+						
+						<doc_para>
+							Also a security concern can arise, if we use a single or a few characters as <dh>serps</dh>, as the final output may be prone to frequency 
+							analysis, thus allowing adversaries to distinguish RGM encoded strings.
+						</doc_para>
+						
+						<doc_para>
+							Hence to overcome all the obstacles mentioned, a RGM subset is created for just <dh>serps</dh> along with subsets for base units.
+							Hence every time a <dh>serp</dh> is needed, a random character can be selected from the subset linked with <dh>serps</dh>.
+							This method ensures that the number of <dh>serps</dh> used will increase with the key length and inroduces more securty with randomness.
+						</doc_para>
+						
+						<doc_code>
+								Example 9.2: Subsets of SAS-RGM for base2
 								
 								Base: base2
-								Dynamic keys: 
-								{ a, b, c, d }
-								{ a, d, c, b }
-								{ c, b, a, d }
-								{ c, d, a, b }
+								Dynamic key: { c, i, e, a, f, h, b, g, d }
 								
-								[ 0, 1, 0, 1 ]
+											 [ 0, 1, 2, 0, 1, 2, 0, 1, 2 ]
 								
-								0 → {a, c} 
-								1 → {b, d} 
+								Subsets:
+								0 → 	{ c, a, b } 
+								1 → 	{ i, f, g } 
+								serps → { e, h, d }							
 								
-								Notice how the provided Dynamic keys produce identical set of subsets.
+						</doc_code>
+						
+						<doc_para>
+							Thus for base2, 3 subsets will be made. For base10, 11 subsets will be made. For base16, 17 subsets will be made.
+							And for base64, 65 subsets will be made. Below is an example of how the final output can be with this implementation.
+						</doc_para>
+						
+						<doc_code>
+								Example 9.3: Passing a string through SAS-RGM 
+								
+								String: fame
+								Base: base2
+								Dynamic key: { c, i, e, a, f, h, b, g, d }
+								
+											 [ 0, 1, 2, 0, 1, 2, 0, 1, 2 ]
+								
+								Subsets:
+								0 → 	{ c, a, b } 
+								1 → 	{ i, f, g } 
+								serps → { e, h, d }		
+								
+								ext-chars: m
+								base2 format of 'm': 01101101
+								RGM encoded format of "01101101": cfibgfai
+								
+								RGM passed output: fahcfibgfaiee
+								
+								RGM passed format: fa|cfibgfai|e
+								
+								serps used: h, e
+
+								Notice how in the 'output', local chars were kept as it is and only the ext-char was processed.
+								
+						</doc_code>
+						
+						<doc_para>
+							The above example demonstrates 'partial' RGM processing, where only <dh>ext-chars</dh> are process.
+							'full' RGM processing can also be implemented where all characters, both <dh>ext-chars</dh> and <dh>local-chars</dh>
+							are processed. In such case, <dh>serps</dh> at both the start and end of the RGM encoded strings is not necessary, thus
+							a single <dh>serp</dh> at either the start or end is enough to differentiate one RGM encoded string from another.
+							The example below demonstrates a sample 'full' RGM processing.
+						</doc_para>
+						
+						<doc_code>
+								Example 9.4: Sample output for SAS-RGM full pass
+								
+								(serp at end of RGM encoded string)
+								
+								String: fame
+								
+								RGM passed format: cfiggcb|igcbifa|cfibgfai|bbfiabg|
+								
+								RGM passed output: cfiggcbdcfibgfaihigcbifae
+								
 						</doc_code>
 					
 						<br/><br/>

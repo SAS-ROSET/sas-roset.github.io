@@ -81,40 +81,46 @@
 					<div id="doc_page">
 						<doc_h1> Definitions </doc_h1>
 						<doc_author>by: saaiqSAS</doc_author>
-						<doc_date>Last Updated: 10/6/2024</doc_date>
+						<doc_date>Last Updated: 26/2/2025</doc_date>
 						
 						<doc_para>
-							<b>1. <i>Dynamic Key</i> :</b> (Object Key) A set or array of randomly shuffled objects, where the objects can be characters, binary values, 
+							<b>1. <dh>Dynamic Key</dh> :</b> (Object Key) A set or array of randomly shuffled objects, where the objects can be characters, binary values, 
 							or any other types of data units.							
 							<br/><br/>
 							
-							<b>2. <i>Static Key</i> :</b> (Index Key) A set or array of randomly shuffled indexes, used to reference the positions of objects in a sequence.							
+							<b>2. <dh>Static Key</dh> :</b> (Index Key) A set or array of randomly shuffled indexes, used to reference the positions of objects in a sequence.							
 							<br/><br/>
 							
-							<b>3. <i>D-Space</i> :</b> (Dynamic Keyspace) The set of all possible permutations of a <i>Dynamic Key</i> for a given key length. The key length
-							can be specified using the format '<i>D-XXX-Space</i>', where '<i>XXX</i>' represents the length of the key.							
+							<b>3. <dh>D-Space</dh> :</b> (Dynamic Keyspace) The set of all possible permutations of a <dh>Dynamic Key</dh> for a given key length. The key length
+							can be specified using the format '<dh>D-XXX-Space</dh>', where '<dh>XXX</dh>' represents the length of the key.							
 							<br/><br/>
 							
-							<b>4. <i>S-Space</i> :</b> (Static Keyspace) The set of all possible permutations of a <i>Static Key</i> for a given key length. The key length can be
-							specified using the format '<i>S-XXX-Space</i>', where '<i>XXX</i>' represents the length of the key.							
+							<b>4. <dh>S-Space</dh> :</b> (Static Keyspace) The set of all possible permutations of a <dh>Static Key</dh> for a given key length. The key length can be
+							specified using the format '<dh>S-XXX-Space</dh>', where '<dh>XXX</dh>' represents the length of the key.							
 							<br/><br/>
 							
-							<b>5. '<i>e</i>' Prefix:</b> (eXX-Space) Refers to the effective keyspace, a subset of the total keyspace that is used in a particular context.							
+							<b>5. '<dh>e</dh>' Prefix:</b> (eXX-Space) Refers to the effective keyspace, a subset of the total keyspace that is used in a particular context.							
 							<br/><br/>
 							
-							<b>6. <i>KC-Space</i> :</b> ([1 Dynamic + 1 Static] Keyspace) The set of all possible combinations of <i>Dynamic Keys</i> and <i>Static Keys</i>, represented 
-							as the product of <i>D-Space</i> and <i>S-Space</i>. The effective <i>KC-Space</i> (<i>eKC-Space</i>) is given as the product of the effective <i>D-Space</i> (<i>eD-Space</i>) 
-							and the effective <i>S-Space</i> (<i>eS-Space</i>).
+							<b>6. <dh>KC-Space</dh> :</b> ([1 Dynamic + 1 Static] Keyspace) The set of all possible combinations of <dh>Dynamic Keys</dh> and <dh>Static Keys</dh>, represented 
+							as the product of <dh>D-Space</dh> and <dh>S-Space</dh>. The effective <dh>KC-Space</dh> (<dh>eKC-Space</dh>) is given as the product of the effective <dh>D-Space</dh> (<dh>eD-Space</dh>) 
+							and the effective <dh>S-Space</dh> (<dh>eS-Space</dh>).
 							<br/><br/>
 							
-							<b>7. <i>Sub-Space</i> :</b> (Substitution Table Space) The set of all possible substitution tables for a given set of unique objects (<i>Dynamic Key</i>), 
+							<b>7. <dh>Sub-Space</dh> :</b> (Substitution Table Space) The set of all possible substitution tables for a given set of unique objects (<dh>Dynamic Key</dh>), 
 							which maps each object to another within the set.
 							<br/><br/>
 							
-							<b>8. <i>ext-objects</i> :</b> (External Objects) Objects which are not included in the <i>Dynamic Key</i>.
+							<b>8. <dh>ext-objects</dh>, <dh>ext-chars</dh>  :</b> (External Objects) Objects which are not included in the <dh>Dynamic Key</dh>.
 							<br/><br/>
 							
-							<b>9. <i>Charset</i> :</b> (Character Set) Part of the SAS-RCS/RBS <i>Dynamic Key</i> which contains the ROS <i>Dynamic Key</i> (object array).
+							<b>9. <dh>local-objects</dh>, <dh>local-chars</dh>  :</b> (Local Objects) Objects which are included in the <dh>Dynamic Key</dh>.
+							<br/><br/>
+							
+							<b>10. <dh>Charset</dh> :</b> (Character Set) Part of the SAS-RCS/RBS <dh>Dynamic Key</dh> which contains the ROS <dh>Dynamic Key</dh> (object array).
+							<br/><br/>
+							
+							<b>11. <dh>serps</dh> :</b> (Separator) Characters used to separate RGM encoded strings from one another and other <dh>local-chars</dh>.
 							<br/><br/>
 						</doc_para>
 

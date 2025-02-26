@@ -86,19 +86,19 @@
 						<doc_para> 
 							SAS-ROS Cipher (Saaiq Abdulla Saeed's Random Object Substitution Cipher) can be defined as a method of randomly substituting 
 							a data object to another object within a fixed set of objects by refering to two types of randomly generated 
-							keys: the <i>Dynamic Key</i> (Object Key) and the <i>Static Key</i> (Index Key), which when combined, represent a substitution table.
+							keys: the <dh>Dynamic Key</dh> (Object Key) and the <dh>Static Key</dh> (Index Key), which when combined, represent a substitution table.
 							This cipher is the core of the SAS-RCS/RBS Encryption.
 							<br/><br/>
 						 
 							The ROS Cipher was originally developed by Saaiq Abdulla Saeed (saaiqSAS) as the core of the depreciated SAS-STE (SAS - Secure Text Encryption)
 							algorithm [<a href="https://github.com/saaiqSAS/SAS-STE" class="doc_link">project Github</a>] - a weak ASCII substitution encryption, 
-							also the first encryption by saaiqSAS. The key names <i>'Dynamic Key'</i> for Object Key and <i>'Static Key'</i>  for Index Key were derived 
+							also the first encryption by saaiqSAS. The key names <dh>'Dynamic Key'</dh> for Object Key and <dh>'Static Key'</dh>  for Index Key were derived 
 							from the SAS-STE project.
 							<br/><br/>
 							
-							<i>Dynamic Keys</i> are a set/array of randomly shuffled objects, where objects can be of any type (ie. characters, bytes, frequency, voltage, etc).
-							<i>Static Keys</i> are a set/array of randomly shuffled indexes equal to length of <i>Dynamic Key</i>, which are used to link objects of the
-							<i>Dynamic Key</i> while performing substitution.
+							<dh>Dynamic Keys</dh> are a set/array of randomly shuffled objects, where objects can be of any type (ie. characters, bytes, frequency, voltage, etc).
+							<dh>Static Keys</dh> are a set/array of randomly shuffled indexes equal to length of <dh>Dynamic Key</dh>, which are used to link objects of the
+							<dh>Dynamic Key</dh> while performing substitution.
 							<br/><br/>
 						 
 							There are two methods to perform the ROS Cipher, which are inverses of each other. Thus, if one method is used for encryption, 
@@ -118,6 +118,7 @@
 							4. Substitute 'b' to 'a'
 							
 							out: a
+							
 						</doc_code>
 						
 						<img class="doc_image" src="imgs/1_1.png"/> <doc_fig>Fig.1.1</doc_fig>
@@ -135,6 +136,7 @@
 							4. Substitute 'b' to 'e'
 							
 							out: e
+							
 						</doc_code>
 						
 						<img class="doc_image" src="imgs/1_2.png"/> <doc_fig>Fig.1.2</doc_fig>
@@ -152,6 +154,7 @@
 							4. Substitute 'b' to 'e'
 							
 							out: b
+							
 						</doc_code>
 						
 						<img class="doc_image" src="imgs/1_3.png"/> <doc_fig>Fig.1.3</doc_fig>
@@ -169,6 +172,7 @@
 							4. Substitute 'b' to 'a'
 							
 							out: b
+							
 						</doc_code>
 						
 						<img class="doc_image" src="imgs/1_4.png"/> <doc_fig>Fig.1.4</doc_fig>
