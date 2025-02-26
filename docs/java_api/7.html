@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+	<html>
+		<head>
+			<title> SAS-ROSET  |  ROSET Java API - Encrypting & Decrypting Bytes with SAS-RBS in ROSET Java API | Encryption | Decryption | Java | Cryptography | Tool</title>
+			<link data-default-icon="../../imgs/favicon.png" rel="icon" sizes="192x192" href="../../imgs/SAS_ROSET_ICON_3.png" />
+			<meta name="viewport" content="width=device-width, initial-scale=0.8, shrink-to-fit=yes">
+			<meta charset="utf-8">
+		</head>
+		
+		<link rel="stylesheet" href="../../styles/fonts.css"/>
+		<link rel="stylesheet" href="../../styles/universal.css"/>
+		<link rel="stylesheet" href="../../styles/docs.css"/>
+		
+		<style type="text/css">
+		
+		</style>
+		
+		<body>
+		<!-- Navigation Bar Start-->
+			<div id="nav_bar">			
+				<a href="../../index.html"><div  id="nav_logo"><img style="height:100%;" src="../../imgs/SAS_ROSET_LOGO_NAME.png"/></div></a>				
+				<div id="nav_buttons_box_desktop">
+					<a href="../../about.html"><p class="nav_buttons"> About </p></a>								
+					<a href="../../docs.html"><p class="nav_buttons"> Documentation </p></a>
+					<a href="https://github.com/SAS-ROSET"><p class="nav_buttons">Github</p></a>	
+					<a href="../../credits.html"><p class="nav_buttons"> Credits </p></a>
+				</div>						
+				<a href="../../download.html" ><div id="nav_download_button_box"><p id="nav_download_button"> Download </p></div></a>	
+				<div id="nav_dropdown_button">
+				<svg id="nav_dropdown_more_icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30" width="40" height="40">
+					<rect x="5" y="5" width="20" height="2" fill="#E6E6E6"/><rect x="5" y="11" width="20" height="2" fill="#E6E6E6"/><rect x="5" y="17" width="20" height="2" fill="#E6E6E6"/>
+				</svg>	
+				<svg id="nav_dropdown_close_icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+					<rect x="1" y="10" width="16" height="2" fill="#ffffff" transform="rotate(45 12 12)"/><rect x="8" y="3" width="2" height="16" fill="#ffffff" transform="rotate(45 12 12)"/>
+				</svg>		
+				</div>			
+			</div>
+			<div id="nav_dropdown_content">
+				<a href="../../about.html">About</a>
+				<a href="../../docs.html">Documentation</a>
+				<a href="https://github.com/SAS-ROSET">Github</a>
+				<a href="../../credits.html">Credits</a>
+				<a href="../../download.html">Download</a>
+			</div>	
+			<script type="text/javascript">
+				// nav dropdown toggle script
+					const dropdownButton = document.getElementById('nav_dropdown_button');
+					const dropdownContent = document.getElementById('nav_dropdown_content');
+					const dropdownClose = document.getElementById('nav_dropdown_close_icon');
+					const dropdownMore = document.getElementById('nav_dropdown_more_icon');
+					dropdownButton.addEventListener('click', function() {
+					  if (dropdownContent.style.display === 'block') {
+						dropdownContent.style.display = 'none'; 
+						dropdownClose.style.display = 'none'; 
+						dropdownMore.style.display = 'block'; 
+					  } else {
+						dropdownContent.style.display = 'block';
+						dropdownClose.style.display = 'block'; 
+						dropdownMore.style.display = 'none'; 
+					  }
+					});
+			</script>
+			<!-- Navigation Bar End-->
+				
+			<main>
+				<div class="restricted_width_box">
+					<div class="doc_path_box">
+					
+						<doc_path_text>
+							<a href="../../docs.html" class="pl">Documentation</a> / 
+							<a href="java_api.html" class="pl">ROSET Java API</a> /
+							<a href="" class="pl">Enc & Dec Bytes via RBS</a>
+						</doc_path_text>  
+						
+						<div class="doc_check_box">
+							<label for="darkModeToggle">Dark Mode:</label>
+							<input type="checkbox" id="darkModeToggle">
+						</div>
+					</div>
+
+					<div id="doc_page">
+						<doc_h1>7. Encrypting & Decrypting Bytes with SAS-RBS</doc_h1>
+						<doc_author>by: saaiqSAS</doc_author>
+						<doc_date>Last Updated: 25/2/2025</doc_date>
+						
+						<doc_para>
+							In this section, we will demonstrate how to encrypt and decrypt <dh>byte[]</dh> data using the SAS-RBS (Saaiq Abdulla Saeed's - Random Binary Substitution) encryption algorithm - Binary-level encryption . This process requires key reference IDs, which are <dh>int</dh> values returned by key extraction methods.
+						</doc_para>
+						
+						<doc_para>
+							A usage sample of the ROSET Java API is available on GitHub. You can view it 
+							<a href="https://github.com/SAS-ROSET/ROSET_Java_API/blob/main/src/com/sas/roset/api/Main.java" class="doc_link">here (ROSET Java API Usage Sample)</a>.
+						</doc_para>
+
+						<doc_para>
+							To perform encryption or decryption with the ROSET API, you will need a <dh>Dynamic Key</dh> reference ID and an <dh>int[]</dh> array of <dh>Static Key</dh> reference IDs. These reference IDs are used to locate and identify the specific keys that have already been extracted and are stored in memory.
+						</doc_para>
+						
+						<doc_para>						
+							Do note that the SAS-RBS strictly supports only key lengths that are powers of two (binary powers - 256, 1024, etc). Use the method <dh>keyLengthForBits(int bits)</dh> to determine the key length required for a specific bit encryption using SAS-RBS.
+							It returns the corresponding key length as an <dh>int</dh>.
+						</doc_para>
+						
+						<doc_code>
+							SAS_ROSET.keyLengthForBits(int bits);
+
+							Range for 'bits' is between 7 and 20, inclusive.
+
+							Usage Examples:
+
+							int length_256 = SAS_ROSET.keyLengthForBits(8);
+
+							int length_1024 = SAS_ROSET.keyLengthForBits(10);
+
+							int length_65536 = SAS_ROSET.keyLengthForBits(16);
+							
+						</doc_code>
+						
+						<doc_para>						
+							Moreover you can use the method <dh>keySupportsRBS(int Dynamic_Key_ID)</dh> to check if the length of a <dh>Dynamic Key</dh> support SAS-RBS.
+							The methods returns <dh>true</dh> if supported and <dh>false</dh> if not.
+						</doc_para>
+						
+						<doc_para>
+							The <dh>byte[]</dh> provided for SAS-RBS encryption must have a strict length. This length can be
+							determined using the method below, which returns the length as an integer. The strict length
+							is necessary due to the data increase ratio. Providing an incorrect length may result in errors
+							or cause data to be increased by more or less than the expected ratio.
+						</doc_para>
+						
+						<doc_para>
+							The strict length differs between encryption and decryption. For example, plain data for encryption
+						    may need to be provided as 10 bytes, but the encrypted output could be 25 bytes. Thus, when decrypting,
+						    you must provide 25 bytes. The output <dh>byte[]</dh> length can be directly calculated using the method below.
+						</doc_para>
+						
+						<doc_para>
+							Although <dh>byte[]</dh> data should generally follow strict lengths, the final segment of data (e.g., the last
+							portion of a file) can be an exception. If the data length is smaller than the strict length, no error will
+							occur when processing the entire data in one go.
+						</doc_para>
+						
+						<doc_para>
+							The method <dh>rbsNumberOfBytesToPass(int Dynamic_Key_ID, int maxByteBufferSize, boolean decryptMode)</dh> calculates the strict 
+							length for a given Dynamic Key. Be sure to set the decrypt mode
+							properly. The maximum byte buffer size must also be provided, and after calculations, the closest
+						    possible strict length to the max buffer size will be returned.
+						</doc_para>
+						
+						<doc_code>
+						// Key Extraction
+						int Dynamic_Key_ID = // extract Dynamic Key
+
+						int maxByteBufferSize = 1024;
+						
+						// Plain byte[] data size
+						int byteBufferSize_encrypting = SAS_ROSET.rbsNumberOfBytesToPass(Dynamic_Key_ID, maxByteBufferSize, false); 
+						
+						// Encrypted byte[] data size
+						int byteBufferSize_decrypting = SAS_ROSET.rbsNumberOfBytesToPass(Dynamic_Key_ID, maxByteBufferSize, true); 
+						
+						</doc_code>
+						
+
+						<doc_h2>Encrypt byte array</doc_h2>
+						<doc_para>
+							To encrypt a <dh>byte[]</dh> using SAS-RBS, you can call the method <dh>rbsByteEncrypt(int Dynamic_Key_ID, int[] Static_Key_IDs_Array, byte[] data)</dh>. 
+							This method will return the SAS-RBS encrypted data as <dh>byte[]</dh>. Below is an example that demonstrates how to use this method for encryption.
+						</doc_para>
+
+						<doc_code>
+						// Key Extraction
+						int Dynamic_Key_ID = // extract Dynamic Key
+
+						int Static_Key_ID_1 = // extract Static Key 1
+						int Static_Key_ID_2 = // extract Static Key 2
+						int Static_Key_ID_3 = // extract Static Key 3
+
+						// Prepare Static Key Reference ID array
+						int[] Static_Key_IDs_Array = {Static_Key_ID_1, Static_Key_ID_2, Static_Key_ID_3};
+
+						// Set up 'Quick Processing' (OPTIONAL, BUT RECOMMENDED for better performance)
+						boolean isSet = SAS_ROSET.setQuickProcessing(true, Dynamic_Key_ID, Static_Key_IDs_Array);
+						
+						// Plain byte[] buffer data size
+						int maxByteBufferSize = 1024;
+						int byteBufferSize_encrypting = SAS_ROSET.rbsNumberOfBytesToPass(Dynamic_Key_ID, maxByteBufferSize, false); 
+
+						// Encrypt the byte array
+						byte[] byte_data = // a byte[] of length equal to 'byteBufferSize_encrypting';
+						byte[] encrypted_byte_data = SAS_ROSET.rbsByteEncrypt(Dynamic_Key_ID, Static_Key_IDs_Array, byte_data);
+						
+						</doc_code>
+						
+						
+						<doc_h2>Decrypt Encrypted byte array</doc_h2>
+						<doc_para>
+							To decrypt a SAS-RBS encrypted <dh>byte[]</dh>, use the method <dh>rbsByteDecrypt(int Dynamic_Key_ID, int[] Static_Key_IDs_Array, byte[] encrypted_data)</dh>. Below is an example demonstrating how to implement this decryption method.
+						</doc_para>
+
+						<doc_code>
+						// Key Extraction
+						int Dynamic_Key_ID = // extract Dynamic Key used for encryption
+
+						int Static_Key_ID_1 = // extract Static Key 1 used for encryption
+						int Static_Key_ID_2 = // extract Static Key 2 used for encryption
+						int Static_Key_ID_3 = // extract Static Key 3 used for encryption
+
+						// Prepare Static Key Reference ID array
+						int[] Static_Key_IDs_Array = {Static_Key_ID_1, Static_Key_ID_2, Static_Key_ID_3};
+
+						// Set up 'Quick Processing' (OPTIONAL, BUT RECOMMENDED for better performance)
+						boolean isSet = SAS_ROSET.setQuickProcessing(true, Dynamic_Key_ID, Static_Key_IDs_Array);
+						
+						// Encrypted byte[] buffer data size
+						int maxByteBufferSize = 1024;
+						int byteBufferSize_decrypting = SAS_ROSET.rbsNumberOfBytesToPass(Dynamic_Key_ID, maxByteBufferSize, true); 
+
+						// Decrypt the Encrypted byte array
+						byte[] encrypted_byte_data = // a byte[] of length equal to 'byteBufferSize_decrypting';
+						byte[] decrypted_byte_data = SAS_ROSET.rbsByteDecrypt(Dynamic_Key_ID, Static_Key_IDs_Array, encrypted_byte_data);
+						
+						</doc_code>
+
+						<doc_para>
+							Please note that the order of <dh>Static Key</dh> reference IDs in the <dh>Static_Key_IDs_Array</dh> is critical for successful decryption. Ensure the keys are provided in the same order they were used for encryption.
+						</doc_para>
+						
+					</div>
+					
+					<div class="doc_navigate_box">
+							<a href="6.html" ><p class="white_button"> Previous: Encrypting & Decrypting Bytes via RCS </p></a>
+							<a href="8.html" ><p class="blue_button"> Next: Encrypting & Decrypting MetaData via DROS   </p></a>
+					</div>	
+				</div>	
+					
+			</main>
+			
+			<footer>
+				<div id="footer_serp"></div>
+				<p style="font-size:20px; margin-top:50px"><bg>Made with passion by </bg><a href="https://saaiqsas.github.io" class="footer_saaiqSAS"> saaiqSAS</a><bg> and Contributors</bg></p>
+				<br/>
+				<ft id="copyrights">Copyrights (©) 2024 Saaiq Abdulla Saeed</ft>
+				<ft>This website and its contents are generally licensed under the <a href="../../LICENSE.md">MIT License</a>, unless stated otherwise.</ft>
+				<div class="grid3_box" id="footer_grid">
+					<div>
+						<fh>Project Info</fh>
+						<ft><a href="../../about.html">About Project</a></ft>
+						<ft><a href="../../credits.html">Credits & Contributers</a></ft>
+						<ft><a href="../../docs.html">Documentation</a></ft>
+					</div>
+					<div>
+						<fh>Get Involved</fh>
+						<ft><a href="../../download.html">Download</a></ft>
+						<ft><a href="../../contribute.html">Contribute</a></ft>
+						<ft><a href="https://github.com/SAS-ROSET">Github</a></ft>
+					</div>
+					<div>
+						<fh>Legal & Support</fh>
+						<ft><a href="../../legal/privacy_policy.html">Privacy Policy</a></ft>
+						<ft><a href="../../legal/terms.html"> Terms and Conditions</a></ft>
+						<ft><a href="../../contact.html"> Contact & Report</a></ft>
+					</div>	
+				</div>
+				<script type="text/javascript">
+					// Copyrights
+					var currentYear = new Date().getFullYear();
+					document.getElementById('copyrights').textContent = "Copyrights (©) "+currentYear + " Saaiq Abdulla Saeed";
+				</script>
+			</footer>
+		
+		</body>
+		
+		<script src="../doc_dark_mode.js"></script>
+	</html>

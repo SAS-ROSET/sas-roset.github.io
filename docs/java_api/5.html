@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 	<html>
 		<head>
-			<title> SAS-ROSET  |  ROS Encryption Tool Documentation </title>
+			<title> SAS-ROSET  |  ROSET Java API - Encrypting & Decrypting Strings/Text with SAS-RCS in ROSET Java API | Encryption | Decryption | Java | Cryptography | Tool</title>
 			<link data-default-icon="../../imgs/favicon.png" rel="icon" sizes="192x192" href="../../imgs/SAS_ROSET_ICON_3.png" />
 			<meta name="viewport" content="width=device-width, initial-scale=0.8, shrink-to-fit=yes">
 			<meta charset="utf-8">
@@ -16,7 +16,7 @@
 		</style>
 		
 		<body>
-			<!-- Navigation Bar Start-->
+		<!-- Navigation Bar Start-->
 			<div id="nav_bar">			
 				<a href="../../index.html"><div  id="nav_logo"><img style="height:100%;" src="../../imgs/SAS_ROSET_LOGO_NAME.png"/></div></a>				
 				<div id="nav_buttons_box_desktop">
@@ -68,7 +68,8 @@
 					
 						<doc_path_text>
 							<a href="../../docs.html" class="pl">Documentation</a> / 
-							<a href="graphical.html" class="pl">ROS Encryption Tool</a>
+							<a href="java_api.html" class="pl">ROSET Java API</a> /
+							<a href="" class="pl">Enc & Dec Strings via RCS</a>
 						</doc_path_text>  
 						
 						<div class="doc_check_box">
@@ -78,37 +79,90 @@
 					</div>
 
 					<div id="doc_page">
-						<doc_h1> ROS Encryption Tool </doc_h1>
+						<doc_h1>5. Encrypting & Decrypting Strings with SAS-RCS</doc_h1>
 						<doc_author>by: saaiqSAS</doc_author>
 						<doc_date>Last Updated: 26/2/2025</doc_date>
 						
-						<doc_para> 
-							Welcome to the official documentation for the ROS Encryption Tool. This guide will help you get started with the 
-							tool, providing comprehensive information on its features and functionality. Whether you're new to the tool or 
-							looking to explore advanced capabilities, this resource has you covered.							
-						</doc_para>	
+						<doc_para>
+							In this section, we will demonstrate how to encrypt and decrypt <dh>Strings</dh> using the SAS-RCS 
+							(Saaiq Abdulla Saeed's - Random Character Substitution) encryption algorithm - Text-level encryption. 
+							This process requires key reference IDs, which are <dh>int</dh> values returned by key extraction methods.
+						</doc_para>
 						
-						<doc_para><strong>Warning:</strong> Certain sections may be updated or modified in the future.</doc_para>
+						<doc_para>
+							A usage sample of the ROSET Java API is available on GitHub. You can view it 
+							<a href="https://github.com/SAS-ROSET/ROSET_Java_API/blob/main/src/com/sas/roset/api/Main.java" class="doc_link">here (ROSET Java API Usage Sample)</a>.
+						</doc_para>
 
-						<doc_h2>Contents</doc_h2>
-						<a href="0.html" class="doc_content"> 0. Setting Up </a>	
-						<a href="1.html" class="doc_content"> 1. User Interface </a>	
-						<a href="2.html" class="doc_content"> 2. Generating Keys</a>	
-						<a href="3.html" class="doc_content"> 3. Encrypting Text</a>	
-						<a href="4.html" class="doc_content"> 4. Decrypting Text</a>	
-						<a href="5.html" class="doc_content"> 5. Encrypting Files</a>	
-						<a href="6.html" class="doc_content"> 6. Decrypting Files</a>	
-						<a href="7.html" class="doc_content"> 7. Process Settings</a>	
+						<doc_para>
+							To perform encryption or decryption with the ROSET API, you need a <dh>Dynamic Key</dh> reference ID and an <dh>int[]</dh> array of <dh>Static Key</dh> reference IDs. These reference IDs are used to identify the specific keys that have already been extracted onto memory.
+						</doc_para>
 						
-						</br></br>
-						<div class="grid_2button_cent">
-							<a href="https://docs.google.com/forms/d/e/1FAIpQLSddVLlTjuOGv3gzU_Zq0rbIyLI7omuEgGAPRE80yPPzeFMCHA/viewform?usp=dialog"><p class="doc_button"> Rate Us</p></a>
-							<a href="https://docs.google.com/forms/d/e/1FAIpQLSccSJ1yBujxJmKswvDvrF4JmRJfH5H1e3fagOzuJk-xEnzRRQ/viewform?usp=dialog"><p class="doc_button" > Report Bug</p></a>
-							<a href="https://docs.google.com/forms/d/e/1FAIpQLSdKJDMUSIaJte96xYlM23lKruF7TBkuoWkqHVCHoIt1EmTh8w/viewform?usp=dialog"><p class="doc_button" > Request Feature</p></a>
-						</div>
-					
+						<doc_h2>Encrypt String</doc_h2>
+						<doc_para>
+							To encrypt <dh>Strings</dh> using SAS-RCS, you can call the method <dh>rcsTextEncrypt(int Dynamic_Key_ID, int[] Static_Key_IDs_Array, String data)</dh>.
+							This method will return the SAS-RCS encrypted data as <dh>String</dh>.							
+							Below is an example snippet of how to use this method to perform encryption.
+						</doc_para>
+
+						<doc_code>
+						// Key Extraction
+						int Dynamic_Key_ID = // extract Dynamic Key
+
+						int Static_Key_ID_1 = // extract Static Key 1
+						int Static_Key_ID_2 = // extract Static Key 2
+						int Static_Key_ID_3 = // extract Static Key 3
+
+						// Prepare Static Key Reference ID array
+						int[] Static_Key_IDs_Array = {Static_Key_ID_1, Static_Key_ID_2, Static_Key_ID_3};
+
+						// Set up 'Quick Processing' (OPTIONAL, BUT PREFERRED for performance)
+						boolean isSet = SAS_ROSET.setQuickProcessing(true, Dynamic_Key_ID, Static_Key_IDs_Array);
+
+						// Encrypt the String
+						String text_data = "Hello";
+						String encrypted_text_data = SAS_ROSET.rcsTextEncrypt(Dynamic_Key_ID, Static_Key_IDs_Array, text_data);
+						
+						</doc_code>
+						
+						
+						<doc_h2>Decrypt Encrypted String</doc_h2>
+						<doc_para>
+							To decrypt a SAS-RCS encrypted <dh>String</dh>, use the method <dh>rcsTextDecrypt(int Dynamic_Key_ID, int[] Static_Key_IDs_Array, String encrypted_data)</dh>. Below is an example of how to implement this decryption method.
+						</doc_para>
+
+						<doc_code>
+						// Key Extraction
+						int Dynamic_Key_ID = // extract Dynamic Key used for encryption
+
+						int Static_Key_ID_1 = // extract Static Key 1 used for encryption
+						int Static_Key_ID_2 = // extract Static Key 2 used for encryption
+						int Static_Key_ID_3 = // extract Static Key 3 used for encryption
+
+						// Prepare Static Key Reference ID array
+						int[] Static_Key_IDs_Array = {Static_Key_ID_1, Static_Key_ID_2, Static_Key_ID_3};
+
+						// Set up 'Quick Processing' (OPTIONAL, BUT RECOMMENDED for better performance)
+						boolean isSet = SAS_ROSET.setQuickProcessing(true, Dynamic_Key_ID, Static_Key_IDs_Array);
+
+						// Decrypt the Encrypted String
+						String encrypted_text_data = "üģ´=}ôzĤûêĘÓğ¿Ò¹čIìsYãÞÎ³e";
+						String decrypted_text_data = SAS_ROSET.rcsTextDecrypt(Dynamic_Key_ID, Static_Key_IDs_Array, encrypted_text_data);
+						
+						</doc_code>
+
+						<doc_para>
+							Please note that the order of <dh>Static Key</dh> reference IDs in the <dh>Static_Key_IDs_Array</dh> is important for successful decryption.
+						</doc_para>
+						
 					</div>
-				</div>			
+					
+					<div class="doc_navigate_box">
+							<a href="4.html" ><p class="white_button"> Previous: Quick Processing </p></a>
+							<a href="6.html" ><p class="blue_button"> Next: Encrypting & Decrypting Bytes via RCS  </p></a>
+					</div>	
+				</div>	
+					
 			</main>
 			
 			<footer>
@@ -145,5 +199,6 @@
 			</footer>
 		
 		</body>
+		
 		<script src="../doc_dark_mode.js"></script>
 	</html>

@@ -334,4 +334,20 @@ tr:nth-child(even) {
 	 font-size: 11px;
 	 margin: 0px auto;
 	}
+	
+	.doc_navigate_box .white_button {
+		font-size:14px;
+	}
+
+	.doc_navigate_box .blue_button {
+		font-size:14px;
+	}
+	
+	doc_path_text{
+		font-size: 14px;
+	}
+	
+	.doc_check_box{
+		font-size: 14px;
+	}
 }

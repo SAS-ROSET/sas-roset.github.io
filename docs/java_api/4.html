@@ -81,7 +81,7 @@
 					<div id="doc_page">
 						<doc_h1>4. Setting Up 'Quick Processing' for Dynamic & Static Keys</doc_h1>
 						<doc_author>by: saaiqSAS</doc_author>
-						<doc_date>Last Updated: 25/2/2025</doc_date>
+						<doc_date>Last Updated: 26/2/2025</doc_date>
 						
 						<doc_para>
 							<dh>Quick Processing</dh> is a feature available in this API that significantly enhances performance by reducing processing time. 
@@ -91,7 +91,11 @@
 						<doc_para>
 							In this section, we will guide you through the process of setting up <dh>Quick Processing</dh> for a set of extracted <dh>Dynamic Key</dh> and <dh>Static Keys</dh>. 
 							Please note that <dh>Quick Processing</dh> can only be configured for a single set of keys — one <dh>Dynamic Key</dh> paired with multiple <dh>Static Keys</dh>.
-							For a practical example of how the ROSET Java API can be used, refer to the sample code available <a href="https://github.com/SAS-ROSET/ROSET_Java_API/blob/main/src/com/sas/roset/api/Main.java" class="doc_link">here (ROSET Java API Usage Sample)</a>.
+						</doc_para>
+						
+						<doc_para>
+							A usage sample of the ROSET Java API is available on GitHub. You can view it 
+							<a href="https://github.com/SAS-ROSET/ROSET_Java_API/blob/main/src/com/sas/roset/api/Main.java" class="doc_link">here (ROSET Java API Usage Sample)</a>.
 						</doc_para>
 
 						<doc_para>
@@ -110,7 +114,7 @@
 							int[] Static_Key_IDs_Array = {Static_Key_ID_1, Static_Key_ID_2, Static_Key_ID_3};
 							
 							// Set up 'Quick Processing'
-							boolean isSet = setQuickProcessing(true, Dynamic_Key_ID, Static_Key_IDs_Array);
+							boolean isSet = SAS_ROSET.setQuickProcessing(true, Dynamic_Key_ID, Static_Key_IDs_Array);
 						
 						</doc_code>
 
@@ -121,7 +125,7 @@
 					
 					<div class="doc_navigate_box">
 							<a href="3.html" ><p class="white_button"> Previous: Extracting Keys </p></a>
-							<a href="5.html" ><p class="blue_button"> Next: Encrypting/Decrypting Strings - RCS  </p></a>
+							<a href="5.html" ><p class="blue_button"> Next: Encrypting & Decrypting Strings via RCS  </p></a>
 					</div>	
 				</div>	
 					

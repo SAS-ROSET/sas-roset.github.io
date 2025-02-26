@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 	<html>
 		<head>
-			<title> SAS-ROSET  |  ROSET Java API - Extracting Dynamic & Static Keys with the ROSET Java API | Encryption | Decryption | Java | Cryptography | Tool</title>
+			<title> SAS-ROSET  |  ROSET Java API - Encrypting & Decrypting Bytes with SAS-RCS in ROSET Java API | Encryption | Decryption | Java | Cryptography | Tool</title>
 			<link data-default-icon="../../imgs/favicon.png" rel="icon" sizes="192x192" href="../../imgs/SAS_ROSET_ICON_3.png" />
 			<meta name="viewport" content="width=device-width, initial-scale=0.8, shrink-to-fit=yes">
 			<meta charset="utf-8">
@@ -69,7 +69,7 @@
 						<doc_path_text>
 							<a href="../../docs.html" class="pl">Documentation</a> / 
 							<a href="java_api.html" class="pl">ROSET Java API</a> /
-							<a href="" class="pl">Extracting Keys</a>
+							<a href="" class="pl">Enc & Dec Bytes via RCS</a>
 						</doc_path_text>  
 						
 						<div class="doc_check_box">
@@ -79,12 +79,13 @@
 					</div>
 
 					<div id="doc_page">
-						<doc_h1> 3. Extracting Dynamic & Static Keys</doc_h1>
+						<doc_h1>6. Encrypting & Decrypting Bytes with SAS-RCS</doc_h1>
 						<doc_author>by: saaiqSAS</doc_author>
-						<doc_date>Last Updated: 26/2/2025</doc_date>
+						<doc_date>Last Updated: 25/2/2025</doc_date>
 						
+		
 						<doc_para>
-							In this section, we will walk you through the process of extracting both <dh>Dynamic Keys</dh> and <dh>Static Keys</dh> in <dh>String</dh> or <dh>int[]</dh> formats. 
+							In this section, we will demonstrate how to encrypt and decrypt <dh>byte[]</dh> data using the SAS-RCS (Saaiq Abdulla Saeed's - Random Character Substitution) encryption algorithm - Text-level encryption. This process requires key reference IDs, which are <dh>int</dh> values returned by key extraction methods.
 						</doc_para>
 						
 						<doc_para>
@@ -93,101 +94,87 @@
 						</doc_para>
 
 						<doc_para>
-							The API provides methods to extract keys by taking the key itself as a parameter. Once the key is successfully extracted into memory, these methods return an <dh>int</dh> ID. This unique ID is used to reference the extracted key in subsequent operations.
+							To perform encryption or decryption with the ROSET API, you will need a <dh>Dynamic Key</dh> reference ID and an <dh>int[]</dh> array of <dh>Static Key</dh> reference IDs. These reference IDs are used to locate and identify the specific keys that have already been extracted and are stored in memory.
 						</doc_para>
-						
-						<doc_h2>Extract Dynamic Key</doc_h2>
-						<doc_h3>int[] Dynamic Key</doc_h3>
-						<doc_para>
-							To extract a <dh>Dynamic Key</dh> in <dh>int[]</dh> format, use the <dh>extractDynamicKey(int[] key)</dh> method. The following code snippet demonstrates its usage:
-						</doc_para>
-						<doc_code>
-							int[] Dynamic_Key = // generated Dynamic Key
-							int Dynamic_Key_ID = SAS_ROSET.extractDynamicKey(Dynamic_Key);
-							
-							// 'Dynamic_Key_ID' is the reference ID
-							
-						</doc_code>
-						
 
-						<doc_h3>Mixed String Dynamic Key</doc_h3>
+						<doc_h2>Encrypt byte array</doc_h2>
 						<doc_para>
-							To extract a <dh>Dynamic Key</dh> in mixed <dh>String</dh> format, use the <dh>extractDynamicKeyString(String key, boolean base64)</dh> method. Below is a sample code snippet for this:
+							To encrypt a <dh>byte[]</dh> using SAS-RCS, you can call the method <dh>rcsByteEncrypt(int Dynamic_Key_ID, int[] Static_Key_IDs_Array, byte[] data)</dh>. 
+							This method will return the SAS-RCS encrypted <dh>byte[]</dh> data as <dh>String</dh>. Below is an example that demonstrates how to use this method for encryption.
 						</doc_para>
-						<doc_code>
-							String Dynamic_Key = // generated Mixed String Dynamic Key
-							int Dynamic_Key_ID = SAS_ROSET.extractDynamicKeyString(Dynamic_Key, false);
-							
-							// 'Dynamic_Key_ID' is the reference ID
-							
-						</doc_code>
-						
 
-						<doc_h3>Base64 String Dynamic Key</doc_h3>
-						<doc_para>
-							To extract a <dh>Dynamic Key</dh> in base64 <dh>String</dh> format, use the <dh>extractDynamicKeyString(String key, boolean base64)</dh> method, setting the <dh>base64</dh> flag to <dh>true</dh>. Below is a sample code snippet for this:
-						</doc_para>
 						<doc_code>
-							String Dynamic_Key = // generated base64 String Dynamic Key
-							int Dynamic_Key_ID = SAS_ROSET.extractDynamicKeyString(Dynamic_Key, true);
-							
-							// 'Dynamic_Key_ID' is the reference ID
-							
-						</doc_code>
-						
-						
-						
-						<doc_h2>Extract Static Keys</doc_h2>
-						<doc_h3>int[] Static Keys</doc_h3>
-						<doc_para>
-							To extract <dh>Static Keys</dh> in <dh>int[]</dh> format, use the <dh>extractStaticKey(int[] key)</dh> method. 
-							Since multiple <dh>Static Keys</dh> will be used, you should store the returned reference IDs in an <dh>int[]</dh>. 
-							These reference IDs will then be passed as parameters to the encryption and decryption methods, alongside the <dh>Dynamic Key</dh> ID and data.
-							Below is a sample code snippet demonstrating the process:
-						</doc_para>
-						<doc_code>
-							int[] Static_Key_1 = // generated Static Key
-							int[] Static_Key_2 = // generated Static Key
-							int[] Static_Key_3 = // generated Static Key
-							
-							// Extraction
-							int Static_Key_ID_1 = SAS_ROSET.extractStaticKey(Static_Key_1);
-							int Static_Key_ID_2 = SAS_ROSET.extractStaticKey(Static_Key_2);
-							int Static_Key_ID_3 = SAS_ROSET.extractStaticKey(Static_Key_3);
-							
-							// Reference ID array preparation
-							int[] ID_Array = {Static_Key_ID_1, Static_Key_ID_2, Static_Key_ID_3};
-							
-						</doc_code>
-						
+						// Key Extraction
+						int Dynamic_Key_ID = // extract Dynamic Key
 
-						<doc_h3>Base64 String Static Keys</doc_h3>
+						int Static_Key_ID_1 = // extract Static Key 1
+						int Static_Key_ID_2 = // extract Static Key 2
+						int Static_Key_ID_3 = // extract Static Key 3
+
+						// Prepare Static Key Reference ID array
+						int[] Static_Key_IDs_Array = {Static_Key_ID_1, Static_Key_ID_2, Static_Key_ID_3};
+
+						// Set up 'Quick Processing' (OPTIONAL, BUT RECOMMENDED for better performance)
+						boolean isSet = SAS_ROSET.setQuickProcessing(true, Dynamic_Key_ID, Static_Key_IDs_Array);
+
+						// Encrypt the byte array
+						byte[] byte_data = { (byte) 100, (byte) -35, (byte) 42, (byte) -52, (byte) 96 };
+						String encrypted_byte_data = SAS_ROSET.rcsByteEncrypt(Dynamic_Key_ID, Static_Key_IDs_Array, byte_data);
+						
+						</doc_code>
+
 						<doc_para>
-							To extract <dh>Static Keys</dh> in base64 <dh>String</dh> format, use the <dh>extractStaticKeyString(String key)</dh> method. 
-							As with <dh>int[]</dh> Static Keys, you should store all the returned reference IDs in an <dh>int[]</dh>. 
-							These reference IDs will then be used in the encryption and decryption methods along with the <dh>Dynamic Key</dh> ID and data.
-							Below is a sample code snippet demonstrating the process:
+							Please note that if your <dh>Dynamic Key</dh> is using SAS-RGM base64 encoding, the <dh>byte[]</dh> length should ideally be a multiple of 3. However, if the <dh>byte[]</dh> represents the last set of bytes in a larger data store (such as a file), this rule may not apply. As a general practice, it is recommended to always pass <dh>byte[]</dh> data in multiples of 3 unless the byte set is the final portion of a larger dataset.
 						</doc_para>
+
+						<doc_para>
+							While you can pass <dh>byte[]</dh> data of any length to <dh>rcsByteEncrypt()</dh>, if you require the encrypted output to be of a specific length, you must ensure the input <dh>byte[]</dh> is of a particular size. To determine the required length for your data, use the method <dh>rcsNumOfBytesToPass(int Dynamic_Key_ID, int preferred_string_length)</dh>.
+						</doc_para>
+
 						<doc_code>
-							String Static_Key_1 = // generated Static Key
-							String Static_Key_2 = // generated Static Key
-							String Static_Key_3 = // generated Static Key
-							
-							// Extraction
-							int Static_Key_ID_1 = SAS_ROSET.extractStaticKeyString(Static_Key_1);
-							int Static_Key_ID_2 = SAS_ROSET.extractStaticKeyString(Static_Key_2);
-							int Static_Key_ID_3 = SAS_ROSET.extractStaticKeyString(Static_Key_3);
-							
-							// Reference ID array preparation
-							int[] ID_Array = {Static_Key_ID_1, Static_Key_ID_2, Static_Key_ID_3};
-							
+						// Key Extraction
+						int Dynamic_Key_ID = // extract Dynamic Key used for encryption
+
+						// Find the length of byte[] to pass for the preferred encrypted string length
+						int preferred_length = 1000; // Maximum desired text output length
+						int byte_array_length = SAS_ROSET.rcsNumOfBytesToPass(Dynamic_Key_ID, preferred_length);
+						
 						</doc_code>
 						
+						
+						<doc_h2>Decrypt Encrypted byte array</doc_h2>
+						<doc_para>
+							To decrypt a SAS-RCS encrypted <dh>byte[]</dh>, use the method <dh>rcsByteDecrypt(int Dynamic_Key_ID, int[] Static_Key_IDs_Array, byte[] encrypted_data)</dh>. Below is an example demonstrating how to implement this decryption method.
+						</doc_para>
+
+						<doc_code>
+						// Key Extraction
+						int Dynamic_Key_ID = // extract Dynamic Key used for encryption
+
+						int Static_Key_ID_1 = // extract Static Key 1 used for encryption
+						int Static_Key_ID_2 = // extract Static Key 2 used for encryption
+						int Static_Key_ID_3 = // extract Static Key 3 used for encryption
+
+						// Prepare Static Key Reference ID array
+						int[] Static_Key_IDs_Array = {Static_Key_ID_1, Static_Key_ID_2, Static_Key_ID_3};
+
+						// Set up 'Quick Processing' (OPTIONAL, BUT RECOMMENDED for better performance)
+						boolean isSet = SAS_ROSET.setQuickProcessing(true, Dynamic_Key_ID, Static_Key_IDs_Array);
+
+						// Decrypt the Encrypted byte array
+						String encrypted_byte_data = "üģ´=}ôzĤûêĘÓğ¿Òüģ´=}¿Ò¹čIìsYãÞÎ³e¹čIìôzĤûêĘÓğsYãÞÎ³e";
+						String decrypted_byte_data = SAS_ROSET.rcsByteDecrypt(Dynamic_Key_ID, Static_Key_IDs_Array, encrypted_byte_data);
+						
+						</doc_code>
+
+						<doc_para>
+							Please note that the order of <dh>Static Key</dh> reference IDs in the <dh>Static_Key_IDs_Array</dh> is critical for successful decryption. Ensure the keys are provided in the same order they were used for encryption.
+						</doc_para>
 					</div>
 					
 					<div class="doc_navigate_box">
-							<a href="2.html" ><p class="white_button"> Previous: Generating Keys </p></a>
-							<a href="4.html" ><p class="blue_button"> Next: Quick Processing  </p></a>
+							<a href="5.html" ><p class="white_button"> Previous: Encrypting & Decrypting Strings via RCS </p></a>
+							<a href="7.html" ><p class="blue_button"> Next: Encrypting & Decrypting Bytes via RBS  </p></a>
 					</div>	
 				</div>	
 					
