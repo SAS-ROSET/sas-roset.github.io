@@ -81,23 +81,25 @@
 					<div id="doc_page">
 						<doc_h1> 7. SAS-RGM: Random Group Mapping </doc_h1>
 						<doc_author>by: saaiqSAS</doc_author>
-						<doc_date>Last Updated: 4/7/2024</doc_date>
+						<doc_date>Last Updated: 27/2/2025</doc_date>
 						
 						<!-- <dh>Dynamic Key</dh>  <dh>Static Key</dh>  <dh>D-Space</dh>!-->
 						<doc_para>
-							SAS-RGM (Saaiq Abdulla Saeed's - Random Group Mapping) Algorithm reprsents an input character's base string (i.e. base2, base10, base16, base64) 
-							interms of characters within a randomly shuffled character set (<dh>Dynamic Key</dh>) by mapping each base unit to a subset of the original 
-							character set and selecting a random character from the assigned subset. By default the SAS-RGM supports base2, base 16 and base64.
-
+							The SAS-RGM (Saaiq Abdulla Saeed's Random Group Mapping) Algorithm represents an input character's base string 
+							(i.e., base2, base10, base16, base64) in terms of characters within a randomly shuffled character set 
+							(<dh>Dynamic Key</dh>). It achieves this by mapping each base unit to a subset of the original character set 
+							and selecting a random character from the assigned subset. By default, the SAS-RGM supports base2, base16, and
+							base64 encoding formats.
 						</doc_para>
+						
 						<doc_code>
 								Example 7.1: SAS-RGM with base2 (s2)
 								
 								Charset: {a, j, g, o, p, r, k, s, l, t, m, h} (length 12)
 								Data: A
 								
-								1. As base2 have two units (1, 0) divide the charset into two subsets via a deterministic method (by default "1234"/"Round Robin" method is used)
-								and map it to each unit. 
+								1. Since base2 has two units (1, 0) divide the charset into two subsets via a deterministic method (by default "1234"/"Round Robin" method is used)
+								and map them to each unit. 
 								
 								0 → {a, g, p, k, l, m} (length 6)
 								1 → {j, o, r, s, t, h} (length 6)
@@ -108,17 +110,14 @@
 								
 								Output: sgmpkgo
 								
-								
 						</doc_code>
 						
 						<doc_para>
-							SAS-ROS Cipher cannot process objects that are not part of the <dh>Dynamic Key</dh>, and when providing text to the SAS-RCS, the text can often 
-							contain <dh>ext-chars</dh>. Thus in SAS-RCS, RGM is used to overcome this by representing any <dh>ext-chars</dh> interms of characters 
-							in the <dh>Dynamic Key</dh>.
+							The SAS-ROS Cipher cannot process objects that are not part of the <dh>Dynamic Key</dh>. However, when providing 
+							text to the SAS-RCS, the text may often contain <dh>ext-chars</dh>. In SAS-RCS, the RGM algorithm is used to overcome 
+							this limitation by representing any <dh>ext-chars</dh> in terms of characters from the <dh>Dynamic Key</dh>.
 						</doc_para>
-						
-						
-						
+								
 						<br/><br/>
 					</div>
 					

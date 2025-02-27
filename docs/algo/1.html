@@ -81,29 +81,30 @@
 					<div id="doc_page">
 						<doc_h1> 1. SAS-ROS Cipher </doc_h1>
 						<doc_author>by: saaiqSAS</doc_author>
-						<doc_date>Last Updated: 12/6/2024</doc_date>
+						<doc_date>Last Updated: 27/2/2025</doc_date>
 						
 						<doc_para> 
-							SAS-ROS Cipher (Saaiq Abdulla Saeed's Random Object Substitution Cipher) can be defined as a method of randomly substituting 
-							a data object to another object within a fixed set of objects by refering to two types of randomly generated 
-							keys: the <dh>Dynamic Key</dh> (Object Key) and the <dh>Static Key</dh> (Index Key), which when combined, represent a substitution table.
-							This cipher is the core of the SAS-RCS/RBS Encryption.
-							<br/><br/>
-						 
-							The ROS Cipher was originally developed by Saaiq Abdulla Saeed (saaiqSAS) as the core of the depreciated SAS-STE (SAS - Secure Text Encryption)
-							algorithm [<a href="https://github.com/saaiqSAS/SAS-STE" class="doc_link">project Github</a>] - a weak ASCII substitution encryption, 
-							also the first encryption by saaiqSAS. The key names <dh>'Dynamic Key'</dh> for Object Key and <dh>'Static Key'</dh>  for Index Key were derived 
-							from the SAS-STE project.
+							SAS-ROS Cipher (Saaiq Abdulla Saeed's Random Object Substitution Cipher) is a method of randomly substituting a
+							data object with another object from a fixed set of objects. It achieves this substitution using two types of 
+							randomly generated keys: the <dh>Dynamic Key</dh> (Object Key) and the <dh>Static Key</dh> (Index Key). When 
+							combined, these keys form a substitution table. This cipher serves as the core of the SAS-RCS/RBS Encryption.
 							<br/><br/>
 							
-							<dh>Dynamic Keys</dh> are a set/array of randomly shuffled objects, where objects can be of any type (ie. characters, bytes, frequency, voltage, etc).
-							<dh>Static Keys</dh> are a set/array of randomly shuffled indexes equal to length of <dh>Dynamic Key</dh>, which are used to link objects of the
-							<dh>Dynamic Key</dh> while performing substitution.
+							The ROS Cipher was originally developed by Saaiq Abdulla Saeed (saaiqSAS) as the core of the now-deprecated SAS-STE
+							(SAS - Secure Text Encryption) algorithm [<a href="https://github.com/saaiqSAS/SAS-STE" class="doc_link">project Github</a>].
+							SAS-STE was a weak ASCII substitution encryption, and it was the first encryption algorithm created by saaiqSAS. The names 
+							<dh>'Dynamic Key'</dh> for Object Key and <dh>'Static Key'</dh> for Index Key were derived from this project.
 							<br/><br/>
-						 
-							There are two methods to perform the ROS Cipher, which are inverses of each other. Thus, if one method is used for encryption, 
-							the other can be used for decryption, and vice versa.
-						</doc_para>	
+							
+							<dh>Dynamic Keys</dh> are sets or arrays of randomly shuffled objects, where the objects can be of any type 
+							(e.g., characters, bytes, frequency, voltage, etc.). <dh>Static Keys</dh> are sets or arrays of randomly shuffled 
+							indexes, which are of the same length as the <dh>Dynamic Key</dh>, and are used to link the objects within the <dh>Dynamic Key</dh>
+							during substitution.
+							<br/><br/>
+							
+							There are two methods to perform the ROS Cipher, which are inverses of each other. Therefore, if one method is used for 
+							encryption, the other can be used for decryption, and vice versa.
+						</doc_para>
 						
 						<doc_h2>ROS method 1 (m1)</doc_h2>
 						<doc_code>

@@ -81,33 +81,31 @@
 					<div id="doc_page">
 						<doc_h1> 8. Attacking the SAS-RGM </doc_h1>
 						<doc_author>by: saaiqSAS</doc_author>
-						<doc_date>Last Updated: 17/10/2024</doc_date>
+						<doc_date>Last Updated: 27/2/2025</doc_date>
 						
 						<!-- <dh>Dynamic Key</dh>  <dh>Static Key</dh>  <dh>D-Space</dh>!-->
 						<doc_h3>1. Frequency Analysis</doc_h3>
 						<doc_para>
-							SAS-RGM is secure against frequency analysis as long as each base unit's subset length is long. 
-							If the subset lengths are very short (e.g., 2-5 characters), the algorithm may be vulnerable. For 
-							SAS-RCS, the shortest subset length is produced when using RGM base64 (s64) combined with a
-							128-character key, resulting in 2 characters per subset. However RGM base2 (s2) combined with the same key length
-							results in 32 charcters per subset, which can be considered secure. Therefore, when using larger bases, 
-							it is recommended to use longer keys to ensure security.
-							<br/><br/>
-
+							SAS-RGM is secure against frequency analysis as long as each base unit's subset length is sufficiently long.
+							If the subset lengths are too short (e.g., 2-5 characters), the algorithm could be vulnerable. For SAS-RCS, 
+							the shortest subset length occurs when using RGM base64 (s64) combined with a 128-character key, resulting 
+							in 2 characters per subset. However, RGM base2 (s2) combined with the same key length results in 32 characters
+							per subset, which can be considered secure. Therefore, when using larger bases, it is recommended to use 
+							longer keys to ensure security.
 						</doc_para>
 						
 						
 						<doc_h3>2. Brute Forcing</doc_h3>
 						<doc_para>
-							While the method used for distribution of the character set (<dh>Dynamic Key</dh>) into subsets (a subset for each base unit),
-							the original character set (<dh>Dynamic Key</dh>) used is randomly generated beforehand via non-deterministic methods. 
-							Brute forcing the SAS-RGM implementation on SAS-RCS can be attempted by iterating through the <dh>D-Space</dh>, 
-							which is equivalent to <dh>L!</dh>. As key length gets longer brute forcing will become inconvenient, given that the
-							maximum key length by default is 1,050,000 units.
+							The method used to distribute the character set (<dh>Dynamic Key</dh>) into subsets (one subset for each base unit)
+							is based on a randomly generated <dh>Dynamic Key</dh> produced by non-deterministic methods. Brute-forcing the 
+							SAS-RGM implementation within SAS-RCS can be attempted by iterating through the <dh>D-Space</dh>, which is 
+							equivalent to <dh>L!</dh>. As the key length increases, brute forcing becomes increasingly difficult, especially
+							since the maximum key length by default is 1,050,000 units.
 						</doc_para>
 						<doc_para>
-							Depending on the character set distribution method used (by default "1234"/"Round Robin" method is used), multiple 
-							<dh>Dynamic Keys</dh> from the <dh>D-Space</dh> will produce identical set of subsets.
+							Depending on the character set distribution method used (by default, the "1234"/"Round Robin" method),
+							multiple <dh>Dynamic Keys</dh> from the <dh>D-Space</dh> may produce identical subsets.
 						</doc_para>
 						<doc_code>
 								Example 8.1: Identical set of subsets produced
@@ -125,13 +123,14 @@
 								1 → {b, d} 
 								
 								Notice how the provided Dynamic keys produce identical set of subsets.
+								
 						</doc_code>
 						
 						<doc_h3>3. Chosen Plaintext Attack (CPA)</doc_h3>
 						<doc_para>
-							SAS-RGM is (partially) vulnerable to CPA. Some characters belonging to the subset assigned to the base units included in the chosen pain text
-							can be determined from the encoded ciphertext. Hence depending on the level of access to the encoding oracle, more characters can be mapped to
-							base units.
+							SAS-RGM is (partially) vulnerable to a Chosen Plaintext Attack (CPA). Some characters belonging to the
+							subset assigned to the base units in the chosen plaintext can be determined from the encoded ciphertext.
+							Hence, depending on the level of access to the encoding oracle, more characters can be mapped to base units.
 						</doc_para>
 						<doc_code>
 								Example 8.2: CPA Attack on SAS-RGM
@@ -146,13 +145,14 @@
 								0 → {w, t, ...} 
 								B → {x, ...} 
 								F → {o, ...} 
+								
 						</doc_code>
 						
 						
 						<doc_h3>4. Chosen Ciphertext Attack (CCA)</doc_h3>
 						<doc_para>
-							SAS-RGM is also (partially) vulnerable to CCA as characters from a chosen ciphertext can be mapped to its
-							base unit when the plain text is at hand.
+							SAS-RGM is also (partially) vulnerable to a Chosen Ciphertext Attack (CCA), where characters from a chosen 
+							ciphertext can be mapped to its base unit when the plaintext is known.
 						</doc_para>
 						<doc_code>
 								Example 8.3: CCA Attack on SAS-RGM
@@ -164,6 +164,7 @@
 								Determined partial subset
 								0 → {q, w, r, ...} 
 								1 → {b, o, v, a, ...} 	
+								
 						</doc_code>
 						
 						<br/><br/>

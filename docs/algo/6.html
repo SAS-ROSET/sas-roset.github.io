@@ -81,46 +81,47 @@
 					<div id="doc_page">
 						<doc_h1> 6. Keys for the SAS-RCS/RBS </doc_h1>
 						<doc_author>by: saaiqSAS</doc_author>
-						<doc_date>Last Updated: 30/6/2024</doc_date>
+						<doc_date>Last Updated: 27/2/2025</doc_date>
 						
 						<!-- <dh>Dynamic Key</dh>  <dh>Static Key</dh>  <dh>D-Space</dh>!-->
 						<doc_para>
-							The SAS-RCS/RBS Encryption Algorithms are built on top of the SAS-ROS Cipher and utilize the 
-							same two types of keys: <dh>Dynamic Key</dh> and <dh>Static Key</dh>. However, unlike the ROS Cipher,
-							the SAS-RCS/RBS <dh>Dynamic Key</dh> contains additional components, and multiple <dh>Static Keys</dh> 
-							are used instead of just one.
-							<br/><br/>
-							
-							The SAS-RCS/RBS algorithms include additional cryptographic steps, such as obfuscation and shuffling.
-							The unique information required for these steps are stored in the initial part (settings) of the <dh>Dynamic Key</dh>
-							as integers. There are a total of 10 such integers. The later part of the <dh>Dynamic Key</dh> (<dh>Charset</dh>) is where the
-							object array (ROS Cipher <dh>Dynamic Key</dh>) used for ROS is stored.
-							
-							<br/><br/>
-							
-							Fig. 6.1 illustrates the structure of the SAS-RCS/RBS <dh>Dynamic Key</dh>.
+							The SAS-RCS/RBS Encryption Algorithms are built on the foundation of the SAS-ROS Cipher 
+							and utilize the same two types of keys: <dh>Dynamic Key</dh> and <dh>Static Key</dh>. 
+							However, unlike the ROS Cipher, the SAS-RCS/RBS <dh>Dynamic Key</dh> incorporates additional
+							components, and multiple <dh>Static Keys</dh> are employed instead of just one.
 							<br/><br/>
 
+							In addition to the core encryption mechanism, the SAS-RCS/RBS algorithms include extra cryptographic
+							steps such as obfuscation and shuffling. The unique information required for these steps is stored
+							in the initial section (settings) of the <dh>Dynamic Key</dh> as integers. This section contains 
+							a total of 10 such integers. The latter part of the <dh>Dynamic Key</dh>, referred to as the
+							<dh>Charset</dh>, stores the object array (ROS Cipher <dh>Dynamic Key</dh>) used for the ROS process.
+							<br/><br/>
+
+							Fig. 6.1 illustrates the structure of the SAS-RCS/RBS <dh>Dynamic Key</dh>.
+							<br/><br/>
 						</doc_para>
 						
 						<img class="doc_image" src="imgs/6_1.png"/> <doc_fig>Fig.6.1</doc_fig>
 						<doc_code>
-								Example 6.1: 128 char (7 bit) Dynamic Key returned from the SAS-ROSET API
-								
-								ROS0312130250%'§Jab.g~½kC5{®M=h¹\¶¿£U,]>^1*40­À6ºTdu|m/VtBI:D3RªN;zqfjwSF+WX)@(}s2yG¥8©H7i´±&amp;K²A¤P-&lt;»r¾[¦Q¼c« p¯o!¡Z°"³?Y¸$¢#¬9n·e_ `LElx¨vOµ
+								Example 6.1: 128 char (7 bit) String Dynamic Key generated from the SAS-ROSET API v1.0.0
+							
+								ROSDK:0213030201lNh+¸e^`¤aBQF&amp;u\9TÀKwm°Z>S*¢² =$/U06_¬¨L ¾]§g­º(~jsO;,PV&lt;8?nxAdz-¿·kJ¯#to4b)»±"«EH¡@¼}|qW¶¹D¥v{Y£c´.2G!Xª½Mf¦51rpR'i3[©:y7%®I³µC
+						
 						</doc_code>
 						<br/><br/>
 						
 						<doc_para>
-							The <dh>Static Key</dh> for the SAS-RCS/RBS is identical to of ROS Cipher. In addition to being used for ROS
-							the  <dh>Static Keys</dh> are also used for the shuffling step of the SAS-RCS/RBS as a source of deterministic randomness.
-							The SAS-ROSET API represents the <dh>Static Key</dh> as a string of characters similar to the <dh>Charset</dh> of the <dh>Dynamic Key</dh>.
-							
+							The <dh>Static Key</dh> in SAS-RCS/RBS is identical to that of the ROS Cipher. 
+							In addition to being used for the ROS process, the <dh>Static Keys</dh> are also
+							employed in the shuffling step of SAS-RCS/RBS as a source of random numbers. 
+							The SAS-ROSET API represents the <dh>Static Key</dh> as an int[] array of indexes (positions).
 						</doc_para>
 						<doc_code>
-								Example 6.2: 128 char (7 bit) Static Key returned from the SAS-ROSET API
-								
-								9]M$f @¶N?G:¡º;%«io3\SRdb¹cµEagU+>u-t¯Xr²5'³y7V¦[¤T_Yk ½|H^,8.J&lt;zªmv¿©p·x{}°I¥P¢K0`£F§&amp;Q4wLjq¼sW®(±¸À~eZ¬C´=AB»#2*/!¨"¾h)6lO1D­n
+								Example 6.2: 128 char (7 bit) int[] Static Key generated from the SAS-ROSET API v1.0.0
+
+								[90, 96, 118, 111, 81, 13, 88, 47, 98, 104, 0, 21, 33, 37, 30, 112, 85, 55, 89, 32, 113, 87, 49, 94, 43, 80, 93, 70, 36, 25, 116, 121, 31, 27, 22, 48, 71, 57, 73, 72, 101, 91, 10, 95, 126, 124, 68, 106, 75, 76, 127, 60, 107, 16, 29, 40, 61, 53, 34, 44, 125, 6, 11, 28, 119, 5, 26, 42, 4, 3, 46, 109, 86, 24, 123, 117, 83, 100, 99, 17, 8, 74, 77, 105, 38, 69, 103, 64, 2, 50, 122, 9, 7, 15, 35, 59, 12, 23, 14, 110, 19, 52, 45, 108, 65, 20, 67, 62, 18, 51, 58, 78, 102, 79, 41, 54, 114, 66, 115, 120, 56, 82, 92, 63, 1, 39, 97, 84]
+						
 						</doc_code>
 						
 						
@@ -142,63 +143,59 @@
 								
 						</doc_code>
 						<br/><br/>
+						
 						<doc_para>
-							<b>0. ROS Method:</b> This index represents the ROS method to use in encryption - Either method 1 or method 2
-							[Details on the methods for ROS Cipher can be found in <a class="doc_link" href="1.html">Section 1 - SAS-ROS Cipher</a>] 
+							<b>0. ROS Method:</b> This index specifies the ROS method to use in encryption—either Method 1 or Method 2.
+							[Details on the methods for the ROS Cipher can be found in <a class="doc_link" href="1.html">Section 1 - SAS-ROS Cipher</a>] 
 							<br/><br/>
 							
-							<b>1. <dh>Static Key</dh> Reversing Order:</b> The SAS-RCS/RBS creates additional <dh>Static Keys</dh> in memory by 
-							reversing certain <dh>Static Keys</dh> from the provided set. By default, half of the <dh>Static Keys</dh> will be 
-							reversed and used as standalone <dh>Static Keys</dh> during processing. For example, if 6 <dh>Static Keys</dh> are 
-							provided, the data will be processed with 9 <dh>Static Keys</dh> (6 original + 3 reversed). The "reversing order" 
-							determines the starting <dh>Static Key</dh> and the direction in the provided list from which each <dh>Static Key</dh> 
-							will be reversed until half of them are reversed.
+							<b>1. <dh>Static Key</dh> Reversing Order:</b> The SAS-RCS/RBS algorithm creates additional <dh>Static Keys</dh> in memory
+							by reversing certain <dh>Static Keys</dh> from the provided set. By default, half of the <dh>Static Keys</dh> will be
+							reversed and used as standalone <dh>Static Keys</dh> during processing. For example, if six <dh>Static Keys</dh> are 
+							provided, the data will be processed with nine <dh>Static Keys</dh> (six original + three reversed). The "reversing order"
+							determines the starting <dh>Static Key</dh> and the direction in the provided list from which each <dh>Static Key</dh> will
+							be reversed until half of them are reversed.
 							<br/><br/>
 							
-							<b>2. RGM Status:</b> The SAS-RGM algorithm is used in SAS-RCS to represent a character not in the 
-							<dh>Dynamic Key</dh> in terms of the characters within the <dh>Dynamic Key</dh>. The "RGM Status" value 
-							determines whether this feature is enabled and to what extent it is used. It can be enabled partially, 
-							fully, or disabled. Disabling is not recommended. "Full" status processes all data characters 
-							(not limited to only external characters) through the RGM algorithm, while "Partial" status only processes the 
-							required characters. Note that the output size of RGM for a single character will be large and varies depending
+							<b>2. RGM Status:</b> The SAS-RGM algorithm is used in SAS-RCS to represent characters not found in the <dh>Dynamic Key</dh> 
+							in terms of the characters within the <dh>Dynamic Key</dh>. The "RGM Status" value determines whether this feature is enabled 
+							and to what extent it is used. It can be enabled partially, fully, or disabled. Disabling is not recommended. The "Full" status 
+							processes all data characters (not limited to only external characters) through the RGM algorithm, while "Partial" status only 
+							processes the required characters. Note that the output size of RGM for a single character will be large and varies depending 
 							on the RGM Base used. 
 							[Details on the SAS-RGM algorithm can be found in <a class="doc_link" href="7.html">Section 7 - SAS-RGM: Random Group Mapping</a>] 
 							<br/><br/>
 							
-							<b>3. RGM Base:</b>  The SAS-RGM first convert charcters to its base (e.g. binary, hex) values before processing.
-							The "RGM Base" decides which base to use in this step - Either base2, base16 or base64. Smaller bases mean output
-							size would be larger, but provides more randomness to the output. Larger bases are better to be used with larger keys.
+							<b>3. RGM Base:</b> The SAS-RGM first converts characters to their base values (e.g., binary, hex) before processing. The 
+							"RGM Base" determines which base to use in this step—either base2, base10, base16, or base64. Smaller bases result in larger output 
+							sizes but provide more randomness to the output. Larger bases are better suited for use with larger keys.
 							<br/><br/>
 							
-							<b>5. Data Size Increase: For Every: </b> This value represents the 'n' value in the ratio n:m
+							<b>5. Data Size Increase: For Every:</b> This value represents the 'n' value in the ratio n:m.
 							<br/><br/>
 							
-							<b>6,7. Data Size Increase: Add: </b> This value represents the 'm' value in the ratio n:m
+							<b>6,7. Data Size Increase: Add:</b> These values represent the 'm' value in the ratio n:m.
 							<br/><br/>
 							
-							<b>9. API Version ID:</b> This value contains the <dh>X</dh> value of the API version format <dh>vX.Y.Z</dh>. This value
-							can change after an update to the algorithm itself, or an update to the implementation (API), which makes the updated version
-							non backwards compatible with older versions.
+							<b>9. API Version ID:</b> This value contains the <dh>X</dh> value of the API version in the format <dh>vX.Y.Z</dh>. 
+							It may change after an update to the algorithm or the implementation (API), making the updated version non-backwards
+							compatible with older versions.
 							<br/><br/>
 						</doc_para>
-						
+												
 						<doc_h2>Keyspace</doc_h2>
 						<doc_para>
-							The effective keyspace for the ROS Cipher is the factorial of the key length (<dh>L!</dh>), representing 
-							the <dh>Sub-Space</dh>. [Details on the keyspace for the ROS Cipher can be found in 
-							<a class="doc_link" href="2.html">Section 2 - Keys for the SAS-ROS Cipher</a>].
-							This keyspace applies to one pair of keys (<dh>Dynamic Key</dh> and <dh>Static Key</dh>) that form a substitution table.
+							The effective keyspace for the ROS Cipher is the factorial of the key length (<dh>L!</dh>), representing the <dh>Sub-Space</dh>. 
+							[Details on the keyspace for the ROS Cipher can be found in <a class="doc_link" href="2.html">Section 2 - Keys for the SAS-ROS Cipher</a>].
+							This keyspace applies to a single pair of keys (<dh>Dynamic Key</dh> and <dh>Static Key</dh>) that form a substitution table.
 							<br/><br/>
 							
-							The SAS-RCS/RBS uses multiple <dh>Static Keys</dh> paired with a single <dh>Dynamic Key</dh>, resulting in multiple 
-							substitution tables. To determine the effective keyspace for the SAS-RCS/RBS, multiply the effective keyspace for 
-							each pair. This is given by <dh>(L!)^number_of_st_keys</dh>.
+							The SAS-RCS/RBS uses multiple <dh>Static Keys</dh> paired with a single <dh>Dynamic Key</dh>, resulting in multiple substitution tables. 
+							To determine the effective keyspace for the SAS-RCS/RBS, multiply the effective keyspace for each pair. This is expressed as <dh>(L!)^number_of_st_keys</dh>.
 							<br/><br/>
 							
-							This keyspace is not yet complete, as the SAS-RCS/RBS include additional steps (settings). The keyspace for the 
-							settings is found by the product of the maximum values for each individual setting. Thus, 2*4*3*3*2*9*99 = 128304. 
-							The accurate effective keyspace is then the product of the settings keyspace and the keyspace found earlier. This is 
-							given by <dh>((L!)^number_of_st_keys) * 128304</dh>.
+							However, this keyspace is not complete, as the SAS-RCS/RBS includes additional steps (settings). The keyspace for these settings is determined by the product of the maximum values for each individual setting. For example, 2 * 4 * 3 * 3 * 2 * 9 * 99 = 128304. 
+							The accurate effective keyspace is the product of the settings keyspace and the previously calculated keyspace. This is expressed as <dh>((L!)^number_of_st_keys) * 128304</dh>.
 							<br/><br/>
 						</doc_para>
 

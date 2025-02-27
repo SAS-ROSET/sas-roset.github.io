@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 	<html>
 		<head>
-			<title> SAS-ROSET  |  SAS-RGM in SAS-RCS - SAS-RCS/RBS Encryption Algorithm Documentation </title>
+			<title> SAS-ROSET  |  SAS-ROS Cipher in SAS-RCS/RBS - SAS-RCS/RBS Encryption Algorithm Documentation </title>
 			<link data-default-icon="../../imgs/favicon.png" rel="icon" sizes="192x192" href="../../imgs/SAS_ROSET_ICON_3.png" />
 			<meta name="viewport" content="width=device-width, initial-scale=0.8, shrink-to-fit=yes">
 			<meta charset="utf-8">
@@ -79,142 +79,143 @@
 					</div>
 
 					<div id="doc_page">
-						<doc_h1> 9. SAS-RGM in SAS-RCS </doc_h1>
+						<doc_h1> 10. SAS-ROS Cipher in SAS-RCS/RBS </doc_h1>
 						<doc_author>by: saaiqSAS</doc_author>
-						<doc_date>Last Updated: 26/2/2025</doc_date>
+						<doc_date>Last Updated: 27/2/2025</doc_date>
 						
 						<!-- <dh>Dynamic Key</dh>  <dh>Static Key</dh>  <dh>D-Space</dh>!-->
 						<doc_para>
-							When passing text to the SAS-RCS, the text can often contain <dh>ext-chars</dh> and the SAS-ROS step cannot process such <dh>ext-chars</dh> 
-							that are not part of the <dh>Dynamic Key</dh>. Thus in SAS-RCS, RGM is used to overcome this by representing any <dh>ext-chars</dh> 
-							interms of characters included in the <dh>Dynamic Key</dh>.
+							Both the SAS-RCS and SAS-RBS encryption algorithms utilize the SAS-ROS Cipher at their core.
+							However, while the SAS-ROS itself employs a single <dh>Dynamic Key</dh> and a single <dh>Static Key</dh>
+							to define a single substitution table, the SAS-ROS implementation within the SAS-RCS/RBS utilizes multiple 
+							<dh>Static Keys</dh>, combined with a single <dh>Dynamic Key</dh>. This implementation enables the 
+							representation of a distinct substitution table for each key pair (1 <dh>Dynamic Key</dh> + 1 <dh>Static Key</dh>).
 						</doc_para>
-						
+						<doc_para>
+							During data processing, the available substitution tables are applied in a "1234"/"Round Robin" method for 
+							each data unit (i.e., each character in SAS-RCS). Below, in <dh>Example 10.1</dh>, you can find an accurate 
+							representation of this process. It is important to note that the number of <dh>Static Keys</dh> that can be
+							utilized is not limited.
+						</doc_para>
+	
 						<doc_code>
-								Example 9.1: Passing an ext-char through SAS-RGM
+								Example 10.1: SAS-ROS substitution with multiple Static Keys
 								
-								ext-char: Q
-								Base: base2
-								Dynamic key: { c, i, e, a, f, h, b, g, d }
+								Data: aaaaaaa
 								
-											  [ 0, 1, 0, 1, 0, 1, 0, 1, 0 ]
+								Dynamic key : { c, i, e, a, f, h, b, g, d }
+								Static Key 1: { 4, 8, 2, 7, 1, 6, 0, 5, 3 }
+								Static Key 2: { 6, 1, 7, 0, 3, 5, 8, 2, 4 }
+								Static Key 3: { 3, 8, 0, 6, 7, 5, 4, 2, 1 }
+											
+											
+								Num of available substitution tables: 3
+								sub-table 1: Dyn Key + St Key 1
+								sub-table 2: Dyn Key + St Key 2
+								sub-table 3: Dyn Key + St Key 3
+					
+								sub-tables distributed to data: 1231231
 								
-								Subsets:
-								0 → { c, e, f, b, d } 
-								1 → { i, a, h, g } 
+								ROS method 1 passed data: gcbgcbg
 								
-								
-								base2 format of  'Q': 01010001
-								
-								RGM encoded format of "01010001": ehdacfda	
-								
-								Notice how the RGM encoded value is now made up of characters from the Dynamic Key.
+								Notice how in the ROS passed data, 'a's are substituted to different characters when multiple sub-tables are used.
 								
 						</doc_code>
 						
 						<doc_para>
-							Now while the above example deals with a single character, consider a string with a mixture of <dh>ext-chars</dh> and <dh>local-chars</dh>.
-							We pass the entire string through RGM and produce an RGM encoded string, in which <dh>local-chars</dh> are kept as it is and only
-							<dh>ext-chars</dh> are processed, where processed <dh>ext-chars</dh> would now be strings and not a single character. How can we identify and
-							differentiate one another. To achieve this we introduce special characters called <dh>serps</dh> used to separate processed 
-							<dh>ext-chars</dh> from the rest. The <dh>serps</dh> will sandwich the RGM encoded string, before including the string in the final output.
-							Thus upon encountering a <dh>serp</dh>, we know that the next characters until the next <dh>serp</dh> will be part of the RGM encoded string.
+							As demonstrated in the example above, the use of multiple substitution tables helps mitigate frequency analysis, CCA, and CPA attacks.
+							Furthermore, this implementation significantly increases the overall key space, making brute-force attacks considerably more difficult.
 						</doc_para>
 						
+						<doc_h2>ROS in RCS</doc_h2>
 						<doc_para>
-							As SAS-ROS won't process <dh>ext-chars</dh>, the <dh>serps</dh> should also be taken within the <dh>Dynamic Key</dh>. Then, If
-							we characters used as <dh>serps</dh> also exist in a subset for RGM, we would be facing issues in the final output, as actual
-							characters of an RGM encoded string may contain <dh>serp</dh> characters, thus it would be impossible to identify actual <dh>serps</dh>
-							from ones inside an RGM encoded string. Thus a solution to this would be to not include any character chosen as <dh>serps</dh> in any
-							RGM subsets linked with a base unit (i.e. 1, 0).
-						</doc_para>
-						
-						<doc_para>
-							Also a security concern can arise, if we use a single or a few characters as <dh>serps</dh>, as the final output may be prone to frequency 
-							analysis, thus allowing adversaries to distinguish RGM encoded strings.
-						</doc_para>
-						
-						<doc_para>
-							Hence to overcome all the obstacles mentioned, a RGM subset is created for just <dh>serps</dh> along with subsets for base units.
-							Hence every time a <dh>serp</dh> is needed, a random character can be selected from the subset linked with <dh>serps</dh>.
-							This method ensures that the number of <dh>serps</dh> used will increase with the key length and inroduces more securty with randomness.
+							The SAS-RCS encryption algorithm performs character substitution in a monoalphabetic manner 
+							(i.e., each character is substituted individually). The <dh>Example 10.1</dh> above, as well as
+							<dh>Example 10.2</dh> below, illustrates the ROS process for RCS. It is important to note that
+							after the ROS step, the data undergoes an obfuscation process, during which random characters 
+							are added at a specified ratio. The output is then shuffled character-wise using all the 
+							<dh>Static Keys</dh> as a source of random numbers.
 						</doc_para>
 						
 						<doc_code>
-								Example 9.2: Subsets of SAS-RGM for base2
+								Example 10.2: SAS-ROS substitution in SAS-RCS
 								
-								Base: base2
-								Dynamic key: { c, i, e, a, f, h, b, g, d }
-								
-											 [ 0, 1, 2, 0, 1, 2, 0, 1, 2 ]
-								
-								Subsets:
-								0 → 	{ c, a, b } 
-								1 → 	{ i, f, g } 
-								serps → { e, h, d }							
+								Dynamic key : { e, b, f, i, a, h, d, c, g }
+								Static Key 1: { 4, 6, 2, 8, 5, 1, 7, 3, 9 }
+								Static Key 2: { 3, 1, 7, 2, 9, 8, 5, 6, 4 }
+								Static Key 3: { 4, 2, 5, 9, 3, 7, 8, 1, 6 }
+											
+											
+								Data: cabbage
+								sub-tables distributed to data: 1231231						
+																
+								ROS m1 output: fgbhghi
 								
 						</doc_code>
 						
+						<doc_h2>ROS in RBS</doc_h2>
 						<doc_para>
-							Thus for base2, 3 subsets will be made. For base10, 11 subsets will be made. For base16, 17 subsets will be made.
-							And for base64, 65 subsets will be made. Below is an example of how the final output can be with this implementation.
+							Unlike SAS-RCS, the SAS-RBS encryption algorithm substitutes bits using SAS-ROS in a polyalphabetic 
+							manner (i.e., groups of bits are substituted). Furthermore, in contrast to SAS-RCS, the <dh>Dynamic Key</dh>
+							for SAS-RBS consists of these 'groups' of bits as objects, each containing all possible values for a given 
+							group length. For example, for a group length of 7 bits, the <dh>Dynamic Key</dh> will include 128 possible
+							values, ranging from <dh>0000000</dh> to <dh>1111111</dh>. <dh>Example 10.3</dh> below demonstrates the 
+							SAS-ROS step for SAS-RBS with a 4-bit group. It is important to note that before the ROS step in RBS, 
+							the data undergoes an obfuscation process, where random bits are added at a specified ratio. Once the 
+							ROS processing is completed, the output is shuffled bytewise using all the <dh>Static Keys</dh> as a 
+							source of random numbers.
 						</doc_para>
 						
 						<doc_code>
-								Example 9.3: Passing a string through SAS-RGM 
-								
-								String: fame
-								Base: base2
-								Dynamic key: { c, i, e, a, f, h, b, g, d }
-								
-											 [ 0, 1, 2, 0, 1, 2, 0, 1, 2 ]
-								
-								Subsets:
-								0 → 	{ c, a, b } 
-								1 → 	{ i, f, g } 
-								serps → { e, h, d }		
-								
-								ext-chars: m
-								base2 format of 'm': 01101101
-								RGM encoded format of "01101101": cfibgfai
-								
-								RGM passed output: fahcfibgfaiee
-								
-								RGM passed format: fa|cfibgfai|e
-								
-								serps used: h, e
+							Example 10.3: SAS-ROS Substitution in SAS-RBS for 4-bit Groups
 
-								Notice how in the 'output', local chars were kept as it is and only the ext-char was processed.
-								
-						</doc_code>
+							Characters are used as Dynamic Key objects and then mapped to binary values.
+
+							Dynamic Key: { _i, _k, _b, j, _c, _n, _d, a, _m, _l, _h, _p, _o, _f, e, _g }
+							Static Key 1: { 12, _6, _4, 7, 13, _1, _9, 2, 15, _3, 11, 14, _5, 16, 8, 10 }
+							Static Key 2: { _8, 10, 16, 9, _4, 15, 11, 5, _7, 13, 12, _1, _3, 14, 2, _6 }
+							Static Key 3: { 15, _8, 16, 2, _9, _7, _3, 6, _1, 10, 14, _5, 13, 11, 4, 12 }
+
+							Character to Bit Group Map:
+							0000 → a
+							0001 → b
+							0010 → c
+							0011 → d
+							0100 → e
+							0101 → f
+							0110 → g
+							0111 → h
+							1000 → i
+							1001 → j
+							1010 → k
+							1011 → l
+							1100 → m
+							1101 → n
+							1110 → o
+							1111 → p
+
+							Data: 110010101110011100010110
+
+							Data Split into Groups of 4 Bits:
+							1100|1010|1110|0111|0001|0110
+
+							Sub-tables Distributed to Data: 123123
+
+							ROS Method 1 Processed:
+							0100|1011|1110|0111|0110|1111
+
+							Output: 010010111110011101101111
+
+							After this step, the 'output' will undergo bytewise shuffling. Since random bits are added to the data before the ROS step, even a single bit will alter the final substituted value.
 						
-						<doc_para>
-							The above example demonstrates 'partial' RGM processing, where only <dh>ext-chars</dh> are process.
-							'full' RGM processing can also be implemented where all characters, both <dh>ext-chars</dh> and <dh>local-chars</dh>
-							are processed. In such case, <dh>serps</dh> at both the start and end of the RGM encoded strings is not necessary, thus
-							a single <dh>serp</dh> at either the start or end is enough to differentiate one RGM encoded string from another.
-							The example below demonstrates a sample 'full' RGM processing.
-						</doc_para>
-						
-						<doc_code>
-								Example 9.4: Sample output for SAS-RGM full pass
-								
-								(serp at end of RGM encoded string)
-								
-								String: fame
-								
-								RGM passed format: cfiggcb|igcbifa|cfibgfai|bbfiabg|
-								
-								RGM passed output: cfiggcbdcfibgfaihigcbifae
-								
 						</doc_code>
 					
 						<br/><br/>
 					</div>
 					
 					<div class="doc_navigate_box">
-							<a href="8.html" ><p class="white_button"> Previous: Attacking SAS-RGM </p></a>
-							<a href="10.html" ><p class="blue_button"> Next: ROS in RCS/RBS </p></a>
+							<a href="9.html" ><p class="white_button"> Previous: RGM in RCS </p></a>
+							<a href="11.html" ><p class="blue_button"> Next: Obfuscation in RCS/RBS </p></a>
 					</div>	
 				</div>	
 			</main>
