@@ -115,15 +115,25 @@
 						<doc_para><b>Note:</b> If the shortcut doesn't launch, right-click it and select "Allow Launching" or a similar option.</doc_para>
 						
 						<doc_h2>MacOS</doc_h2>
-						<doc_point>1. Download the latest <dh>MacOS</dh> version of the ROS Encryption Tool. <a href="../../download.html" class="doc_link">(Download Page)</a> </doc_point>
-						<doc_point>2. Extract the downloaded <dh>ROSET_Graphical_vX.X.X_MacOS_x86_64.zip</dh> file, by double-clicking it.</doc_point>
-						<doc_point>3. Navigate to the extracted <dh>ROSET_Graphical_vX.X.X_MacOS_x86_64</dh> directory.</doc_point>
-						<doc_point>4. Open a terminal in the directory and type the following command to make the <dh>roset.app</dh> executable. </doc_point>
-						<doc_code class="doc_code_point">chmod -R +x roset.app </doc_code>
-						
+						<doc_point>1. Open a terminal. If you're already in the directory containing <dh>roset.app</dh> (i.e., inside <dh>ROSET_Graphical_vX.X.X_MacOS_x86_64</dh>), you can directly open Terminal in that directory.</doc_point>
+						<doc_point>Otherwise, open Terminal and navigate to the <dh>ROSET_Graphical_vX.X.X_MacOS_x86_64</dh> directory using the <dh>cd /path/to/ROSET_Graphical_vX.X.X_MacOS_x86_64</dh> command.</doc_point>
+						<doc_point>If you're unsure of the current directory, you can find the full path by running <dh>pwd</dh> in Terminal. Ensure that you're in the same directory as <dh>roset.app</dh> before proceeding to the next step.</doc_point>
+
 						<br/>
-						<doc_para><b>Note:</b> If macOS asks for permissions, click Allow or Open to grant the necessary permissions.
-						Alternatively, you can also follow the Linux instructions to run the <dh>roset.sh</dh>.</doc_para>
+						<doc_point>2. Run the following commands while in the <dh>ROSET_Graphical_vX.X.X_MacOS_x86_64</dh> directory to make <dh>roset.app</dh> executable:</doc_point>
+
+						<doc_point>    - First, remove the quarantine attribute (to bypass macOS security warnings):</doc_point>
+						<doc_code class="doc_code_point">sudo xattr -rd com.apple.quarantine roset.app</doc_code>
+
+						<doc_point>    - Then, grant execute permissions to <dh>roset.app</dh>:</doc_point>
+						<doc_code class="doc_code_point">chmod +x roset.app</doc_code>
+
+						<br/>
+						<doc_point>3. After the above steps, double-click on <dh>roset.app</dh> to open it.</doc_point>
+
+						<br/>
+						<doc_para><b>Note:</b> If macOS asks for additional permissions, click Allow or Open to grant them. You may also need to go to <dh>System Preferences > Security & Privacy</dh> and click <b>Open Anyway</b> if the app is blocked. Alternatively, you can also run the <dh>roset.sh</dh>, by following the instructions in the <dh>instructions.txt</dh> file.</doc_para>
+
 					</div>
 					
 					<div class="doc_navigate_box">
